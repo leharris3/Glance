@@ -17,10 +17,11 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var incorrectField: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        incorrectField.alpha = 0
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -28,19 +29,22 @@ class LoginViewController: UIViewController {
         let password: String = passwordField.text!
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+            guard self != nil else { return }
             if error != nil {
                 print("Error")
             }
             if ((authResult) != nil) {
-                print("Success")
-            }
-            else {
-                print("Failure")
+                // Login -> Feature
+                let featureViewController = self?.storyboard?.instantiateViewController(withIdentifier: "FeatureViewController") as? FeatureViewController
+                self?.view.window?.rootViewController = featureViewController
+                self?.view.window?.makeKeyAndVisible() // Animation
                 return
             }
+            else {
+                self!.incorrectField.alpha = 1
+            }
         }
-        
+
     }
     
 }

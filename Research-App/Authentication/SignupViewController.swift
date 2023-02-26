@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class SignupViewController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
@@ -20,7 +20,7 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func signupField(_ sender: Any) {
@@ -28,6 +28,7 @@ class SignupViewController: UIViewController {
         let email: String = emailField.text!
         let password: String = passwordField.text!
         
+        // Failure
         Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
             if error != nil {
                 print("Error")
@@ -35,14 +36,15 @@ class SignupViewController: UIViewController {
             }
         })
         
-        print("Account Creation Success!")
+        // Success
+         // Maintain User Login State Locally
         
-        // Transition to Login
+        
+        // Signup -> Login
         performSegue(withIdentifier: "showLogin", sender: nil)
         
         
         // leviharris555@gmail.com
-
     }
-    
 }
+

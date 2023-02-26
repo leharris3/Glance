@@ -63,7 +63,6 @@
 		2DC280AF29AA7EAA00BB5599 = {
 			isa = PBXGroup;
 			children = (
-				2DC280DC29AAB78B00BB5599 /* Feature */,
 				2DC280BA29AA7EAA00BB5599 /* Research-App */,
 				2DC280B929AA7EAA00BB5599 /* Products */,
 				7784AC323FA57FD3A712E65F /* Pods */,
@@ -83,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				2DC280D129AA88FD00BB5599 /* RootViewController.swift */,
+				2DC280DC29AAB78B00BB5599 /* Feature */,
 				2DC280DB29AAB77100BB5599 /* Authentication */,
 				2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */,
 				2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */,
