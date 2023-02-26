@@ -16,9 +16,8 @@ class RootViewController: UIViewController, FUIAuthDelegate {
         
         if Auth.auth().currentUser != nil {
             let featureViewController = self.storyboard?.instantiateViewController(withIdentifier: "FeatureViewController") as? FeatureViewController
-            self.view.window?.rootViewController = featureViewController
-            self.view.window?.makeKeyAndVisible() // Animation
-            print("executed")
+            
+            performSegue(withIdentifier: "showFeatureLoggedIn", sender: nil)
             
         } else {
             print("No user is logged in")

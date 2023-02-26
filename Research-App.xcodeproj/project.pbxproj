@@ -18,6 +18,7 @@
 		2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */; };
 		2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280D929AA9D1700BB5599 /* LoginViewController.swift */; };
 		2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */; };
+		2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */; };
 		D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3135821C4380931CF2391B76 /* Pods_Research_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DC280D929AA9D1700BB5599 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
+		2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		3135821C4380931CF2391B76 /* Pods_Research_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Research_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4DAA03E390856BA25043BA /* Pods-Research-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Research-App.debug.xcconfig"; path = "Target Support Files/Pods-Research-App/Pods-Research-App.debug.xcconfig"; sourceTree = "<group>"; };
 		BE5BCA9B6EDE5AD0C4F2F296 /* Pods-Research-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Research-App.release.xcconfig"; path = "Target Support Files/Pods-Research-App/Pods-Research-App.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		2DC280DB29AAB77100BB5599 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				2DC5EC7329ABC4600024B245 /* SignupFlow */,
 				2DC280D329AA89B700BB5599 /* SignupViewController.swift */,
 				2DC280D929AA9D1700BB5599 /* LoginViewController.swift */,
 			);
@@ -111,6 +114,14 @@
 				2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		2DC5EC7329ABC4600024B245 /* SignupFlow */ = {
+			isa = PBXGroup;
+			children = (
+				2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */,
+			);
+			path = SignupFlow;
 			sourceTree = "<group>";
 		};
 		7784AC323FA57FD3A712E65F /* Pods */ = {
@@ -238,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,

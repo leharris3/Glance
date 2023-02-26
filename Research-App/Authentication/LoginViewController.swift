@@ -35,9 +35,7 @@ class LoginViewController: UIViewController {
             }
             if ((authResult) != nil) {
                 // Login -> Feature
-                let featureViewController = self?.storyboard?.instantiateViewController(withIdentifier: "FeatureViewController") as? FeatureViewController
-                self?.view.window?.rootViewController = featureViewController
-                self?.view.window?.makeKeyAndVisible() // Animation
+                self?.performSegue(withIdentifier: "showFeatureFromLogin", sender: nil)
                 return
             }
             else {
