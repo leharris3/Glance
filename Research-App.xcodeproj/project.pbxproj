@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
+		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
+		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
 		2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */; };
 		2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */; };
 		2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BF29AA7EAA00BB5599 /* ViewController.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
+		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
+		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		2DC280B829AA7EAA00BB5599 /* Research-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Research-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +107,7 @@
 		2DC280DB29AAB77100BB5599 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				2DC5EC7329ABC4600024B245 /* SignupFlow */,
+				2DC5EC7329ABC4600024B245 /* Signup Flow */,
 				2DC280D329AA89B700BB5599 /* SignupViewController.swift */,
 				2DC280D929AA9D1700BB5599 /* LoginViewController.swift */,
 			);
@@ -116,12 +122,15 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		2DC5EC7329ABC4600024B245 /* SignupFlow */ = {
+		2DC5EC7329ABC4600024B245 /* Signup Flow */ = {
 			isa = PBXGroup;
 			children = (
 				2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */,
+				2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */,
+				2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */,
+				2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */,
 			);
-			path = SignupFlow;
+			path = "Signup Flow";
 			sourceTree = "<group>";
 		};
 		7784AC323FA57FD3A712E65F /* Pods */ = {
@@ -249,10 +258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */,
 				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
+				2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
+				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,
 				2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */,
 				2DC280D429AA89B700BB5599 /* SignupViewController.swift in Sources */,
 				2DC280D229AA88FD00BB5599 /* RootViewController.swift in Sources */,
