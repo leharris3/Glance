@@ -12,8 +12,11 @@ class SignupPasswordViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var creationErrorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        creationErrorLabel.alpha = 0
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
@@ -21,7 +24,7 @@ class SignupPasswordViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: { authResult, error in
             if error != nil {
-                print("Error")
+                self.creationErrorLabel.alpha = 1
                 return
             }
         })
