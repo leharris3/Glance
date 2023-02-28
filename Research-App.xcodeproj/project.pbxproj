@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88829AD829000E78556 /* GlobalConstants.swift */; };
+		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D28E88829AD829000E78556 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2D28E88A29AD84F000E78556 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2D28E88C29AD853100E78556 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2D28E88B29AD851100E78556 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2DC280D129AA88FD00BB5599 /* RootViewController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		2DC280AF29AA7EAA00BB5599 = {
 			isa = PBXGroup;
 			children = (
@@ -89,29 +109,31 @@
 		2DC280BA29AA7EAA00BB5599 /* Research-App */ = {
 			isa = PBXGroup;
 			children = (
-				2DC280D129AA88FD00BB5599 /* RootViewController.swift */,
+				2D28E88B29AD851100E78556 /* Root */,
+				2DC280DB29AAB77100BB5599 /* Onboarding */,
 				2DC280DC29AAB78B00BB5599 /* Feature */,
-				2DC280DB29AAB77100BB5599 /* Authentication */,
+				2D28E88A29AD84F000E78556 /* Settings */,
 				2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */,
 				2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */,
 				2DC280BF29AA7EAA00BB5599 /* ViewController.swift */,
 				2DC280C129AA7EAA00BB5599 /* Main.storyboard */,
-				2DC280C429AA7EAD00BB5599 /* Assets.xcassets */,
 				2DC280C629AA7EAD00BB5599 /* LaunchScreen.storyboard */,
+				2DC280C429AA7EAD00BB5599 /* Assets.xcassets */,
 				2DC280C929AA7EAD00BB5599 /* Info.plist */,
 				2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */,
 			);
 			path = "Research-App";
 			sourceTree = "<group>";
 		};
-		2DC280DB29AAB77100BB5599 /* Authentication */ = {
+		2DC280DB29AAB77100BB5599 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				2D28E88829AD829000E78556 /* GlobalConstants.swift */,
 				2DC5EC7329ABC4600024B245 /* Signup Flow */,
 				2DC280D329AA89B700BB5599 /* SignupViewController.swift */,
 				2DC280D929AA9D1700BB5599 /* LoginViewController.swift */,
 			);
-			path = Authentication;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		2DC280DC29AAB78B00BB5599 /* Feature */ = {
@@ -264,9 +286,11 @@
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
+				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
 				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,
 				2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */,
 				2DC280D429AA89B700BB5599 /* SignupViewController.swift in Sources */,
+				2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */,
 				2DC280D229AA88FD00BB5599 /* RootViewController.swift in Sources */,
 				2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */,
 			);

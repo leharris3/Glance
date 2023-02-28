@@ -41,7 +41,7 @@ class SignupViewController: UIViewController {
         
         
         // Signup -> Login
-        performSegue(withIdentifier: "showLogin", sender: nil)
+        performSegue(withIdentifier: "showWelcome", sender: nil)
         
         
         // leviharris555@gmail.com
