@@ -9,21 +9,18 @@ import UIKit
 import FirebaseAuthUI
 
 class RootViewController: UIViewController, FUIAuthDelegate {
-
-//    let backgroundGradient: UIView = {
-//
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // User successfully logged in.
         if Auth.auth().currentUser != nil {
-
-            performSegue(withIdentifier: "showFeatureLoggedIn", sender: nil)
             
-        } else {
-            print("No user is logged in")
+            let feature = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
+            
+            UIWindowScene.windows.first?.rootViewController = feature
+            UIWindowScene.windows.first?.makeKeyAndVisible()
+            print("Pre-Exisiting User")
         }
-        
     }
 }

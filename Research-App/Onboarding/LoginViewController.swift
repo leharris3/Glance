@@ -17,11 +17,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
-    @IBOutlet weak var incorrectField: UILabel!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        incorrectField.alpha = 0
+        forgotPasswordButton.alpha = 0
+        forgotPasswordButton.isEnabled = false
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -34,12 +36,17 @@ class LoginViewController: UIViewController {
                 print("Error")
             }
             if ((authResult) != nil) {
+                
                 // Login -> Feature
-                self?.performSegue(withIdentifier: "showFeatureFromLogin", sender: nil)
-                return
+                let feature = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
+                UIApplication.shared.windows.first?.rootViewController = feature
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+                print("Login Success")
             }
             else {
-                self!.incorrectField.alpha = 1
+                self!.forgotPasswordButton.alpha = 1
+                self!.forgotPasswordButton.isEnabled = true
             }
         }
 
