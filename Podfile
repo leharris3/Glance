@@ -11,5 +11,6 @@ target 'Research-App' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
 	pod 'FirebaseUI'
+	pod 'TextFieldEffects'
 
 end
