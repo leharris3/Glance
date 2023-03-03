@@ -18,8 +18,8 @@ class RootViewController: UIViewController, FUIAuthDelegate {
             
             let feature = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
             
-            UIWindowScene.windows.first?.rootViewController = feature
-            UIWindowScene.windows.first?.makeKeyAndVisible()
+            UIApplication.shared.windows.first?.rootViewController = feature
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
             print("Pre-Exisiting User")
         }
     }
