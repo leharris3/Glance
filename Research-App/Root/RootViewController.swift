@@ -13,14 +13,19 @@ class RootViewController: UIViewController, FUIAuthDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // User successfully logged in.
+        // Root -> Feature
         if Auth.auth().currentUser != nil {
-            
             let feature = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
+            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
+            navigationController.pushViewController(feature, animated: true)
             
-            UIApplication.shared.windows.first?.rootViewController = feature
+            UIApplication.shared.windows.first?.rootViewController = navigationController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
             print("Pre-Exisiting User")
+        }
+        else {
+            print("not logged in lol")
         }
     }
 }
