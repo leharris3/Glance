@@ -22,21 +22,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qf5-9B-ioI" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="311" width="388" height="450"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBs-Or-pM5">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Currently Available to Students of UNC Chapel Hill" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBs-Or-pM5">
                                                 <rect key="frame" x="0.0" y="430" width="388" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Jfm-5X-oSk"/>
                                                 </constraints>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="*Currently Available to Students of UNC Chapel Hill">
-                                                        <attributes>
-                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <font key="NSFont" size="12" name="Optima-BoldItalic"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
+                                                <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1t9-Yh-NIA" userLabel="textContainer">
                                                 <rect key="frame" x="0.0" y="0.0" width="388" height="250"/>
@@ -484,7 +478,8 @@
                         </progressView>
                     </navigationItem>
                     <connections>
-                        <outlet property="keyboardHeightLayoutConstraint" destination="V5E-BE-1fd" id="PkB-0w-Efy"/>
+                        <outlet property="fieldsView" destination="V5E-BE-1fd" id="VKl-SB-9Ho"/>
+                        <outlet property="fieldsViewBottomConstraint" destination="mTG-Za-PWw" id="q1i-4C-8lr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfO-a6-gWp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1623,37 +1618,37 @@
     </scenes>
     <designables>
         <designable name="0B5-Rf-cZ5">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
         </designable>
         <designable name="1lz-Rh-5fa">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
         </designable>
         <designable name="74P-pE-XJ2">
-            <size key="intrinsicContentSize" width="85.333333333333329" height="35.333333333333336"/>
+            <size key="intrinsicContentSize" width="73.333333333333329" height="21"/>
         </designable>
         <designable name="Boc-RR-CTV">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
         </designable>
         <designable name="Csp-dY-f1Y">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
         </designable>
         <designable name="EUC-8a-Tdv">
-            <size key="intrinsicContentSize" width="57" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="45" height="22"/>
         </designable>
         <designable name="Jby-BU-kcU">
-            <size key="intrinsicContentSize" width="97.333333333333329" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="85.333333333333329" height="22"/>
         </designable>
         <designable name="SIq-JJ-oAS">
-            <size key="intrinsicContentSize" width="85.333333333333329" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="73.333333333333329" height="22"/>
         </designable>
         <designable name="VxG-0l-73Y">
-            <size key="intrinsicContentSize" width="52.666666666666664" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="40.666666666666664" height="22"/>
         </designable>
         <designable name="j2k-3N-4Of">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
         </designable>
         <designable name="uYH-qh-pL8">
-            <size key="intrinsicContentSize" width="52.666666666666664" height="36.333333333333336"/>
+            <size key="intrinsicContentSize" width="40.666666666666664" height="22"/>
         </designable>
     </designables>
     <resources>
