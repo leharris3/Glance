@@ -39,10 +39,11 @@ class LoginViewController: UIViewController {
                 
                 // Login -> Feature
                 let feature = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
-                let navigationController = UINavigationController(rootViewController: feature)
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
+                navigationController.pushViewController(feature, animated: true)
+                
                 UIApplication.shared.windows.first?.rootViewController = navigationController
                 UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
                 print("Login Success")
             }
             else {
