@@ -64,10 +64,19 @@ class SignupEmailViewController: UIViewController {
     }
     
     func verifyEmail(email: String) -> Bool {
-        if email.contains("email.unc.edu") {
-            print("exists")
-            return true
+        
+        // Is valid email string?
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if !emailPred.evaluate(with: email){
+            return false
         }
-        return false
+        
+        // Is UNC-CH email?
+        if !email.contains("email.unc.edu") {
+            return false
+        }
+        
+        return true // Valid Email
     }
 }
