@@ -8,10 +8,10 @@
 import UIKit
 
 class SignupPhoneNumberViewController: UIViewController {
-
-    @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var fieldsView: UIView!
+    
+    @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class SignupPhoneNumberViewController: UIViewController {
             NSValue {
             
             let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.fieldsViewBottomConstraint.constant -= keyboardHeight
+            self.fieldsViewBottomConstraint.constant = -keyboardHeight
             
             // Animate Constraints
             UIView.animate(withDuration: 0.5) {
