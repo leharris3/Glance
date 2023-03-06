@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D0F04D329B56A3B00CCC0BE /* Feature.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */; };
 		2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */; };
+		2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D286DEE29B684F9004DA4E5 /* OnboardingUtilites.swift */; };
 		2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88829AD829000E78556 /* GlobalConstants.swift */; };
 		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feature.storyboard; sourceTree = "<group>"; };
 		2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		2D286DEE29B684F9004DA4E5 /* OnboardingUtilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUtilites.swift; sourceTree = "<group>"; };
 		2D28E88829AD829000E78556 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,21 @@
 				3135821C4380931CF2391B76 /* Pods_Research_App.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D286DEC29B68224004DA4E5 /* Profile Creation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Profile Creation";
+			sourceTree = "<group>";
+		};
+		2D286DED29B684DF004DA4E5 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				2D286DEE29B684F9004DA4E5 /* OnboardingUtilites.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 		2D28E88A29AD84F000E78556 /* Settings */ = {
@@ -135,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB5C2C429AFB43600F89AA7 /* Research-App.entitlements */,
+				2D286DED29B684DF004DA4E5 /* Utilites */,
 				2D28E88B29AD851100E78556 /* Root */,
 				2DC280DB29AAB77100BB5599 /* Onboarding */,
 				2DC280DC29AAB78B00BB5599 /* Feature */,
@@ -175,6 +193,7 @@
 			children = (
 				2DBF04D029B562470008ECA0 /* No Longer In Use */,
 				2DAA13BF29B54C65001BC1CB /* Authentication */,
+				2D286DEC29B68224004DA4E5 /* Profile Creation */,
 			);
 			path = "Signup Flow";
 			sourceTree = "<group>";
@@ -312,6 +331,7 @@
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
+				2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
 				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,

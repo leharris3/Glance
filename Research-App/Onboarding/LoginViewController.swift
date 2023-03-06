@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
                 print("Login Success")
             }
             else {
+                // Forgot Password
                 self!.forgotPasswordButton.alpha = 1
                 self!.forgotPasswordButton.isEnabled = true
             }

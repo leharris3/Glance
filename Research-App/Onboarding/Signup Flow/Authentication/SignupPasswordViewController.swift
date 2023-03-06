@@ -36,7 +36,7 @@ class SignupPasswordViewController: UIViewController {
             NSValue {
             
             let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.fieldsViewBottomConstraint.constant = -keyboardHeight
+            self.fieldsViewBottomConstraint.constant = keyboardHeight
             
             // Animate Constraints
             UIView.animate(withDuration: 0.5) {

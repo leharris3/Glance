@@ -27,7 +27,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kho-Na-nrz"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="32"/>
+                                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="28"/>
                                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -76,7 +76,7 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="continueButtonPressed:" destination="WFx-mK-WYO" eventType="touchUpInside" id="3Ig-g7-vJP"/>
+                                                    <action selector="continuePressed:" destination="8to-0g-evE" eventType="touchUpInside" id="FPT-TN-iOB"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Code" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELP-m9-k61" customClass="IsaoTextField" customModule="TextFieldEffects">
@@ -85,7 +85,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cYp-Yh-ucz"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="one-time-code"/>
                                                 <userDefinedRuntimeAttributes>
@@ -110,6 +109,9 @@
                                                     <fontDescription key="titleFontDescription" name="Optima-BoldItalic" family="Optima" pointSize="28"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="needAnotherCodePressed:" destination="8to-0g-evE" eventType="touchUpInside" id="iE5-9n-H3x"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,7 +159,9 @@
                         </progressView>
                     </navigationItem>
                     <connections>
-                        <segue destination="WFx-mK-WYO" kind="show" id="1q0-yf-vM0"/>
+                        <outlet property="enterCodeFeild" destination="ELP-m9-k61" id="lPY-mr-6xh"/>
+                        <outlet property="needAnotherCodePrompt" destination="J6S-Bd-f6J" id="CWT-Qc-995"/>
+                        <segue destination="WFx-mK-WYO" kind="show" identifier="showPickPassword" id="1q0-yf-vM0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M00-3L-sar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,7 +187,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Uuy-VZ-9j0"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="32"/>
+                                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="24"/>
                                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -192,7 +196,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="Cdq-CJ-nsm"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="22"/>
+                                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="20"/>
                                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -233,6 +237,7 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="WFx-mK-WYO" eventType="touchUpInside" id="B8w-fw-T4Q"/>
+                                                    <action selector="continuePressed:" destination="VIh-wv-hb7" eventType="touchUpInside" id="I7u-uk-boU"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PrA-hn-yFi" customClass="IsaoTextField" customModule="TextFieldEffects">
@@ -241,7 +246,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="xRq-Ds-98x"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
@@ -260,7 +264,6 @@
                                                 <rect key="frame" x="0.0" y="55" width="388" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="MeQ-Ax-bvB"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="P7l-GL-Ebh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="27"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -308,13 +311,16 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="XWf-nM-ZsI">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.20000000298023224" id="HJJ-cM-wYd">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.20000000298023224" id="HJJ-cM-wYd">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </progressView>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailField" destination="PrA-hn-yFi" id="mJ4-ZH-kAf"/>
+                        <outlet property="fieldsViewBottomConstraint" destination="3Ck-Ac-xLz" id="7Zz-vT-Xcv"/>
+                        <outlet property="invalidEmailLabel" destination="043-wB-1UI" id="w89-E7-laJ"/>
                         <segue destination="8to-0g-evE" kind="show" identifier="showEmailConfirmation" id="6iD-SA-AsM"/>
                     </connections>
                 </viewController>
@@ -399,7 +405,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="gWt-Eq-nju"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                                 <userDefinedRuntimeAttributes>
@@ -463,13 +468,16 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="pvV-g6-bwo">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.80000001192092896" id="ZRc-Gi-yRc">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.80000001192092896" id="ZRc-Gi-yRc">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </progressView>
                     </navigationItem>
                     <connections>
+                        <outlet property="creationErrorLabel" destination="TnH-p8-lhz" id="k37-AI-glp"/>
+                        <outlet property="fieldsViewBottomConstraint" destination="2eG-ya-cNz" id="kaa-7l-ndo"/>
+                        <outlet property="passwordField" destination="epf-6v-3Pb" id="9Vw-s4-Pof"/>
                         <segue destination="olJ-ii-Bbf" kind="show" id="ZI2-6k-Zlt"/>
                     </connections>
                 </viewController>
@@ -1462,7 +1470,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="EVC-ff-LdS"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1484,7 +1491,6 @@
                                                     <constraint firstAttribute="height" constant="50" id="Vog-fA-Xht"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="uvM-KA-pvk"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1579,6 +1585,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="cdG-uy-FMo"/>
+                    <connections>
+                        <outlet property="emailField" destination="0fh-hE-VRa" id="1IC-xl-NLG"/>
+                        <outlet property="forgotPasswordButton" destination="tO7-Ft-oEQ" id="3bI-T1-g9A"/>
+                        <outlet property="passwordField" destination="JzH-Nx-vbO" id="cZf-3Q-L4C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyG-lo-CgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
