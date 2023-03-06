@@ -12,5 +12,6 @@ target 'Research-App' do
 	pod 'Firebase/Firestore'
 	pod 'FirebaseUI'
 	pod 'TextFieldEffects'
-
+	pod 'IBMSMTPPod', '~> 5.1'
+	pod 'mailcore2-ios'
 end

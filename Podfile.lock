@@ -602,6 +602,10 @@ PODS:
   - AppAuth/Core (1.6.0)
   - AppAuth/ExternalUserAgent (1.6.0):
     - AppAuth/Core
+  - BlueCryptor (2.0.1)
+  - BlueSocket (2.0.4)
+  - BlueSSLService (2.0.2):
+    - BlueSocket (~> 2.0.2)
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -854,6 +858,11 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
+  - IBMSMTPPod (5.1.1):
+    - BlueCryptor
+    - BlueSocket
+    - BlueSSLService
+    - LoggerAPI
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -861,6 +870,10 @@ PODS:
   - Libuv-gRPC/Implementation (0.0.10):
     - Libuv-gRPC/Interface (= 0.0.10)
   - Libuv-gRPC/Interface (0.0.10)
+  - LoggerAPI (2.0.0):
+    - Logging (~> 1.1)
+  - Logging (1.4.0)
+  - mailcore2-ios (0.6.4)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -878,12 +891,17 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - FirebaseUI
+  - IBMSMTPPod (~> 5.1)
+  - mailcore2-ios
   - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - abseil
     - AppAuth
+    - BlueCryptor
+    - BlueSocket
+    - BlueSSLService
     - BoringSSL-GRPC
     - FBAEMKit
     - FBSDKCoreKit
@@ -919,8 +937,12 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - IBMSMTPPod
     - leveldb-library
     - Libuv-gRPC
+    - LoggerAPI
+    - Logging
+    - mailcore2-ios
     - nanopb
     - PromisesObjC
     - SDWebImage
@@ -929,6 +951,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  BlueCryptor: d2f95abbdfd91656e560850d887d47387a9bf2eb
+  BlueSocket: cc33e2bded4b680ff14200b4160ed459602b9205
+  BlueSSLService: be5d074a906e2da4e4c3e7b17f906d0c9c3a398f
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FBAEMKit: a899515e45476027f73aef377b5cffadcd56ca3a
   FBSDKCoreKit: 24f8bc8d3b5b2a8c5c656a1329492a12e8efa792
@@ -964,13 +989,17 @@ SPEC CHECKSUMS:
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
+  IBMSMTPPod: 1042cefbd0e15a98e9d9815ed69cabf8213f33e7
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
+  LoggerAPI: 1dc79b15e8a9bca910570936d7ada8dc66d3d709
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
+  mailcore2-ios: 3ff0be2fa553d4da9c11d39c11d51863c768f24f
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 9850c59763fe8e20a0fb461596260562f5e48f25
+PODFILE CHECKSUM: f9b59c78f8f8679a57f734734451195d1feb2433
 
 COCOAPODS: 1.11.3
