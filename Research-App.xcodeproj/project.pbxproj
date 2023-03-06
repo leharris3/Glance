@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0F04D329B56A3B00CCC0BE /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */; };
+		2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */; };
 		2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88829AD829000E78556 /* GlobalConstants.swift */; };
 		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
+		2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */; };
 		2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */; };
 		2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */; };
 		2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BF29AA7EAA00BB5599 /* ViewController.swift */; };
@@ -27,11 +30,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		2D28E88829AD829000E78556 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
+		2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmEmailViewController.swift; sourceTree = "<group>"; };
 		2DB5C2C429AFB43600F89AA7 /* Research-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Research-App.entitlements"; sourceTree = "<group>"; };
 		2DC280B829AA7EAA00BB5599 /* Research-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Research-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,8 +89,28 @@
 			isa = PBXGroup;
 			children = (
 				2DC280D129AA88FD00BB5599 /* RootViewController.swift */,
+				2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		2DAA13BF29B54C65001BC1CB /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */,
+				2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */,
+				2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2DBF04D029B562470008ECA0 /* No Longer In Use */ = {
+			isa = PBXGroup;
+			children = (
+				2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */,
+				2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */,
+			);
+			path = "No Longer In Use";
 			sourceTree = "<group>";
 		};
 		2DC280AF29AA7EAA00BB5599 = {
@@ -116,8 +142,9 @@
 				2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */,
 				2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */,
 				2DC280BF29AA7EAA00BB5599 /* ViewController.swift */,
-				2DC280C129AA7EAA00BB5599 /* Main.storyboard */,
 				2DC280C629AA7EAD00BB5599 /* LaunchScreen.storyboard */,
+				2DC280C129AA7EAA00BB5599 /* Main.storyboard */,
+				2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */,
 				2DC280C429AA7EAD00BB5599 /* Assets.xcassets */,
 				2DC280C929AA7EAD00BB5599 /* Info.plist */,
 				2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */,
@@ -146,10 +173,8 @@
 		2DC5EC7329ABC4600024B245 /* Signup Flow */ = {
 			isa = PBXGroup;
 			children = (
-				2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */,
-				2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */,
-				2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */,
-				2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */,
+				2DBF04D029B562470008ECA0 /* No Longer In Use */,
+				2DAA13BF29B54C65001BC1CB /* Authentication */,
 			);
 			path = "Signup Flow";
 			sourceTree = "<group>";
@@ -224,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC280C829AA7EAD00BB5599 /* LaunchScreen.storyboard in Resources */,
+				2D0F04D329B56A3B00CCC0BE /* Onboarding.storyboard in Resources */,
 				2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */,
 				2DC280C529AA7EAD00BB5599 /* Assets.xcassets in Resources */,
 				2DC280C329AA7EAA00BB5599 /* Main.storyboard in Resources */,
@@ -281,8 +307,10 @@
 			files = (
 				2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */,
 				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
+				2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */,
 				2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
+				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
@@ -297,6 +325,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D0F04D429B56A3B00CCC0BE /* Base */,
+			);
+			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
 		2DC280C129AA7EAA00BB5599 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

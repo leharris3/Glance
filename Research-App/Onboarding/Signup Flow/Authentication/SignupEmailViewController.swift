@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import MessageUI
+import SwiftSMTP
 
-class SignupEmailViewController: UIViewController {
+class SignupEmailViewController: UIViewController{
+    
+    let smtp = SMTP(
+        hostname: "smtp.gmail.com",     // SMTP server address
+        email: "leviharris555@gmail.com",        // username to login
+        password: "22Warwick1$$"            // password to login
+    )
 
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
@@ -16,13 +24,33 @@ class SignupEmailViewController: UIViewController {
     @IBOutlet weak var invalidEmailLabel: UILabel!
     
     override func viewDidLoad() {
+        let drLight = Mail.User(name: "Levi Harris", email: "leviharris555@gmail.com")
+        let megaman = Mail.User(name: "Levi Harris", email: "leviharris555@gmail.com")
+
+        let mail = Mail(
+            from: drLight,
+            to: [megaman],
+            subject: "Humans and robots living together in harmony and equality.",
+            text: "That was my ultimate wish."
+        )
+
+        smtp.send(mail) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+        
+        
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        invalidEmailLabel.alpha = 0
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     @objc private func hideKeyboard() {
@@ -73,7 +101,7 @@ class SignupEmailViewController: UIViewController {
         }
         
         // Is UNC-CH email?
-        if !email.contains("email.unc.edu") {
+        if !email.contains("unc.edu") {
             return false
         }
         
