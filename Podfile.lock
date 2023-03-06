@@ -873,7 +873,6 @@ PODS:
   - LoggerAPI (2.0.0):
     - Logging (~> 1.1)
   - Logging (1.4.0)
-  - mailcore2-ios (0.6.4)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -892,7 +891,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseUI
   - IBMSMTPPod (~> 5.1)
-  - mailcore2-ios
   - TextFieldEffects
 
 SPEC REPOS:
@@ -942,7 +940,6 @@ SPEC REPOS:
     - Libuv-gRPC
     - LoggerAPI
     - Logging
-    - mailcore2-ios
     - nanopb
     - PromisesObjC
     - SDWebImage
@@ -994,12 +991,11 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   LoggerAPI: 1dc79b15e8a9bca910570936d7ada8dc66d3d709
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
-  mailcore2-ios: 3ff0be2fa553d4da9c11d39c11d51863c768f24f
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: f9b59c78f8f8679a57f734734451195d1feb2433
+PODFILE CHECKSUM: 7192974843987e929fdcc84bbf4310f374922d6d
 
 COCOAPODS: 1.11.3

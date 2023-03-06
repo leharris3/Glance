@@ -9,12 +9,12 @@ import UIKit
 import MessageUI
 import SwiftSMTP
 
-class SignupEmailViewController: UIViewController{
+class SignupEmailViewController: UIViewController {
     
     let smtp = SMTP(
         hostname: "smtp.gmail.com",     // SMTP server address
-        email: "leviharris555@gmail.com",        // username to login
-        password: "22Warwick1$$"            // password to login
+        email: "soleappofficial@gmail.com",        // username to login
+        password: "tneytntlwelsqsug"            // password to login
     )
 
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
@@ -24,9 +24,18 @@ class SignupEmailViewController: UIViewController{
     @IBOutlet weak var invalidEmailLabel: UILabel!
     
     override func viewDidLoad() {
-        let drLight = Mail.User(name: "Levi Harris", email: "leviharris555@gmail.com")
-        let megaman = Mail.User(name: "Levi Harris", email: "leviharris555@gmail.com")
+        super.viewDidLoad()
+        
+        invalidEmailLabel.alpha = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let drLight = Mail.User(name: "Sole", email: "soleappofficial@gmail.com")
+        let megaman = Mail.User(name: "Megaman", email: "leviharris555@gmail.com")
 
+        // Send Verification Email
         let mail = Mail(
             from: drLight,
             to: [megaman],
@@ -39,13 +48,6 @@ class SignupEmailViewController: UIViewController{
                 print(error)
             }
         }
-        
-        
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +90,7 @@ class SignupEmailViewController: UIViewController{
             return
         }
         
-        self.performSegue(withIdentifier: "showPassword", sender: nil)
+        self.performSegue(withIdentifier: "showEmailConfirmation", sender: nil)
     }
     
     func verifyEmail(email: String) -> Bool {

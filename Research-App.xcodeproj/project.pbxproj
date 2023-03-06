@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D0F04D329B56A3B00CCC0BE /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */; };
+		2D0F04D329B56A3B00CCC0BE /* Feature.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */; };
 		2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */; };
 		2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88829AD829000E78556 /* GlobalConstants.swift */; };
 		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feature.storyboard; sourceTree = "<group>"; };
 		2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		2D28E88829AD829000E78556 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				2DC280BF29AA7EAA00BB5599 /* ViewController.swift */,
 				2DC280C629AA7EAD00BB5599 /* LaunchScreen.storyboard */,
 				2DC280C129AA7EAA00BB5599 /* Main.storyboard */,
-				2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */,
+				2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */,
 				2DC280C429AA7EAD00BB5599 /* Assets.xcassets */,
 				2DC280C929AA7EAD00BB5599 /* Info.plist */,
 				2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */,
@@ -249,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC280C829AA7EAD00BB5599 /* LaunchScreen.storyboard in Resources */,
-				2D0F04D329B56A3B00CCC0BE /* Onboarding.storyboard in Resources */,
+				2D0F04D329B56A3B00CCC0BE /* Feature.storyboard in Resources */,
 				2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */,
 				2DC280C529AA7EAD00BB5599 /* Assets.xcassets in Resources */,
 				2DC280C329AA7EAA00BB5599 /* Main.storyboard in Resources */,
@@ -325,12 +325,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2D0F04D529B56A3B00CCC0BE /* Onboarding.storyboard */ = {
+		2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2D0F04D429B56A3B00CCC0BE /* Base */,
 			);
-			name = Onboarding.storyboard;
+			name = Feature.storyboard;
 			sourceTree = "<group>";
 		};
 		2DC280C129AA7EAA00BB5599 /* Main.storyboard */ = {
@@ -496,6 +496,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -531,6 +532,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

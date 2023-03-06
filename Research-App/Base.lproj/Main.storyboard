@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="1V5-wh-Jut" userLabel="screenView">
-                                <rect key="frame" x="-3" y="-4" width="429" height="928"/>
+                                <rect key="frame" x="-4" y="-4" width="429" height="928"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6d-gM-M4x" userLabel="containerView">
@@ -164,7 +164,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="V7r-VE-l4v" userLabel="screenView">
-                                <rect key="frame" x="-6" y="-5" width="433" height="929"/>
+                                <rect key="frame" x="-7" y="-5" width="434" height="929"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfl-5k-aZB" userLabel="containerView">
@@ -311,7 +311,7 @@
                         <outlet property="emailField" destination="j5r-Sp-D11" id="djb-BQ-aeI"/>
                         <outlet property="fieldsViewBottomConstraint" destination="pzO-BZ-mee" id="wQV-cb-uCo"/>
                         <outlet property="invalidEmailLabel" destination="7dh-V7-KDh" id="wsf-Ky-ArS"/>
-                        <segue destination="8to-0g-evE" kind="show" id="6iD-SA-AsM"/>
+                        <segue destination="8to-0g-evE" kind="show" identifier="showEmailConfirmation" id="6iD-SA-AsM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVf-e2-VPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1421,7 +1421,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="nQL-kO-cL6" userLabel="screenView">
-                                <rect key="frame" x="-5" y="-3" width="427" height="924"/>
+                                <rect key="frame" x="-6" y="-3" width="428" height="924"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zp2-dv-YZb" userLabel="containerView">
@@ -1483,6 +1483,9 @@
                                                             <fontDescription key="titleFontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="loginButton:" destination="lz3-NE-SnF" eventType="touchUpInside" id="Y9A-St-Inr"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4un-XH-kCa" customClass="IsaoTextField" customModule="TextFieldEffects">
                                                         <rect key="frame" x="0.0" y="0.0" width="387" height="36.666666666666664"/>
@@ -1519,6 +1522,12 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resend Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-NJ-MbA">
+                                                        <rect key="frame" x="116" y="83" width="154" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="27"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1527,10 +1536,13 @@
                                                     <constraint firstItem="4un-XH-kCa" firstAttribute="leading" secondItem="KlC-e8-9Pw" secondAttribute="leading" id="9sr-ax-LhQ"/>
                                                     <constraint firstAttribute="height" constant="200" id="Chw-n4-lDA"/>
                                                     <constraint firstAttribute="trailing" secondItem="4un-XH-kCa" secondAttribute="trailing" id="DrC-Fi-Uc1"/>
+                                                    <constraint firstItem="ZNh-NJ-MbA" firstAttribute="centerX" secondItem="70h-8n-uQw" secondAttribute="centerX" id="IA6-s1-bZj"/>
                                                     <constraint firstAttribute="trailing" secondItem="aad-kU-Ry9" secondAttribute="trailing" id="JRO-rS-EIL"/>
                                                     <constraint firstAttribute="bottom" secondItem="aad-kU-Ry9" secondAttribute="bottom" id="JeS-Hg-T0a"/>
                                                     <constraint firstAttribute="trailing" secondItem="70h-8n-uQw" secondAttribute="trailing" id="Rur-Rw-0kg"/>
                                                     <constraint firstItem="aad-kU-Ry9" firstAttribute="leading" secondItem="KlC-e8-9Pw" secondAttribute="leading" id="dyb-bw-w4C"/>
+                                                    <constraint firstItem="aad-kU-Ry9" firstAttribute="top" secondItem="ZNh-NJ-MbA" secondAttribute="bottom" constant="14" id="f9V-ab-tYn"/>
+                                                    <constraint firstItem="ZNh-NJ-MbA" firstAttribute="centerY" secondItem="KlC-e8-9Pw" secondAttribute="centerY" id="lyV-Ng-UQp"/>
                                                     <constraint firstItem="70h-8n-uQw" firstAttribute="leading" secondItem="KlC-e8-9Pw" secondAttribute="leading" id="nQW-nH-Z2M"/>
                                                 </constraints>
                                             </view>
@@ -1563,6 +1575,10 @@
                         <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="cdG-uy-FMo"/>
+                    <connections>
+                        <outlet property="emailField" destination="4un-XH-kCa" id="obO-wR-NQU"/>
+                        <outlet property="passwordField" destination="70h-8n-uQw" id="rOD-Nt-FrC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyG-lo-CgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1601,34 +1617,34 @@
     </scenes>
     <designables>
         <designable name="4un-XH-kCa">
-            <size key="intrinsicContentSize" width="79.333333333333329" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="91.333333333333329" height="39"/>
         </designable>
         <designable name="70h-8n-uQw">
-            <size key="intrinsicContentSize" width="71" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="83" height="39"/>
         </designable>
         <designable name="Bv9-Zq-jUe">
-            <size key="intrinsicContentSize" width="45" height="22"/>
+            <size key="intrinsicContentSize" width="57" height="36.333333333333336"/>
         </designable>
         <designable name="LUx-zH-7K1">
-            <size key="intrinsicContentSize" width="90" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="102" height="39"/>
         </designable>
         <designable name="Mp8-iR-FDh">
-            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
+            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
         </designable>
         <designable name="SeZ-5I-cZg">
-            <size key="intrinsicContentSize" width="77.666666666666671" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="89.666666666666671" height="39"/>
         </designable>
         <designable name="j5r-Sp-D11">
-            <size key="intrinsicContentSize" width="113.66666666666667" height="23.333333333333332"/>
+            <size key="intrinsicContentSize" width="125.66666666666667" height="39"/>
         </designable>
         <designable name="vbc-Mb-dCy">
-            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
+            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
         </designable>
         <designable name="ze0-yK-Pae">
-            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
+            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
         </designable>
         <designable name="zh0-yB-Lmz">
-            <size key="intrinsicContentSize" width="114.33333333333333" height="22"/>
+            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
         </designable>
     </designables>
     <resources>
