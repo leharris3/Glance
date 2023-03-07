@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,25 +12,51 @@
         <scene sceneID="xnS-5v-2hE">
             <objects>
                 <viewController storyboardIdentifier="FeatureViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eB1-7c-QKg" userLabel="FeatureViewController" customClass="FeatureViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1gA-g5-o6U" userLabel="ContainerView">
+                    <view key="view" contentMode="scaleToFill" id="1gA-g5-o6U" userLabel=" navigationContainer">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkh-0O-BXR">
-                                <rect key="frame" x="-12" y="59" width="394" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyG-EL-g65">
-                                <rect key="frame" x="175" y="416" width="58" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WV-cx-6rR" userLabel="content">
+                                <rect key="frame" x="20" y="108" width="353" height="694"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCl-K3-Ckr">
+                                        <rect key="frame" x="318.66666666666669" y="0.0" width="34.333333333333314" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="xWi-VE-I9V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Esitmated Compatibility:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDh-tF-Umj">
+                                        <rect key="frame" x="0.0" y="0.0" width="216.33333333333334" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="UJe-SI-DiU"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="uCh-y7-hlE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="gCl-K3-Ckr" firstAttribute="top" secondItem="4WV-cx-6rR" secondAttribute="top" id="43O-n7-QGv"/>
+                                    <constraint firstAttribute="trailing" secondItem="gCl-K3-Ckr" secondAttribute="trailing" id="8Zy-67-F3W"/>
+                                    <constraint firstItem="gDh-tF-Umj" firstAttribute="top" secondItem="4WV-cx-6rR" secondAttribute="top" id="HX4-33-Rrv"/>
+                                    <constraint firstItem="gDh-tF-Umj" firstAttribute="leading" secondItem="4WV-cx-6rR" secondAttribute="leading" id="vnu-6C-clw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="t76-I1-IVv"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4WV-cx-6rR" secondAttribute="bottom" constant="50" id="ktT-ez-zXv"/>
+                            <constraint firstItem="4WV-cx-6rR" firstAttribute="leading" secondItem="t76-I1-IVv" secondAttribute="leading" constant="20" id="lyU-2K-upz"/>
+                            <constraint firstItem="4WV-cx-6rR" firstAttribute="top" secondItem="t76-I1-IVv" secondAttribute="top" constant="5" id="nU3-gh-FtO"/>
+                            <constraint firstAttribute="trailing" secondItem="4WV-cx-6rR" secondAttribute="trailing" constant="20" id="pPl-XM-nMS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sole." id="ffT-2m-efg">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person" catalog="system" id="EQ2-ph-v2h">
@@ -47,8 +74,14 @@
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lec-o4-zOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="aK4-mJ-smA">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="2C6-QX-LCL"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="4579" y="-401"/>
+            <point key="canvasLocation" x="4577.8625954198469" y="-401.40845070422534"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="wgB-tB-VYh">
@@ -134,5 +167,8 @@
     <resources>
         <image name="message.badge" catalog="system" width="128" height="116"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
