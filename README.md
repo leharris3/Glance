@@ -1,4 +1,4 @@
-# Sole: A Smarter Way to Date
+# Sole: Making Online Dating Less Terrible
 --- 
 ### Coming May / June of 2023
 
