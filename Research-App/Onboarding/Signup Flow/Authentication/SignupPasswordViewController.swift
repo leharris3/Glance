@@ -26,10 +26,12 @@ class SignupPasswordViewController: UIViewController {
         creationErrorLabel.alpha = 0
     }
     
+    // Move views on keyboard popup.
     @objc private func hideKeyboard() {
         self.view.endEditing(true)
     }
     
+    // Move views on keyboard popup.
     @objc private func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
@@ -45,15 +47,18 @@ class SignupPasswordViewController: UIViewController {
         }
     }
     
+    // Move views on keyboard popup.
     @objc private func keyboardWillHide() {
         self.fieldsViewBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
     }
-    
+
     @IBAction func continueButtonPressed(_ sender: Any) {
         GlobalConstants.password = passwordField.text
+        
+        if (GlobalConstants.password!.count < 8) {return} // Basic password strength
         
         Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: { authResult, error in
             if error != nil {
