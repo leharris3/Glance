@@ -17,13 +17,13 @@ class SignupPasswordViewController: UIViewController {
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        creationErrorLabel.alpha = 0
         
+        // Move views on keyboard popup.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        super.viewDidLoad()
-        creationErrorLabel.alpha = 0
     }
     
     // Move views on keyboard popup.

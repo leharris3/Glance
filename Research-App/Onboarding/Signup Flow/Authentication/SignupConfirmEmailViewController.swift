@@ -20,6 +20,11 @@ class SignupConfirmEmailViewController: UIViewController {
         super.viewDidLoad()
         needAnotherCodePrompt.alpha = 0
         needAnotherCodePrompt.isEnabled = false
+        
+        // Move Feilds on Keyboard Popup
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // Move fields on keyboard popup.
@@ -34,10 +39,10 @@ class SignupConfirmEmailViewController: UIViewController {
             NSValue {
             
             let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.fieldsViewBottomConstraint.constant = keyboardHeight + 20
+            self.fieldsViewBottomConstraint.constant = keyboardHeight
             
             // Animate Constraints
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -46,7 +51,7 @@ class SignupConfirmEmailViewController: UIViewController {
     // Move fields on keyboard popup.
     @objc private func keyboardWillHide() {
         self.fieldsViewBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }

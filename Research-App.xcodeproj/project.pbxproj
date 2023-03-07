@@ -121,13 +121,13 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		2DBF04D029B562470008ECA0 /* No Longer In Use */ = {
+		2DBF04D029B562470008ECA0 /* Depreciated */ = {
 			isa = PBXGroup;
 			children = (
 				2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */,
 				2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */,
 			);
-			path = "No Longer In Use";
+			path = Depreciated;
 			sourceTree = "<group>";
 		};
 		2DC280AF29AA7EAA00BB5599 = {
@@ -191,7 +191,7 @@
 		2DC5EC7329ABC4600024B245 /* Signup Flow */ = {
 			isa = PBXGroup;
 			children = (
-				2DBF04D029B562470008ECA0 /* No Longer In Use */,
+				2DBF04D029B562470008ECA0 /* Depreciated */,
 				2DAA13BF29B54C65001BC1CB /* Authentication */,
 				2D286DEC29B68224004DA4E5 /* Profile Creation */,
 			);

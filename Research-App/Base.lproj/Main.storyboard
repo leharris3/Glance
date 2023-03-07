@@ -152,7 +152,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IdM-He-ZC0">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
                             <rect key="frame" x="50" y="20.666666666666668" width="324" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -312,7 +312,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="XWf-nM-ZsI">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.25" id="HJJ-cM-wYd">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.25" id="HJJ-cM-wYd">
                             <rect key="frame" x="50" y="20.666666666666668" width="324" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -469,7 +469,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="pvV-g6-bwo">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.75" id="ZRc-Gi-yRc">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.75" id="ZRc-Gi-yRc">
                             <rect key="frame" x="50" y="20.666666666666668" width="324" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1588,6 +1588,7 @@
                     <navigationItem key="navigationItem" style="editor" id="cdG-uy-FMo"/>
                     <connections>
                         <outlet property="emailField" destination="0fh-hE-VRa" id="1IC-xl-NLG"/>
+                        <outlet property="fieldsViewBottomConstraint" destination="rSY-Ay-D5x" id="ldR-Vi-KEM"/>
                         <outlet property="forgotPasswordButton" destination="tO7-Ft-oEQ" id="3bI-T1-g9A"/>
                         <outlet property="passwordField" destination="JzH-Nx-vbO" id="cZf-3Q-L4C"/>
                     </connections>
