@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuthUI
+import FirebaseCore
+import FirebaseFirestore
 
 class RootViewController: UIViewController, FUIAuthDelegate {
     

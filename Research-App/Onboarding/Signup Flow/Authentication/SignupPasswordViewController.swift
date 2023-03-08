@@ -60,6 +60,7 @@ class SignupPasswordViewController: UIViewController {
         
         if (GlobalConstants.password!.count < 8) {return} // Basic password strength
         
+        // Create a user and sign in.
         Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: { authResult, error in
             if error != nil {
                 self.creationErrorLabel.alpha = 1

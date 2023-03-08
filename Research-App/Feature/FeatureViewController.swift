@@ -17,7 +17,5 @@ class FeatureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.layer.cornerRadius = 30
-        
-        GlobalConstants.db.collection("user-info").document("Test").setData([ "first_name": "Levi"], merge: true)
     }
 }

@@ -16,10 +16,14 @@ class SignupFirstNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func continuePressed(_ sender: Any) {
-        // Set First Name
+        
+        // Store DB Info
+        if (firstNameField.text) != nil {
+            GlobalConstants.db.collection("user-info").document(GlobalConstants.email!).setData(["first_name": firstNameField.text], merge: true)
+            performSegue(withIdentifier: "showBirthday", sender: nil)
+        }
     }
 }
