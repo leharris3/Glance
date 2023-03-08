@@ -26,6 +26,7 @@
 		2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */; };
 		2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280D929AA9D1700BB5599 /* LoginViewController.swift */; };
 		2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */; };
+		2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */; };
 		2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */; };
 		2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF594E629B7FA4C004B7727 /* UserCard.swift */; };
 		D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3135821C4380931CF2391B76 /* Pods_Research_App.framework */; };
@@ -54,6 +55,7 @@
 		2DC280D729AA9B0000BB5599 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DC280D929AA9D1700BB5599 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
+		2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirstNameViewController.swift; sourceTree = "<group>"; };
 		2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		2DF594E629B7FA4C004B7727 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		3135821C4380931CF2391B76 /* Pods_Research_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Research_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 		2D286DEC29B68224004DA4E5 /* Profile Creation */ = {
 			isa = PBXGroup;
 			children = (
+				2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */,
 			);
 			path = "Profile Creation";
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */,
+				2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
 				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,

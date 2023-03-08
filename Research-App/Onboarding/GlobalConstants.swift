@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseCore
+import FirebaseFirestore
 
 class GlobalConstants {
     // User Email + Password
@@ -15,4 +17,8 @@ class GlobalConstants {
     // Sole Email Server Password
     static var soleEmailPassword = "tneytntlwelsqsug"
     static var oneTimePasscode: Int = 0 // Confirmation Code
+    
+    // Profile Info of Onboarding User
+    static var db = Firestore.firestore()
+    
 }
