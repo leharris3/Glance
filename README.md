@@ -1,4 +1,4 @@
-# Sole: Making Online Dating Less Terrible
+# Sole: A Free Alternative to Freemium Dating
 --- 
 ### Coming May / June of 2023
 
