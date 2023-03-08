@@ -71,6 +71,9 @@ class SignupConfirmEmailViewController: UIViewController {
         else{
             needAnotherCodePrompt.alpha = 1
             needAnotherCodePrompt.isEnabled = true
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 }

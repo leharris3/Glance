@@ -883,6 +883,7 @@ PODS:
     - SDWebImage/Core (= 5.15.4)
   - SDWebImage/Core (5.15.4)
   - TextFieldEffects (1.6.0)
+  - UIGradient (1.3.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -892,6 +893,7 @@ DEPENDENCIES:
   - FirebaseUI
   - IBMSMTPPod (~> 5.1)
   - TextFieldEffects
+  - UIGradient
 
 SPEC REPOS:
   trunk:
@@ -944,6 +946,7 @@ SPEC REPOS:
     - PromisesObjC
     - SDWebImage
     - TextFieldEffects
+    - UIGradient
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -995,7 +998,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+  UIGradient: 2364e9ebac232686db220713b4d42a68222fffb2
 
-PODFILE CHECKSUM: 7192974843987e929fdcc84bbf4310f374922d6d
+PODFILE CHECKSUM: 893ae1feb674e975044c35ebff438892c6e4485b
 
 COCOAPODS: 1.11.3

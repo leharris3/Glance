@@ -89,6 +89,9 @@ class LoginViewController: UIViewController {
                 // Forgot Password
                 self!.forgotPasswordButton.alpha = 1
                 self!.forgotPasswordButton.isEnabled = true
+                UIView.animate(withDuration: 0.3) {
+                    self!.view.layoutIfNeeded()
+                }
             }
         }
 

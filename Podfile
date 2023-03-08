@@ -13,4 +13,5 @@ target 'Research-App' do
 	pod 'FirebaseUI'
 	pod 'TextFieldEffects'
 	pod 'IBMSMTPPod', '~> 5.1'
+ 	pod 'UIGradient'
 end

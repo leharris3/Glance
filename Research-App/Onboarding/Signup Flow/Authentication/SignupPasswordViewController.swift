@@ -63,6 +63,9 @@ class SignupPasswordViewController: UIViewController {
         Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: { authResult, error in
             if error != nil {
                 self.creationErrorLabel.alpha = 1
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
                 return
             }
         })

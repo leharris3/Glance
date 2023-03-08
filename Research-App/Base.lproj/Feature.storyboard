@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,36 +17,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WV-cx-6rR" userLabel="content">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WV-cx-6rR" userLabel="content">
                                 <rect key="frame" x="20" y="108" width="353" height="694"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCl-K3-Ckr">
-                                        <rect key="frame" x="318.66666666666669" y="0.0" width="34.333333333333314" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="xWi-VE-I9V"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Esitmated Compatibility:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDh-tF-Umj">
-                                        <rect key="frame" x="0.0" y="0.0" width="216.33333333333334" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="UJe-SI-DiU"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="uCh-y7-hlE"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" highlightedImage="Image" translatesAutoresizingMaskIntoConstraints="NO" id="CfN-w6-0Yb" userLabel="imageView">
+                                        <rect key="frame" x="-20" y="-28" width="394" height="749"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WkU-Dg-6eo" userLabel="currentImageBar">
+                                        <rect key="frame" x="85" y="8" width="182" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6UY-kp-bL0">
+                                                <rect key="frame" x="10" y="9" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AW8-Cb-KVB">
+                                                <rect key="frame" x="94" y="9" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-kF-N14">
+                                                <rect key="frame" x="150" y="10" width="23" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <imageReference key="image" image="circle" catalog="system" variableValue="1"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Zj9-6I-MKO">
+                                                <rect key="frame" x="38" y="9" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ssf-5C-yE8">
+                                                <rect key="frame" x="66" y="9" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a6C-zm-IJ6">
+                                                <rect key="frame" x="122" y="10" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chris 27" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8g-o8-upe">
+                                        <rect key="frame" x="218" y="562" width="108" height="102"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="gCl-K3-Ckr" firstAttribute="top" secondItem="4WV-cx-6rR" secondAttribute="top" id="43O-n7-QGv"/>
-                                    <constraint firstAttribute="trailing" secondItem="gCl-K3-Ckr" secondAttribute="trailing" id="8Zy-67-F3W"/>
-                                    <constraint firstItem="gDh-tF-Umj" firstAttribute="top" secondItem="4WV-cx-6rR" secondAttribute="top" id="HX4-33-Rrv"/>
-                                    <constraint firstItem="gDh-tF-Umj" firstAttribute="leading" secondItem="4WV-cx-6rR" secondAttribute="leading" id="vnu-6C-clw"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="t76-I1-IVv"/>
@@ -72,6 +102,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="4WV-cx-6rR" id="oJP-dw-K2v"/>
+                        <outlet property="profileImageOneView" destination="CfN-w6-0Yb" id="Rdw-B0-yR6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lec-o4-zOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="aK4-mJ-smA">
@@ -165,6 +199,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="3000" height="2165"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="message.badge" catalog="system" width="128" height="116"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">

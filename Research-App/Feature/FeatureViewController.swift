@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SwiftUI
 
 class FeatureViewController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var profileImageOneView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        contentView.layer.cornerRadius = 30
     }
 }

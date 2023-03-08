@@ -76,6 +76,9 @@ class SignupEmailViewController: UIViewController {
         // Send Verification Email
         if !(OnboardingUtilites.sendVerificationEmail()){
             invalidEmailLabel.alpha = 1
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
             return
         }
         
