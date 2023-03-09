@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
             self.fieldsViewBottomConstraint.constant = keyboardHeight
             
             // Animate Constraints
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -55,8 +55,8 @@ class LoginViewController: UIViewController {
     
     // Move fields on keyboard popup.
     @objc private func keyboardWillHide() {
-        self.fieldsViewBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.5) {
+        self.fieldsViewBottomConstraint.constant = 20
+        UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }

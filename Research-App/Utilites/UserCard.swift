@@ -14,5 +14,6 @@ class UserCard: NSObject {
     var graduatationDate: String? = "" // i.e. class of 2024
     var major: String? = "" // "Computer Science"
     var age: Int = 99
+    var dateOfBirth: Date? = nil
 
 }

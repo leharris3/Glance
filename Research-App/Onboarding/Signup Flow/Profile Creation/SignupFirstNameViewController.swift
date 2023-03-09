@@ -25,5 +25,8 @@ class SignupFirstNameViewController: UIViewController {
             GlobalConstants.db.collection("user-info").document(GlobalConstants.email!).setData(["first_name": firstNameField.text], merge: true)
             performSegue(withIdentifier: "showBirthday", sender: nil)
         }
+        else {
+            // Show some error
+        }
     }
 }

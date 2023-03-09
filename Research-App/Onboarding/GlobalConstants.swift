@@ -20,5 +20,6 @@ class GlobalConstants {
     
     // Profile Info of Onboarding User
     static var db = Firestore.firestore()
+    static var user: UserCard = UserCard()
     
 }
