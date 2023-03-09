@@ -12,7 +12,7 @@ class SignupBirthdayViewController: UIViewController {
         
     @IBOutlet weak var dobTextField: IsaoTextField!
     
-    let datePicker: UIDatePicker = UIDatePicker()
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class SignupBirthdayViewController: UIViewController {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        dobTextField.text = formatter.string(for: date)
+        dobTextField.text = formatter.string(from: date)
         
     }
     

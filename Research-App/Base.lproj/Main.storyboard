@@ -1085,7 +1085,7 @@
                                                             <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <segue destination="VIh-wv-hb7" kind="show" id="wtn-An-btA"/>
+                                                            <segue destination="VIh-wv-hb7" kind="show" id="l0J-cw-sa3"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1406,7 +1406,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-aq-dln" userLabel="fieldsView">
-                                        <rect key="frame" x="0.0" y="458" width="335" height="200"/>
+                                        <rect key="frame" x="0.0" y="383" width="335" height="275"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Date of Birth" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQV-9G-qO5" customClass="IsaoTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -1431,7 +1431,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFn-j3-Djd">
-                                                <rect key="frame" x="0.0" y="130" width="335" height="70"/>
+                                                <rect key="frame" x="0.0" y="205" width="335" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="284-ck-TNr"/>
@@ -1453,15 +1453,30 @@
                                                     <action selector="continuePressed:" destination="05R-lb-d2D" eventType="touchUpInside" id="Mfl-Wt-Chj"/>
                                                 </connections>
                                             </button>
+                                            <datePicker contentMode="center" highlighted="YES" selected="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="g5v-o1-YLb">
+                                                <rect key="frame" x="0.0" y="70" width="335" height="65"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="65" id="vmY-9Z-SqI"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="datePickerValueChnaged:" destination="05R-lb-d2D" eventType="valueChanged" id="5pu-4X-CeZ"/>
+                                                </connections>
+                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="g5v-o1-YLb" firstAttribute="centerX" secondItem="VFX-aq-dln" secondAttribute="centerX" id="9Il-0v-xek"/>
                                             <constraint firstItem="oQV-9G-qO5" firstAttribute="leading" secondItem="VFX-aq-dln" secondAttribute="leading" id="AEj-rV-Kyu"/>
-                                            <constraint firstAttribute="height" constant="200" id="ICS-XI-OUy"/>
+                                            <constraint firstAttribute="height" constant="275" id="ICS-XI-OUy"/>
                                             <constraint firstItem="FFn-j3-Djd" firstAttribute="leading" secondItem="VFX-aq-dln" secondAttribute="leading" id="SrG-49-UkO"/>
                                             <constraint firstAttribute="bottom" secondItem="FFn-j3-Djd" secondAttribute="bottom" id="a0B-dG-PnS"/>
+                                            <constraint firstItem="g5v-o1-YLb" firstAttribute="top" secondItem="oQV-9G-qO5" secondAttribute="bottom" constant="20" id="czH-Qw-Poy"/>
                                             <constraint firstItem="oQV-9G-qO5" firstAttribute="top" secondItem="VFX-aq-dln" secondAttribute="top" id="gBl-0H-oI9"/>
+                                            <constraint firstAttribute="trailing" secondItem="g5v-o1-YLb" secondAttribute="trailing" id="gzZ-nM-QY6"/>
                                             <constraint firstAttribute="trailing" secondItem="oQV-9G-qO5" secondAttribute="trailing" id="o4i-TM-Q8H"/>
+                                            <constraint firstItem="g5v-o1-YLb" firstAttribute="leading" secondItem="VFX-aq-dln" secondAttribute="leading" id="rhT-uo-8D1"/>
                                             <constraint firstAttribute="trailing" secondItem="FFn-j3-Djd" secondAttribute="trailing" id="wCm-dK-eAy"/>
                                         </constraints>
                                     </view>
@@ -1489,12 +1504,13 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="SiE-vr-QIO"/>
                     <connections>
+                        <outlet property="datePicker" destination="g5v-o1-YLb" id="B7d-xk-Vtn"/>
                         <outlet property="dobTextField" destination="oQV-9G-qO5" id="NCh-qf-VnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhe-jl-FTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4388" y="-1740"/>
+            <point key="canvasLocation" x="4388" y="-1740.1477832512317"/>
         </scene>
         <!--SignupNameViewController-->
         <scene sceneID="VZY-Fk-AED">

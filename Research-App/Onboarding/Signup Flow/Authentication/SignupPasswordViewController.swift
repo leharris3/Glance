@@ -11,7 +11,6 @@ import FirebaseAuth
 class SignupPasswordViewController: UIViewController {
     
     var viewHasLoaded: Bool = false
-    var err = false
     
     @IBOutlet weak var passwordField: UITextField!
     
@@ -27,18 +26,6 @@ class SignupPasswordViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func createUser() {
-        Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: {
-            authResult, error in
-            if error != nil {
-                print("2")
-                self.err = true
-                self.creationErrorLabel.alpha = 1
-                return
-            }
-        })
     }
     
     // Move views on keyboard popup.
@@ -80,23 +67,18 @@ class SignupPasswordViewController: UIViewController {
         
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
-
-        print("1")
         
-        let queue = DispatchQueue(label: "com.app.queue")
-            queue.sync {
-                createUser()
+        Auth.auth().createUser(withEmail: GlobalConstants.email ?? "", password: GlobalConstants.password ?? "", completion: {
+            authResult, error in
+            if (error == nil) {
+                    self.performSegue(withIdentifier: "showWelcome", sender: nil)
+                }
+            else {
+                self.creationErrorLabel.alpha = 1
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
             }
-        
-        print(err)
-        
-        print("3")
-        
-        // Signup -> Welcome
-        if (!err) {
-            self.performSegue(withIdentifier: "showWelcome", sender: nil)
-        }
-        
-        // Overwrite a function on textFieldEdit to attempt to create a profile
+        })
     }
 }
