@@ -16,25 +16,12 @@ class SignupBirthdayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func createDatePicker() {
-        let toolbar: UIToolbar = UIToolbar()
-        toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: nil))
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        dobTextField.text = formatter.string(for: date)
         
-        toolbar.setItems([doneButton], animated: true)
-        
-        dobTextField.inputAccessoryView = toolbar
-        dobTextField.inputView = datePicker
-        datePicker.datePickerMode = .date
-        
-    }
-    
-    @objc func donePressed() {
-        datePicker.text = "\(datePicker.date)"
-        self.view.endEditing(true)
     }
     
     @IBAction func continuePressed(_ sender: Any) {

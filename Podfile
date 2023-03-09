@@ -14,4 +14,5 @@ target 'Research-App' do
 	pod 'TextFieldEffects'
 	pod 'IBMSMTPPod', '~> 5.1'
  	pod 'UIGradient'
+	pod 'IHKeyboardAvoiding'
 end

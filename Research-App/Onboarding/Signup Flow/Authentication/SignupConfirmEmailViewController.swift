@@ -10,6 +10,8 @@ import TextFieldEffects
 
 class SignupConfirmEmailViewController: UIViewController {
 
+    var viewHasLoaded: Bool = false
+    
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var enterCodeFeild: IsaoTextField!
@@ -50,9 +52,14 @@ class SignupConfirmEmailViewController: UIViewController {
     
     // Move fields on keyboard popup.
     @objc private func keyboardWillHide() {
-        self.fieldsViewBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        if !(viewHasLoaded){
+            viewHasLoaded = true
+        }
+        else {
+            self.fieldsViewBottomConstraint.constant = 20
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     

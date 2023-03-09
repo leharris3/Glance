@@ -10,6 +10,9 @@ import FirebaseAuth
 
 class SignupPasswordViewController: UIViewController {
     
+    var viewHasLoaded: Bool = false
+    var err = false
+    
     @IBOutlet weak var passwordField: UITextField!
     
     @IBOutlet weak var creationErrorLabel: UILabel!
@@ -24,6 +27,18 @@ class SignupPasswordViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func createUser() {
+        Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: {
+            authResult, error in
+            if error != nil {
+                print("2")
+                self.err = true
+                self.creationErrorLabel.alpha = 1
+                return
+            }
+        })
     }
     
     // Move views on keyboard popup.
@@ -41,7 +56,7 @@ class SignupPasswordViewController: UIViewController {
             self.fieldsViewBottomConstraint.constant = keyboardHeight
             
             // Animate Constraints
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -49,31 +64,39 @@ class SignupPasswordViewController: UIViewController {
     
     // Move views on keyboard popup.
     @objc private func keyboardWillHide() {
-        self.fieldsViewBottomConstraint.constant = 0
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
+        if !(viewHasLoaded){
+         viewHasLoaded = true
+        }
+        else {
+            self.fieldsViewBottomConstraint.constant = 20
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
     @IBAction func continueButtonPressed(_ sender: Any) {
         GlobalConstants.password = passwordField.text
         
-        if (GlobalConstants.password!.count < 8) {return} // Basic password strength
+        // Basic password strength.
+        if (GlobalConstants.password!.count < 8) {return}
+
+        print("1")
         
-        // Create a user and sign in.
-        Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password!, completion: { authResult, error in
-            if error != nil {
-                self.creationErrorLabel.alpha = 1
-                UIView.animate(withDuration: 0.3) {
-                    self.view.layoutIfNeeded()
-                }
-                return
+        let queue = DispatchQueue(label: "com.app.queue")
+            queue.sync {
+                createUser()
             }
-        })
+        
+        print(err)
+        
+        print("3")
         
         // Signup -> Welcome
-        performSegue(withIdentifier: "showWelcome", sender: nil)
+        if (!err) {
+            self.performSegue(withIdentifier: "showWelcome", sender: nil)
+        }
         
-        
+        // Overwrite a function on textFieldEdit to attempt to create a profile
     }
 }

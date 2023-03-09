@@ -31,7 +31,7 @@ class OnboardingUtilites: UIViewController {
         }
         GlobalConstants.oneTimePasscode = Int(codeString)!
         
-        print(userEmail)
+        print(GlobalConstants.oneTimePasscode)
         
         // Send Verification Email
         let mail = Mail(
