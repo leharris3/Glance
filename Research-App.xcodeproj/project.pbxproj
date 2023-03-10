@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D01FF9E29BBA5F800C0850E /* BioInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */; };
 		2D0F04D329B56A3B00CCC0BE /* Feature.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */; };
 		2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */; };
 		2D142B0A29BA99D20050E656 /* SignupSexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D142B0929BA99D20050E656 /* SignupSexViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioInterestsViewController.swift; sourceTree = "<group>"; };
 		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feature.storyboard; sourceTree = "<group>"; };
 		2D0F04D629B56E0500CCC0BE /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		2D142B0929BA99D20050E656 /* SignupSexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSexViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		2D142B0D29BB72760050E656 /* Bio Creation */ = {
 			isa = PBXGroup;
 			children = (
+				2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */,
 			);
 			path = "Bio Creation";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				2D142B0A29BA99D20050E656 /* SignupSexViewController.swift in Sources */,
 				2D142B0C29BB699F0050E656 /* SignupPreferenceViewController.swift in Sources */,
 				2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */,
+				2D01FF9E29BBA5F800C0850E /* BioInterestsViewController.swift in Sources */,
 				2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */,
 				2DC280D229AA88FD00BB5599 /* RootViewController.swift in Sources */,
 				2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */,

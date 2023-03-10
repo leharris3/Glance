@@ -14,6 +14,7 @@ class UserCard: NSObject {
     var sex = ""
     var preference = ""
     
+    var interests: [String] = []
     var bio: String? = ""
     var graduatationDate: String? = "" // i.e. class of 2024
     var major: String? = "" // "Computer Science"
