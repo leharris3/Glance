@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--FeatureViewController-->
+        <!--Feature-->
         <scene sceneID="xnS-5v-2hE">
             <objects>
-                <viewController storyboardIdentifier="FeatureViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eB1-7c-QKg" userLabel="FeatureViewController" customClass="FeatureViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeatureViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eB1-7c-QKg" userLabel="Feature" customClass="FeatureViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1gA-g5-o6U" userLabel=" navigationContainer">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="4577.8625954198469" y="-401.40845070422534"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="wgB-tB-VYh">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="2s8-QR-CZ8" customClass="SettingsViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="2s8-QR-CZ8" userLabel="Settings" customClass="SettingsViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRP-tC-fUh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="3652" y="332"/>
         </scene>
-        <!--MessagesViewController-->
+        <!--Messages-->
         <scene sceneID="Nck-dm-5TM">
             <objects>
-                <viewController id="d1u-oN-i10" userLabel="MessagesViewController" sceneMemberID="viewController">
+                <viewController id="d1u-oN-i10" userLabel="Messages" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="29A-d2-TS8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

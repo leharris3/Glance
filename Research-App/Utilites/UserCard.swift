@@ -10,10 +10,13 @@ import UIKit
 class UserCard: NSObject {
     
     var firstName: String? = ""
+    var age: Int = 99
+    var sex = ""
+    var preference = ""
+    
     var bio: String? = ""
     var graduatationDate: String? = "" // i.e. class of 2024
     var major: String? = "" // "Computer Science"
-    var age: Int = 99
     var dateOfBirth: Date? = nil
 
 }

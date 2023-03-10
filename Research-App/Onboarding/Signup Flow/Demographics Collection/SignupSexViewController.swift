@@ -85,16 +85,17 @@ class SignupSexViewController: UIViewController {
     
     // Indentity -> Preferences
     @IBAction func buttonPressed(_ sender: Any) {
-        if(sex!= "") {
+        if(sex != "") {
+            GlobalConstants.user.sex = sex
             performSegue(withIdentifier: "showPreferences", sender: nil)
         }
     }
 }
 
-    // https://cocoacasts.com/from-hex-to-uicolor-and-back-in-swift
-    // Hex -> CGColor
+// https://cocoacasts.com/from-hex-to-uicolor-and-back-in-swift
+// Hex -> CGColor
 extension UIColor {
-    
+
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
@@ -127,3 +128,5 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: a)
     }
 }
+
+
