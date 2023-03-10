@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1365,11 +1364,11 @@
             <objects>
                 <viewController id="05R-lb-d2D" userLabel="SignupBirthdayViewController" customClass="SignupBirthdayViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uhb-13-Fjw" userLabel="screen">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arA-4v-60Q" userLabel="containerView">
-                                <rect key="frame" x="20" y="100" width="335" height="658"/>
+                                <rect key="frame" x="20" y="100" width="335" height="635"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gip-N1-1MD" userLabel="textContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="150"/>
@@ -1406,7 +1405,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-aq-dln" userLabel="fieldsView">
-                                        <rect key="frame" x="0.0" y="458" width="335" height="200"/>
+                                        <rect key="frame" x="0.0" y="435" width="335" height="200"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM-DD-YYYY" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQV-9G-qO5" customClass="IsaoTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -1504,23 +1503,109 @@
                     <navigationItem key="navigationItem" style="editor" id="SiE-vr-QIO"/>
                     <connections>
                         <outlet property="dobTextField" destination="oQV-9G-qO5" id="NCh-qf-VnP"/>
+                        <outlet property="invalidAge" destination="spJ-I4-o5V" id="kIn-Qv-oDS"/>
+                        <segue destination="0e1-FK-LgB" kind="show" identifier="showIdentity" id="VNf-JS-5dw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhe-jl-FTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4388" y="-1740.1477832512317"/>
+            <point key="canvasLocation" x="4388" y="-1740"/>
         </scene>
-        <!--SignupNameViewController-->
+        <!--SignupSexViewController-->
         <scene sceneID="VZY-Fk-AED">
             <objects>
-                <viewController id="0e1-FK-LgB" userLabel="SignupNameViewController" sceneMemberID="viewController">
+                <viewController id="0e1-FK-LgB" userLabel="SignupSexViewController" customClass="SignupSexViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nF3-YV-bgc" userLabel="screen">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdZ-V4-WwR" userLabel="containerView">
-                                <rect key="frame" x="20" y="100" width="335" height="658"/>
+                                <rect key="frame" x="20" y="100" width="335" height="635"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNX-zp-Arw" userLabel="sexButtonsContainer">
+                                        <rect key="frame" x="0.0" y="197.66666666666669" width="335" height="240"/>
+                                        <subviews>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUa-cH-7ub">
+                                                <rect key="frame" x="0.0" y="85" width="335" height="70"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="kSK-0j-a8N"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="filled" title="Woman" cornerStyle="capsule" titleAlignment="center">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                    <fontDescription key="titleFontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="womanButtonPressed:" destination="0e1-FK-LgB" eventType="touchUpInside" id="B1U-w9-bxY"/>
+                                                </connections>
+                                            </button>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vf3-aL-dEl">
+                                                <rect key="frame" x="0.0" y="165" width="335" height="70"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="dQM-DR-WsV"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="filled" title="Non-Binary" cornerStyle="capsule" titleAlignment="center">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                    <fontDescription key="titleFontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="otherButton:" destination="0e1-FK-LgB" eventType="touchUpInside" id="qCc-P5-xTp"/>
+                                                </connections>
+                                            </button>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2e-vX-CKH">
+                                                <rect key="frame" x="0.0" y="5" width="335" height="70"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="Wdh-GO-JaD"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="filled" title="Man" cornerStyle="capsule" titleAlignment="center">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="strokeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </backgroundConfiguration>
+                                                    <fontDescription key="titleFontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="manButtonPressed:" destination="0e1-FK-LgB" eventType="touchUpInside" id="2YN-ed-1VA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="s2e-vX-CKH" firstAttribute="leading" secondItem="hNX-zp-Arw" secondAttribute="leading" id="Cfj-fe-LH8"/>
+                                            <constraint firstItem="vUa-cH-7ub" firstAttribute="top" secondItem="s2e-vX-CKH" secondAttribute="bottom" constant="10" id="GF5-D6-J8B"/>
+                                            <constraint firstAttribute="trailing" secondItem="vUa-cH-7ub" secondAttribute="trailing" id="MkU-NM-SSY"/>
+                                            <constraint firstItem="vUa-cH-7ub" firstAttribute="leading" secondItem="hNX-zp-Arw" secondAttribute="leading" id="Oxu-mT-g6P"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vf3-aL-dEl" secondAttribute="trailing" id="WJl-rh-e9i"/>
+                                            <constraint firstItem="Vf3-aL-dEl" firstAttribute="top" secondItem="vUa-cH-7ub" secondAttribute="bottom" constant="10" id="YV9-4J-5wn"/>
+                                            <constraint firstAttribute="trailing" secondItem="s2e-vX-CKH" secondAttribute="trailing" id="gAy-pd-eq6"/>
+                                            <constraint firstItem="Vf3-aL-dEl" firstAttribute="leading" secondItem="hNX-zp-Arw" secondAttribute="leading" id="gNT-cK-rbJ"/>
+                                            <constraint firstAttribute="height" constant="240" id="hHK-ai-pp7"/>
+                                            <constraint firstItem="s2e-vX-CKH" firstAttribute="top" secondItem="hNX-zp-Arw" secondAttribute="top" constant="5" id="nNl-lF-Tca"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGJ-nA-WWq" userLabel="textContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="150"/>
                                         <subviews>
@@ -1556,7 +1641,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqF-cl-tNv" userLabel="fieldsView">
-                                        <rect key="frame" x="0.0" y="458" width="335" height="200"/>
+                                        <rect key="frame" x="0.0" y="435" width="335" height="200"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fh-XB-Snc">
                                                 <rect key="frame" x="0.0" y="130" width="335" height="70"/>
@@ -1578,36 +1663,15 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
+                                                    <action selector="buttonPressed:" destination="0e1-FK-LgB" eventType="touchUpInside" id="Of5-Ad-EJW"/>
                                                     <action selector="continueButtonPressed:" destination="WFx-mK-WYO" eventType="touchUpInside" id="GVy-6E-M2R"/>
                                                     <action selector="continuePressed:" destination="VIh-wv-hb7" eventType="touchUpInside" id="oLG-5m-Pjs"/>
-                                                    <segue destination="OVD-5E-Hfp" kind="show" id="kPw-av-kKb"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjx-dD-w4w">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="55" id="epo-dG-cI2"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="34"/>
-                                                <menu key="menu" id="OoR-XG-Ayt">
-                                                    <children>
-                                                        <command title="Man" id="mQW-El-9CB"/>
-                                                        <command title="Women" id="INf-09-Jx3"/>
-                                                        <command title="Other" id="FL7-wE-fId"/>
-                                                    </children>
-                                                </menu>
-                                                <state key="normal" title="Choose a Sex">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Cjx-dD-w4w" firstAttribute="top" secondItem="lqF-cl-tNv" secondAttribute="top" id="6O0-Lw-ARU"/>
                                             <constraint firstItem="7fh-XB-Snc" firstAttribute="leading" secondItem="lqF-cl-tNv" secondAttribute="leading" id="Hgh-qP-JHr"/>
-                                            <constraint firstAttribute="trailing" secondItem="Cjx-dD-w4w" secondAttribute="trailing" id="KVK-75-ad0"/>
-                                            <constraint firstItem="Cjx-dD-w4w" firstAttribute="leading" secondItem="lqF-cl-tNv" secondAttribute="leading" id="NlK-Nu-MkD"/>
                                             <constraint firstAttribute="trailing" secondItem="7fh-XB-Snc" secondAttribute="trailing" id="ZAf-Y1-YyC"/>
                                             <constraint firstAttribute="height" constant="200" id="ggE-yh-qf2"/>
                                             <constraint firstAttribute="bottom" secondItem="7fh-XB-Snc" secondAttribute="bottom" id="mpy-tC-PrI"/>
@@ -1617,10 +1681,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="hNX-zp-Arw" firstAttribute="leading" secondItem="tdZ-V4-WwR" secondAttribute="leading" id="2nm-Nb-UKX"/>
                                     <constraint firstAttribute="bottom" secondItem="lqF-cl-tNv" secondAttribute="bottom" id="9uI-cv-I4C"/>
                                     <constraint firstAttribute="trailing" secondItem="lqF-cl-tNv" secondAttribute="trailing" id="ArY-xs-Obm"/>
+                                    <constraint firstItem="hNX-zp-Arw" firstAttribute="centerX" secondItem="tdZ-V4-WwR" secondAttribute="centerX" id="D5w-5R-fCe"/>
                                     <constraint firstItem="VGJ-nA-WWq" firstAttribute="top" secondItem="tdZ-V4-WwR" secondAttribute="top" id="Eg2-FK-dUq"/>
+                                    <constraint firstAttribute="trailing" secondItem="hNX-zp-Arw" secondAttribute="trailing" id="FsR-or-KiZ"/>
                                     <constraint firstItem="lqF-cl-tNv" firstAttribute="leading" secondItem="tdZ-V4-WwR" secondAttribute="leading" id="MZE-fV-RJM"/>
+                                    <constraint firstItem="hNX-zp-Arw" firstAttribute="centerY" secondItem="tdZ-V4-WwR" secondAttribute="centerY" id="RN2-uG-Gee"/>
                                     <constraint firstAttribute="trailing" secondItem="VGJ-nA-WWq" secondAttribute="trailing" id="Wgu-c2-sbY"/>
                                     <constraint firstItem="VGJ-nA-WWq" firstAttribute="leading" secondItem="tdZ-V4-WwR" secondAttribute="leading" id="eI5-FK-MA6"/>
                                 </constraints>
@@ -1636,10 +1704,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="24P-KW-sOA"/>
+                    <connections>
+                        <outlet property="manButton" destination="s2e-vX-CKH" id="fHU-Or-LeI"/>
+                        <outlet property="otherButton" destination="Vf3-aL-dEl" id="A4O-U0-1WF"/>
+                        <outlet property="womanButton" destination="vUa-cH-7ub" id="UGv-Yb-bJj"/>
+                        <segue destination="OVD-5E-Hfp" kind="show" identifier="showPreferences" id="Q9u-px-f5y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQ6-pq-XAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5152" y="-1740"/>
+            <point key="canvasLocation" x="5151.1999999999998" y="-1740.1477832512317"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="C8Y-eV-Jb9">
@@ -2053,8 +2127,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="8KB-jW-iGj"/>
+        <segue reference="L1P-mL-wq2"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

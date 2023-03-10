@@ -12,6 +12,8 @@ class SignupBirthdayViewController: UIViewController {
         
     @IBOutlet weak var dobTextField: IsaoTextField!
     
+    @IBOutlet weak var invalidAge: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +21,8 @@ class SignupBirthdayViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         dobTextField.text = formatter.string(from: date)
+        
+        invalidAge.alpha = 0
         
     }
     
@@ -37,10 +41,13 @@ class SignupBirthdayViewController: UIViewController {
             print(ageInYears)
             if (ageInYears < 18 || ageInYears > 99){
                 print("Invalid Age")
+                invalidAge.alpha = 1
             }
             else{
+                // Valid Age -> Indentity
                 GlobalConstants.user.dateOfBirth = canidateDate
                 GlobalConstants.user.age = ageInYears
+                performSegue(withIdentifier: "showIdentity", sender: nil)
             }
         }
     }
