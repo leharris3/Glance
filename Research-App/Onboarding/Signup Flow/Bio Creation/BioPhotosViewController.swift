@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseStorage
+import YPImagePicker
 
 class BioPhotosViewController: UIViewController {
     
@@ -16,10 +17,9 @@ class BioPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+    // Firebase Image Upload
     func uploadPhotos() {
         
         guard selectedImage != nil else {
@@ -28,7 +28,7 @@ class BioPhotosViewController: UIViewController {
         
         let storageRef = Storage.storage().reference()
         let imageData = selectedImage!.jpegData(compressionQuality: 0.8)
-        guard imageData != nil else {
+        guard imageData != nil else {   
             return
         }
         let fileRef = storageRef.child("images/\(UUID().uuidString).jpg")
@@ -40,7 +40,19 @@ class BioPhotosViewController: UIViewController {
     }
     
     @IBAction func uploadMedia(_ sender: Any) {
-        uploadPhotos()
+        // uploadPhotos()
+        let picker = YPImagePicker()
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                print(photo.fromCamera) // Image source (camera or library)
+                print(photo.image) // Final image selected by the user
+                print(photo.originalImage) // original image selected by the user, unfiltered
+                print(photo.modifiedImage) // Transformed image, can be nil
+                print(photo.exifMeta) // Print exif meta data of original image.
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     
 }
