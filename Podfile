@@ -15,4 +15,5 @@ target 'Research-App' do
 	pod 'IBMSMTPPod', '~> 5.1'
  	pod 'UIGradient'
 	pod 'IHKeyboardAvoiding'
+	pod 'YPImagePicker'
 end
