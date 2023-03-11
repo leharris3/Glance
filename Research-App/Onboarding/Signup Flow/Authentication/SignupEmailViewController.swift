@@ -64,7 +64,10 @@ class SignupEmailViewController: UIViewController {
     }
     
     @IBAction func continuePressed(_ sender: Any) {
-        GlobalConstants.email = emailField.text
+        // Trim whitespaces.
+        let email: String? = (emailField.text ?? "").trimmingCharacters(in: .whitespaces)
+        
+        GlobalConstants.email = email
         
         // Email string protection.
         if !(verifyEmail(email: GlobalConstants.email!)) {

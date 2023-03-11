@@ -262,7 +262,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Creating Account!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="043-wB-1UI">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Email!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="043-wB-1UI">
                                                 <rect key="frame" x="0.0" y="55" width="388" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="MeQ-Ax-bvB"/>
@@ -480,7 +480,6 @@
                         <outlet property="creationErrorLabel" destination="TnH-p8-lhz" id="k37-AI-glp"/>
                         <outlet property="fieldsViewBottomConstraint" destination="2eG-ya-cNz" id="kaa-7l-ndo"/>
                         <outlet property="passwordField" destination="epf-6v-3Pb" id="9Vw-s4-Pof"/>
-                        <segue destination="olJ-ii-Bbf" kind="show" identifier="showWelcome" id="ZI2-6k-Zlt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXB-t9-QEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -490,7 +489,7 @@
         <!--Welcome-->
         <scene sceneID="kAw-7Y-tXU">
             <objects>
-                <viewController id="olJ-ii-Bbf" userLabel="Welcome" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="olJ-ii-Bbf" userLabel="Welcome" customClass="SignupWelcomeViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d6b-GV-V2n" userLabel="screen">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -580,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fs9-D7-aWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828" y="-1740"/>
+            <point key="canvasLocation" x="2829" y="-1740"/>
         </scene>
         <!--Name-->
         <scene sceneID="L5N-gU-U0p">
@@ -630,6 +629,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-vZ-4BV" userLabel="fieldsView">
                                         <rect key="frame" x="0.0" y="581" width="388" height="200"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8O-FC-gwa">
+                                                <rect key="frame" x="0.0" y="55" width="388" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="lS2-fY-pjg"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="27"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP0-De-Wcg">
                                                 <rect key="frame" x="0.0" y="130" width="388" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -676,11 +684,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="H8O-FC-gwa" secondAttribute="trailing" id="DGe-CW-RrB"/>
+                                            <constraint firstItem="H8O-FC-gwa" firstAttribute="top" secondItem="C8f-Ep-eys" secondAttribute="bottom" constant="5" id="DdP-gn-2px"/>
                                             <constraint firstItem="eP0-De-Wcg" firstAttribute="leading" secondItem="6yh-vZ-4BV" secondAttribute="leading" id="PJH-eh-L9S"/>
                                             <constraint firstAttribute="trailing" secondItem="C8f-Ep-eys" secondAttribute="trailing" id="af3-mv-WST"/>
                                             <constraint firstItem="C8f-Ep-eys" firstAttribute="top" secondItem="6yh-vZ-4BV" secondAttribute="top" id="bTj-f2-2B8"/>
                                             <constraint firstAttribute="trailing" secondItem="eP0-De-Wcg" secondAttribute="trailing" id="bv7-zr-out"/>
                                             <constraint firstAttribute="height" constant="200" id="ecc-bl-eBy"/>
+                                            <constraint firstItem="H8O-FC-gwa" firstAttribute="leading" secondItem="6yh-vZ-4BV" secondAttribute="leading" id="iUl-Ha-3g1"/>
                                             <constraint firstItem="C8f-Ep-eys" firstAttribute="leading" secondItem="6yh-vZ-4BV" secondAttribute="leading" id="mZ1-3Q-3ML"/>
                                             <constraint firstAttribute="bottom" secondItem="eP0-De-Wcg" secondAttribute="bottom" id="zCM-Uc-f7d"/>
                                         </constraints>
@@ -715,7 +726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myQ-ip-mLx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3602" y="-1740"/>
+            <point key="canvasLocation" x="3600" y="-1740"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="Gnb-uL-7QB">
@@ -890,7 +901,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRa-eq-iYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5938" y="-1740"/>
+            <point key="canvasLocation" x="5936" y="-1740"/>
         </scene>
         <!--Root-->
         <scene sceneID="4ED-Oj-v5F">
@@ -1700,7 +1711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQ6-pq-XAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5151.1999999999998" y="-1740.1477832512317"/>
+            <point key="canvasLocation" x="5149" y="-1740"/>
         </scene>
         <!--Interests-->
         <scene sceneID="wZg-xZ-NUa">
@@ -2388,73 +2399,47 @@
         <scene sceneID="0eq-F5-pzW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syl-T1-Cz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="hIk-hw-aB2" userLabel="Notifications" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZXN-WC-qPT">
+                <viewController storyboardIdentifier="EnableNotificationsViewController" id="hIk-hw-aB2" userLabel="Notifications" customClass="EnableNotificationsViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZXN-WC-qPT" userLabel="container">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srL-7i-8Py">
-                                <rect key="frame" x="20" y="638" width="353" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JK5-1w-MoW">
-                                        <rect key="frame" x="0.0" y="114" width="353" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule" titleAlignment="center">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Continue">
-                                                    <attributes>
-                                                        <font key="NSFont" size="18" name="Optima-Bold"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9y-i9-wlV" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="one-time-code"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                <color key="value" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                <color key="value" red="0.93725490199999995" green="0.2784313725" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-e6-zYi">
-                                <rect key="frame" x="41" y="401" width="308" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-e6-zYi">
+                                <rect key="frame" x="72.333333333333343" y="446" width="283.66666666666663" height="34.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="28"/>
                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sjv-gN-D16"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Btb-e6-zYi" firstAttribute="centerY" secondItem="ZXN-WC-qPT" secondAttribute="centerY" id="XR4-4y-rEF"/>
+                            <constraint firstItem="Btb-e6-zYi" firstAttribute="centerX" secondItem="ZXN-WC-qPT" secondAttribute="centerX" id="m4r-Bn-7Qy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="aeo-YD-ciQ"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="4388" y="-2409"/>
+        </scene>
+        <!--Onboarding Navigation Controller-->
+        <scene sceneID="a9A-8s-XCN">
+            <objects>
+                <navigationController storyboardIdentifier="OnboardingNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="SZF-EU-p96" customClass="OnboardingNavigationController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="53e-JY-uSt">
+                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="olJ-ii-Bbf" kind="relationship" relationship="rootViewController" id="WdF-re-o2a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xys-b2-UE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036" y="-1740"/>
         </scene>
     </scenes>
     <designables>
@@ -2469,9 +2454,6 @@
         </designable>
         <designable name="JzH-Nx-vbO">
             <size key="intrinsicContentSize" width="104" height="48.333333333333336"/>
-        </designable>
-        <designable name="P9y-i9-wlV">
-            <size key="intrinsicContentSize" width="126.33333333333333" height="36.333333333333336"/>
         </designable>
         <designable name="PrA-hn-yFi">
             <size key="intrinsicContentSize" width="63.333333333333336" height="48.333333333333336"/>

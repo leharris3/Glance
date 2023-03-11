@@ -20,7 +20,7 @@ class UploadProfile: NSObject {
         let photos: [Data?] =  GlobalConstants.user.profilePhotos
         let email: String = GlobalConstants.email! // Should never be nil.
         let firstName: String = GlobalConstants.user.firstName!
-        let dob: String = GlobalConstants.user.dateOfBirth!.description
+        let dob: Date = GlobalConstants.user.dateOfBirth!
         let age: Int = GlobalConstants.user.age
         let sex: String = GlobalConstants.user.sex
         let preference: String = GlobalConstants.user.preference
@@ -39,13 +39,15 @@ class UploadProfile: NSObject {
         // Upload interests.
         db.collection("user-info").document(email).setData(["interests": interests], merge: true)
         
-        if (photos.count == 0){ return false } // Empty photo list.
+        // Empty photo list
+        if (photos.count == 0){ return false}
         
         // Upload photos
         for photo in GlobalConstants.user.profilePhotos {
             UploadProfile.uploadPhoto(data: photo)
         }
-                return true // MARK: Profile successfully uploaded.
+        
+        return true // MARK: Profile successfully uploaded.
     }
     
     // Upload a photo.

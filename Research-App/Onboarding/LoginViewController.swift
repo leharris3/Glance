@@ -65,6 +65,8 @@ class LoginViewController: UIViewController {
         let email: String = emailField.text!
         let password: String = passwordField.text!
         
+        // MARK: If a user attempts to login to a half made account, it is deleted.
+        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard self != nil else { return }
             if error != nil {

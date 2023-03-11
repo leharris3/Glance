@@ -70,7 +70,7 @@ class SignupConfirmEmailViewController: UIViewController {
     
     @IBAction func continuePressed(_ sender: Any) {
         
-        let code: String = enterCodeFeild.text!
+        let code: String = (enterCodeFeild.text!).trimmingCharacters(in: .whitespaces) // Trim whitespaces.
         
         if code == String(GlobalConstants.oneTimePasscode){
             performSegue(withIdentifier: "showPickPassword", sender: nil)

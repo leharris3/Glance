@@ -127,9 +127,18 @@ class BioMediaViewController: UIViewController {
         }
         
         // MARK: Onboarding complete, attempt to upload profile.
-        UploadProfile.uploadProfile()
-        
-        // Profile -> Tutorial
+        if (UploadProfile.uploadProfile()) {
+            
+            // Media -> Enable Notifications.
+            let enableNotifications = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EnableNotificationsViewController") as! EnableNotificationsViewController
+            UIApplication.shared.windows.first?.rootViewController = enableNotifications
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
+            // Animate Feature Transition
+            let options: UIView.AnimationOptions = .transitionCrossDissolve
+            let duration: TimeInterval = 0.3
+            UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {}, completion: nil)
+        }
     }
 }
 

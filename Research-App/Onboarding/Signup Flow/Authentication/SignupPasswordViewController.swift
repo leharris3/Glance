@@ -7,15 +7,15 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class SignupPasswordViewController: UIViewController {
     
+    // Prevent animating views on view initial loading.
     var viewHasLoaded: Bool = false
     
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var creationErrorLabel: UILabel!
-    
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -62,17 +62,39 @@ class SignupPasswordViewController: UIViewController {
         }
     }
 
+    // Continue button pressed. Transition -> Onboarding.
     @IBAction func continueButtonPressed(_ sender: Any) {
+        
+        let password: String? = (passwordField.text ?? "").trimmingCharacters(in: .whitespaces) // Trim whitespaces.
         GlobalConstants.password = passwordField.text
         
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
         
-        Auth.auth().createUser(withEmail: GlobalConstants.email ?? "", password: GlobalConstants.password ?? "", completion: {
+        // Create a new user w/ incomplete profile.
+        Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password ?? "", completion: {
             authResult, error in
             if (error == nil) {
-                    self.performSegue(withIdentifier: "showWelcome", sender: nil)
-                }
+                // Success.
+                let email = GlobalConstants.email!
+                let db = Firestore.firestore()
+                
+                // Set profile_complete flag to false.
+                db.collection("user-info").document(email).setData(["profile_complete": false], merge: true)
+                
+                // Authentication -> Onboarding.
+                let welcome = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as! SignupWelcomeViewController
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingNavigationController") as! UINavigationController
+                navigationController.pushViewController(welcome, animated: true)
+                
+                UIApplication.shared.windows.first?.rootViewController = navigationController
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+                // Animate Feature Transition
+                let options: UIView.AnimationOptions = .transitionCrossDissolve
+                let duration: TimeInterval = 0.3
+                UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {}, completion: nil)
+            }
             else {
                 self.creationErrorLabel.alpha = 1
                 UIView.animate(withDuration: 0.3) {

@@ -33,6 +33,9 @@
 		2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */; };
 		2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */; };
 		2DCE0C5929BD1CE40020E1F2 /* UploadProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */; };
+		2DCE0C5B29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */; };
+		2DCE0C5D29BD354D0020E1F2 /* OnboardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5C29BD354D0020E1F2 /* OnboardingNavigationController.swift */; };
+		2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */; };
 		2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */; };
 		2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF594E629B7FA4C004B7727 /* UserCard.swift */; };
 		D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3135821C4380931CF2391B76 /* Pods_Research_App.framework */; };
@@ -68,6 +71,9 @@
 		2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirstNameViewController.swift; sourceTree = "<group>"; };
 		2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfile.swift; sourceTree = "<group>"; };
+		2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
+		2DCE0C5C29BD354D0020E1F2 /* OnboardingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigationController.swift; sourceTree = "<group>"; };
+		2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWelcomeViewController.swift; sourceTree = "<group>"; };
 		2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMediaViewController.swift; sourceTree = "<group>"; };
 		2DF594E629B7FA4C004B7727 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		3135821C4380931CF2391B76 /* Pods_Research_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Research_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +106,7 @@
 			children = (
 				2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */,
 				2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */,
+				2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */,
 				2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */,
 			);
 			path = "Bio Creation";
@@ -108,6 +115,8 @@
 		2D286DEC29B68224004DA4E5 /* Demographics Collection */ = {
 			isa = PBXGroup;
 			children = (
+				2DCE0C5C29BD354D0020E1F2 /* OnboardingNavigationController.swift */,
+				2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */,
 				2DC44C3B29B8247D00DA18AC /* SignupFirstNameViewController.swift */,
 				2D58F43529B92AF900704467 /* SignupBirthdayViewController.swift */,
 				2D142B0929BA99D20050E656 /* SignupSexViewController.swift */,
@@ -358,18 +367,21 @@
 			files = (
 				2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */,
 				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
+				2DCE0C5B29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift in Sources */,
 				2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */,
 				2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */,
 				2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */,
 				2D58F43629B92AF900704467 /* SignupBirthdayViewController.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
+				2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */,
 				2DCE0C5929BD1CE40020E1F2 /* UploadProfile.swift in Sources */,
 				2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */,
 				2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
+				2DCE0C5D29BD354D0020E1F2 /* OnboardingNavigationController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
 				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,
 				2D142B0A29BA99D20050E656 /* SignupSexViewController.swift in Sources */,
