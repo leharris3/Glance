@@ -22,7 +22,6 @@ class SignupFirstNameViewController: UIViewController {
         
         // Store DB Info
         if (firstNameField.text) != nil {
-            // GlobalConstants.db.collection("user-info").document(GlobalConstants.email!).setData(["first_name": firstNameField.text], merge: true)
             GlobalConstants.user.firstName = firstNameField.text!
             performSegue(withIdentifier: "showBirthday", sender: nil)
         }

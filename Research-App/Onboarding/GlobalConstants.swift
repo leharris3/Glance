@@ -19,7 +19,6 @@ class GlobalConstants {
     static var oneTimePasscode: Int = 0 // Confirmation Code
     
     // Profile Info of Onboarding User
-    static var db = Firestore.firestore()
     static var user: UserCard = UserCard()
     
 }

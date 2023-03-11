@@ -72,7 +72,7 @@ class SignupPreferenceViewController: UIViewController {
         if (preference != ""){
             GlobalConstants.user.preference = preference
             print(preference    )
-            performSegue(withIdentifier: "showMajor", sender: nil)
+            performSegue(withIdentifier: "showInterests", sender: nil)
         }
     }
 }

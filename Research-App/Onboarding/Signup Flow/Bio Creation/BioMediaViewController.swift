@@ -116,42 +116,20 @@ class BioMediaViewController: UIViewController {
     }
     
     @IBAction func continuePressed(_ sender: Any) {
-        var atLeastOnePhoto = false
+        
+        GlobalConstants.user.profilePhotos = [] // Should always be blank.
         
         // Upload photos.
         for photo in photosToUpload {
             if (photo != nil) {
-                uploadPhoto(data:   photo!)
-                atLeastOnePhoto = true
+                GlobalConstants.user.profilePhotos.append(photo!)
             }
         }
+        
+        // MARK: Onboarding complete, attempt to upload profile.
+        UploadProfile.uploadProfile()
         
         // Profile -> Tutorial
-    }
-    
-    // Upload photo.
-    func uploadPhoto(data: Data){
-        // Create Storage Ref.
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        
-        let ref = storageRef.child("images/\(String(describing: GlobalConstants.email))/\(UUID().uuidString)")
-
-        // Upload the file.
-        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            print("Error")
-            return
-          }
-          // Metadata.
-          let size = metadata.size
-          ref.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-                print("Error")
-              return
-            }
-          }
-        }
     }
 }
 
