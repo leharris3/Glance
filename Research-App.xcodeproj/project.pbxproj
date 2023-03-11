@@ -16,7 +16,6 @@
 		2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88829AD829000E78556 /* GlobalConstants.swift */; };
 		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
 		2D58F43629B92AF900704467 /* SignupBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58F43529B92AF900704467 /* SignupBirthdayViewController.swift */; };
-		2D8D81B529BBC8CF0084B92E /* BioPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D81B429BBC8CF0084B92E /* BioPhotosViewController.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
@@ -48,7 +47,6 @@
 		2D28E88829AD829000E78556 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2D58F43529B92AF900704467 /* SignupBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupBirthdayViewController.swift; sourceTree = "<group>"; };
-		2D8D81B429BBC8CF0084B92E /* BioPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioPhotosViewController.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */,
-				2D8D81B429BBC8CF0084B92E /* BioPhotosViewController.swift */,
 				2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */,
 			);
 			path = "Bio Creation";
@@ -367,7 +364,6 @@
 				2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */,
-				2D8D81B529BBC8CF0084B92E /* BioPhotosViewController.swift in Sources */,
 				2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
