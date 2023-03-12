@@ -62,50 +62,48 @@ class SignupPasswordViewController: UIViewController {
         }
     }
 
-    // Continue button pressed. Transition -> Onboarding.
+    // MARK: Attempt to continue onboarding.
     @IBAction func continueButtonPressed(_ sender: Any) {
         
         // Trim whitespaces.
         let password: String? = (passwordField.text ?? "").trimmingCharacters(in: .whitespaces)
         GlobalConstants.password = passwordField.text
+        let email: String = GlobalConstants.email!
         
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
         
         // MARK: Attempt to create profile.
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password!) { [weak self] authResult, error in
             
             // MARK: Sign-in success.
             if ((authResult) != nil) {
                 
+                // Display error and sign out.
                 if (error != nil) {
-                    // Sign-Out
                     Authentication.signOut()
-                    self!.forgotPasswordButton.titleLabel?.text = "Error: Unknown!"
-                    self!.forgotPasswordButton.alpha = 1
-                    self!.forgotPasswordButton.isEnabled = true
+                    self!.creationErrorLabel.text = "Error: Unknown!"
+                    self!.creationErrorLabel.alpha = 1
                     return
                 }
                 
                 let db = Firestore.firestore()
-                let userExists: Bool = false
+                var partialProfileExisits: Bool = true
                 
                 // Create a reference to user-profile.
-                let ref = db.collection("user-info").document(email)
+                let ref = db.collection("users").document(email)
                 ref.getDocument { (document, error) in
                     if (error != nil) { return}
                     if let document = document, document.exists {
-                        userExists = true
+                        partialProfileExisits = false
                     }
                 }
-                print("User exists: " + String(userExists))
                 
                 // MARK: Error, exisiting user.
-                if (userExists) {
+                if (partialProfileExisits) {
                     Authentication.signOut() // Sign out.
-                    self!.forgotPasswordButton.titleLabel?.text = "Error: Existing Account!"
-                    self!.forgotPasswordButton.alpha = 1
-                    self!.forgotPasswordButton.isEnabled = true
+                    self!.creationErrorLabel.text = "Error: Existing Account!"
+                    self!.creationErrorLabel.alpha = 1
                     return
                 }
                 else {
@@ -119,8 +117,7 @@ class SignupPasswordViewController: UIViewController {
                 }
             }
             else {
-                self!.forgotPasswordButton.alpha = 1
-                self!.forgotPasswordButton.isEnabled = true
+                self!.creationErrorLabel.alpha = 1
             }
         }
     }

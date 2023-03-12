@@ -60,37 +60,39 @@ class LoginViewController: UIViewController {
     
     // MARK: Attempt login.
     @IBAction func loginButton(_ sender: Any) {
-        let email: String = emailField.text!
-        let password: String = passwordField.text!
+        let email: String = emailField.text!.trimmingCharacters(in: .whitespaces)
+        let password: String = passwordField.text!.trimmingCharacters(in: .whitespaces)
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            
             // Sign-in success.
             if ((authResult) != nil) {
-                var userExists: Bool = false
-                if (error != nil) {return}
-                let db = Firestore.firestore()
+                var partialProfileExisits: Bool = true
+                
+                // Unknown error.
+                if (error != nil) {
+                    Authentication.signOut()
+                    return
+                }
                 
                 // Create a reference to user-profile.
-                let ref = db.collection("user-info").document(email)
+                let db = Firestore.firestore()
+                let ref = db.collection("users").document(email)
+                
                 ref.getDocument { (document, error) in
-                    if (error != nil) { return}
+                    if (error != nil) { return }
                     if let document = document, document.exists {
-                        userExists = true
+                        partialProfileExisits = false
                     }
                 }
-                print("User exists: " + String(userExists))
                 
                 // MARK: Login -> Feature [Success].
-                if (userExists) {
+                if (!partialProfileExisits) {
                     Navigation.changeRootViewControllerToFeature()
                 }
                 else {
                     // MARK: Continue onboarding.
-                    // Set global constants.
                     GlobalConstants.email = email
-                    GlobalConstants.password = password
-                    
-                    // MARK: Login -> Onboarding.
                     Navigation.changeRootViewControllerToWelcome()
                 }
             }

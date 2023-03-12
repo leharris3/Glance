@@ -11,6 +11,6 @@ class EnableNotificationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         }
+        Navigation.changeRootViewControllerToFeature()
+    }
 }

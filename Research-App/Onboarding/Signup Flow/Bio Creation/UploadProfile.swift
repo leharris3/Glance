@@ -27,17 +27,17 @@ class UploadProfile: NSObject {
         let interests: [String] = GlobalConstants.user.interests
         
         // Upload first name.
-        db.collection("user-info").document(email).setData(["first_name": firstName], merge: true)
+        db.collection("users").document(email).setData(["first_name": firstName], merge: true)
         // Upload dOB.
-        db.collection("user-info").document(email).setData(["dob": dob], merge: true)
+        db.collection("users").document(email).setData(["dob": dob], merge: true)
         // Upload age.
-        db.collection("user-info").document(email).setData(["age": age], merge: true)
+        db.collection("users").document(email).setData(["age": age], merge: true)
         // Upload sex.
-        db.collection("user-info").document(email).setData(["sex": sex], merge: true)
+        db.collection("users").document(email).setData(["sex": sex], merge: true)
         // Upload preference.
-        db.collection("user-info").document(email).setData(["preference": preference], merge: true)
+        db.collection("users").document(email).setData(["preference": preference], merge: true)
         // Upload interests.
-        db.collection("user-info").document(email).setData(["interests": interests], merge: true)
+        db.collection("users").document(email).setData(["interests": interests], merge: true)
         
         // Empty photo list
         if (photos.count == 0){ return false}
