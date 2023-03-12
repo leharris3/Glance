@@ -9,16 +9,14 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
-    
+    // Buttons + fields.
     @IBOutlet weak var emailField: UITextField!
-    
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var forgotPasswordButton: UIButton!
-    
     @IBOutlet weak var fieldsViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -28,7 +26,6 @@ class LoginViewController: UIViewController {
         
         // Move fields on keyboard popup.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
@@ -61,34 +58,43 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: Attempt login.
     @IBAction func loginButton(_ sender: Any) {
         let email: String = emailField.text!
         let password: String = passwordField.text!
         
-        // MARK: If a user attempts to login to a half made account, it is deleted.
-        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard self != nil else { return }
-            if error != nil {
-                print("Error")
-            }
+            // Sign-in success.
             if ((authResult) != nil) {
+                var userExists: Bool = false
+                if (error != nil) {return}
+                let db = Firestore.firestore()
                 
-                // Login -> Feature
-                let feature = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
-                let navigationController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
-                navigationController.pushViewController(feature, animated: true)
+                // Create a reference to user-profile.
+                let ref = db.collection("user-info").document(email)
+                ref.getDocument { (document, error) in
+                    if (error != nil) { return}
+                    if let document = document, document.exists {
+                        userExists = true
+                    }
+                }
+                print("User exists: " + String(userExists))
                 
-                UIApplication.shared.windows.first?.rootViewController = navigationController
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
-                // Animate Feature Transition
-                let options: UIView.AnimationOptions = .transitionCrossDissolve
-                let duration: TimeInterval = 0.3
-                UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {}, completion: nil)
+                // MARK: Login -> Feature [Success].
+                if (userExists) {
+                    Navigation.changeRootViewControllerToFeature()
+                }
+                else {
+                    // MARK: Continue onboarding.
+                    // Set global constants.
+                    GlobalConstants.email = email
+                    GlobalConstants.password = password
+                    
+                    // MARK: Login -> Onboarding.
+                    Navigation.changeRootViewControllerToWelcome()
+                }
             }
             else {
-                // Forgot Password
                 self!.forgotPasswordButton.alpha = 1
                 self!.forgotPasswordButton.isEnabled = true
                 UIView.animate(withDuration: 0.3) {
@@ -96,9 +102,6 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-
     }
-    
 }
-    
-
+                                                            

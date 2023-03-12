@@ -153,7 +153,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IdM-He-ZC0">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1145,7 +1145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2e-ih-3cG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1939" y="-402"/>
+            <point key="canvasLocation" x="1954" y="-402"/>
         </scene>
         <!--Login-->
         <scene sceneID="1Y0-7Y-HJD">
@@ -2398,7 +2398,6 @@
         <!--Notifications-->
         <scene sceneID="0eq-F5-pzW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="syl-T1-Cz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="EnableNotificationsViewController" id="hIk-hw-aB2" userLabel="Notifications" customClass="EnableNotificationsViewController" customModule="Research_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXN-WC-qPT" userLabel="container">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
@@ -2420,6 +2419,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="aeo-YD-ciQ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="syl-T1-Cz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4388" y="-2409"/>
         </scene>

@@ -71,7 +71,7 @@ class SignupPasswordViewController: UIViewController {
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
         
-        // Create a new user w/ incomplete profile.
+        // TODO: Test for pre-exisitng accounts.
         Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password ?? "", completion: {
             authResult, error in
             if (error == nil) {
@@ -83,17 +83,7 @@ class SignupPasswordViewController: UIViewController {
                 db.collection("user-info").document(email).setData(["profile_complete": false], merge: true)
                 
                 // Authentication -> Onboarding.
-                let welcome = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as! SignupWelcomeViewController
-                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingNavigationController") as! UINavigationController
-                navigationController.pushViewController(welcome, animated: true)
-                
-                UIApplication.shared.windows.first?.rootViewController = navigationController
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
-                // Animate Feature Transition
-                let options: UIView.AnimationOptions = .transitionCrossDissolve
-                let duration: TimeInterval = 0.3
-                UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {}, completion: nil)
+                Navigation.changeRootViewControllerToWelcome()
             }
             else {
                 self.creationErrorLabel.alpha = 1
