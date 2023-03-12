@@ -67,8 +67,10 @@ class SignupPasswordViewController: UIViewController {
         
         // Trim whitespaces.
         let password: String? = (passwordField.text ?? "").trimmingCharacters(in: .whitespaces)
-        GlobalConstants.password = passwordField.text
         let email: String = GlobalConstants.email!
+        
+        // Set global constants.
+        GlobalConstants.password = password!
         
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
@@ -97,23 +99,22 @@ class SignupPasswordViewController: UIViewController {
                     if let document = document, document.exists {
                         partialProfileExisits = false
                     }
-                }
-                
-                // MARK: Error, exisiting user.
-                if (partialProfileExisits) {
-                    Authentication.signOut() // Sign out.
-                    self!.creationErrorLabel.text = "Error: Existing Account!"
-                    self!.creationErrorLabel.alpha = 1
-                    return
-                }
-                else {
-                    // MARK: Continue onboarding.
-                    // Set global constants.
-                    GlobalConstants.email = email
-                    GlobalConstants.password = password
-                    
-                    // MARK: Login -> Onboarding.
-                    Navigation.changeRootViewControllerToWelcome()
+                    // MARK: Error, exisiting user.
+                    if (!partialProfileExisits) {
+                        Authentication.signOut() // Sign out.
+                        self!.creationErrorLabel.text = "Error: Existing Account!"
+                        self!.creationErrorLabel.alpha = 1
+                        return
+                    }
+                    else {
+                        // MARK: Continue onboarding.
+                        // Set global constants.
+                        GlobalConstants.email = email
+                        GlobalConstants.password = password
+                        
+                        // MARK: Login -> Onboarding.
+                        Navigation.changeRootViewControllerToWelcome()
+                    }
                 }
             }
             else {
