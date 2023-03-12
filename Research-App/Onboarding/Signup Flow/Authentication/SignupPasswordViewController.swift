@@ -65,32 +65,63 @@ class SignupPasswordViewController: UIViewController {
     // Continue button pressed. Transition -> Onboarding.
     @IBAction func continueButtonPressed(_ sender: Any) {
         
-        let password: String? = (passwordField.text ?? "").trimmingCharacters(in: .whitespaces) // Trim whitespaces.
+        // Trim whitespaces.
+        let password: String? = (passwordField.text ?? "").trimmingCharacters(in: .whitespaces)
         GlobalConstants.password = passwordField.text
         
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
         
-        // TODO: Test for pre-exisitng accounts.
-        Auth.auth().createUser(withEmail: GlobalConstants.email!, password: GlobalConstants.password ?? "", completion: {
-            authResult, error in
-            if (error == nil) {
-                // Success.
-                let email = GlobalConstants.email!
+        // MARK: Attempt to create profile.
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            
+            // MARK: Sign-in success.
+            if ((authResult) != nil) {
+                
+                if (error != nil) {
+                    // Sign-Out
+                    Authentication.signOut()
+                    self!.forgotPasswordButton.titleLabel?.text = "Error: Unknown!"
+                    self!.forgotPasswordButton.alpha = 1
+                    self!.forgotPasswordButton.isEnabled = true
+                    return
+                }
+                
                 let db = Firestore.firestore()
+                let userExists: Bool = false
                 
-                // Set profile_complete flag to false.
-                db.collection("user-info").document(email).setData(["profile_complete": false], merge: true)
+                // Create a reference to user-profile.
+                let ref = db.collection("user-info").document(email)
+                ref.getDocument { (document, error) in
+                    if (error != nil) { return}
+                    if let document = document, document.exists {
+                        userExists = true
+                    }
+                }
+                print("User exists: " + String(userExists))
                 
-                // Authentication -> Onboarding.
-                Navigation.changeRootViewControllerToWelcome()
-            }
-            else {
-                self.creationErrorLabel.alpha = 1
-                UIView.animate(withDuration: 0.3) {
-                    self.view.layoutIfNeeded()
+                // MARK: Error, exisiting user.
+                if (userExists) {
+                    Authentication.signOut() // Sign out.
+                    self!.forgotPasswordButton.titleLabel?.text = "Error: Existing Account!"
+                    self!.forgotPasswordButton.alpha = 1
+                    self!.forgotPasswordButton.isEnabled = true
+                    return
+                }
+                else {
+                    // MARK: Continue onboarding.
+                    // Set global constants.
+                    GlobalConstants.email = email
+                    GlobalConstants.password = password
+                    
+                    // MARK: Login -> Onboarding.
+                    Navigation.changeRootViewControllerToWelcome()
                 }
             }
-        })
+            else {
+                self!.forgotPasswordButton.alpha = 1
+                self!.forgotPasswordButton.isEnabled = true
+            }
+        }
     }
 }
