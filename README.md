@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Glance: A Free Alternative to Freemium Dating
 --- 
 ### Coming May / June of 2023
