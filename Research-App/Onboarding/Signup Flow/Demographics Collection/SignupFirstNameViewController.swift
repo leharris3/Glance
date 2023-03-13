@@ -14,8 +14,12 @@ class SignupFirstNameViewController: UIViewController {
     
     @IBOutlet weak var firstNameField: IsaoTextField!
     
+    @IBOutlet weak var invalidNameField: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        invalidNameField.alpha = 0
     }
     
     // Regex: at least one alphabetical character. No spaces, A-Z, a-z.
@@ -30,8 +34,9 @@ class SignupFirstNameViewController: UIViewController {
         var text: String? = firstNameField.text ?? ""
         text = text!.trimmingCharacters(in: .whitespaces) // Trim whitespaces.
          
+        // Invalid name.
         if !(regex(for: text!) || text!.count > 0){
-            // Invalid name.
+            invalidNameField.alpha = 1
             return
         }
         

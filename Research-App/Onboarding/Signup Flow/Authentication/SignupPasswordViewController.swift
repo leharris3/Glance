@@ -75,50 +75,68 @@ class SignupPasswordViewController: UIViewController {
         // Basic password strength.
         if (GlobalConstants.password!.count < 8) {return}
         
-        // MARK: Attempt to create profile.
-        Auth.auth().signIn(withEmail: email, password: password!) { [weak self] authResult, error in
+        // TODO: Redo checks for prexisiting accounts.
+        
+        // Does a  complete profile exist?
+        // Yes:
+            // Throw error.
+        // No:
+            // Does a user exist?
+                // Yes:
+                    // Can user be authenticated?
+                        // Yes
+                            // Continue onboarding.
+                        // No
+                            // Throw Error
+                // No:
+                    // Can account be created?
+                        // Yes
+                            // Continue onboarding.
+                        // No
+                            // Throw error.
+        
+        // DB reference.
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(email)
+        var completeProfileExisits: Bool = false
+        
+        // Check for pre-exisitng, complete account.
+        ref.getDocument { (document, error) in
+            if (error != nil) { return }
+            if let document = document, document.exists {
+                completeProfileExisits = true // Complete profile.
+            }
             
-            // MARK: Sign-in success.
-            if ((authResult) != nil) {
+            // MARK: Error, exisiting user.
+            if (completeProfileExisits) {
+                self.creationErrorLabel.text = "Error: Existing Account!"
+                self.creationErrorLabel.alpha = 1
+                return
+            }
+            else {
                 
-                // Display error and sign out.
-                if (error != nil) {
-                    Authentication.signOut()
-                    self!.creationErrorLabel.text = "Error: Unknown!"
-                    self!.creationErrorLabel.alpha = 1
-                    return
+                // MARK: Attemp sign-in to partial account.
+                Auth.auth().signIn(withEmail: email, password: password!) { [weak self] authResult, error in
+                    
+                    // Continue onboarding.
+                    if (authResult != nil && error == nil) {
+                        Navigation.changeRootViewControllerToWelcome()
+                    }
                 }
                 
-                let db = Firestore.firestore()
-                var partialProfileExisits: Bool = true
-                
-                // Create a reference to user-profile.
-                let ref = db.collection("users").document(email)
-                ref.getDocument { (document, error) in
-                    if (error != nil) { return}
-                    if let document = document, document.exists {
-                        partialProfileExisits = false
-                    }
-                    // MARK: Error, exisiting user.
-                    if (!partialProfileExisits) {
-                        Authentication.signOut() // Sign out.
-                        self!.creationErrorLabel.text = "Error: Existing Account!"
-                        self!.creationErrorLabel.alpha = 1
+                // MARK: Create user.
+                Auth.auth().createUser(withEmail: email, password: password!) { [weak self] authResult, error in
+                    
+                    // Misc error.
+                    if (error != nil) {
                         return
                     }
-                    else {
-                        // MARK: Continue onboarding.
-                        // Set global constants.
-                        GlobalConstants.email = email
-                        GlobalConstants.password = password
-                        
+                    // MARK: Creation success success.
+                    if ((authResult) != nil) {
                         // MARK: Login -> Onboarding.
                         Navigation.changeRootViewControllerToWelcome()
                     }
                 }
-            }
-            else {
-                self!.creationErrorLabel.alpha = 1
             }
         }
     }

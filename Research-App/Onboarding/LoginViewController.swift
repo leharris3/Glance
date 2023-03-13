@@ -62,11 +62,12 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: Any) {
         let email: String = emailField.text!.trimmingCharacters(in: .whitespaces)
         let password: String = passwordField.text!.trimmingCharacters(in: .whitespaces)
-        
+            
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             
             // Sign-in success.
             if ((authResult) != nil) {
+                
                 var partialProfileExisits: Bool = true
                 
                 // Unknown error.
@@ -84,16 +85,15 @@ class LoginViewController: UIViewController {
                     if let document = document, document.exists {
                         partialProfileExisits = false
                     }
-                }
-                
-                // MARK: Login -> Feature [Success].
-                if (!partialProfileExisits) {
-                    Navigation.changeRootViewControllerToFeature()
-                }
-                else {
-                    // MARK: Continue onboarding.
-                    GlobalConstants.email = email
-                    Navigation.changeRootViewControllerToWelcome()
+                    // MARK: Login -> Feature [Success].
+                    if (!partialProfileExisits) {
+                        Navigation.changeRootViewControllerToFeature()
+                    }
+                    else {
+                        // MARK: Continue onboarding.
+                        GlobalConstants.email = email
+                        Navigation.changeRootViewControllerToWelcome()
+                    }
                 }
             }
             else {

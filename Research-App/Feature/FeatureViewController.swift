@@ -12,7 +12,7 @@ class FeatureViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var profileImageOneView: UIImageView!
+    @IBOutlet weak var topProfile: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

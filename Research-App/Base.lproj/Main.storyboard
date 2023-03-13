@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fjn-Xq-AvF">
     <device id="retina6_7" orientation="portrait" appearance="dark"/>
-    <accessibilityOverrides buttonShapes="YES" dynamicTypePreference="11"/>
+    <accessibilityOverrides increaseContrast="YES" reduceTransparency="YES" dynamicTypePreference="11"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -153,7 +153,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IdM-He-ZC0">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -193,7 +193,7 @@
                                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sole is exclusively available to UNC students and facualty (lol)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coe-Ad-hJI">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glance is exclusively available to UNC students and facualty (lol)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coe-Ad-hJI">
                                                 <rect key="frame" x="0.0" y="40" width="388" height="65"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="Cdq-CJ-nsm"/>
@@ -721,6 +721,7 @@
                     <navigationItem key="navigationItem" style="editor" id="ucx-CR-ZDD"/>
                     <connections>
                         <outlet property="firstNameField" destination="C8f-Ep-eys" id="hLg-aS-G9b"/>
+                        <outlet property="invalidNameField" destination="H8O-FC-gwa" id="4df-7b-wPh"/>
                         <segue destination="05R-lb-d2D" kind="show" identifier="showBirthday" id="L1P-mL-wq2"/>
                     </connections>
                 </viewController>
@@ -930,12 +931,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gs5-bZ-KAM" userLabel="textContainer">
                                                 <rect key="frame" x="0.0" y="0.0" width="388" height="250"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLE." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydC-e7-GE1">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GLANCE." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydC-e7-GE1">
                                                         <rect key="frame" x="0.0" y="120" width="388" height="65"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="65" id="m4a-E3-f9z"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="76"/>
+                                                        <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="61"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2404,7 +2405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-e6-zYi">
-                                <rect key="frame" x="72.333333333333343" y="446" width="283.66666666666663" height="34.333333333333314"/>
+                                <rect key="frame" x="72" y="446" width="284" height="34"/>
                                 <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="28"/>
                                 <color key="textColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2431,6 +2432,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="53e-JY-uSt">
                         <rect key="frame" x="0.0" y="47" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2444,25 +2446,25 @@
     </scenes>
     <designables>
         <designable name="0fh-hE-VRa">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="51.333333333333336" height="28"/>
         </designable>
         <designable name="C8f-Ep-eys">
-            <size key="intrinsicContentSize" width="115" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="103" height="28"/>
         </designable>
         <designable name="ELP-m9-k61">
-            <size key="intrinsicContentSize" width="118.66666666666667" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="106.66666666666667" height="28"/>
         </designable>
         <designable name="JzH-Nx-vbO">
-            <size key="intrinsicContentSize" width="104" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="92" height="28"/>
         </designable>
         <designable name="PrA-hn-yFi">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="51.333333333333336" height="28"/>
         </designable>
         <designable name="epf-6v-3Pb">
-            <size key="intrinsicContentSize" width="104" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="92" height="28"/>
         </designable>
         <designable name="oQV-9G-qO5">
-            <size key="intrinsicContentSize" width="151.66666666666666" height="48.333333333333336"/>
+            <size key="intrinsicContentSize" width="139.66666666666666" height="28"/>
         </designable>
     </designables>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
