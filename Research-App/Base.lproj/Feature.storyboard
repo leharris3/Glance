@@ -44,8 +44,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
                                 <rect key="frame" x="20" y="113" width="353" height="685"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FtB-0u-Srh" userLabel="bottomProfile">
                                         <rect key="frame" x="10" y="10" width="333" height="665"/>
@@ -55,35 +56,24 @@
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
                                         <rect key="frame" x="10" y="10" width="333" height="665"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="2dQ-3B-zlR" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" constant="10" id="6Xz-rD-XjI"/>
-                                    <constraint firstAttribute="trailing" secondItem="2dQ-3B-zlR" secondAttribute="trailing" constant="10" id="8Y4-R8-0nh"/>
-                                    <constraint firstAttribute="bottom" secondItem="2dQ-3B-zlR" secondAttribute="bottom" constant="10" id="j8Z-vo-yQU"/>
-                                    <constraint firstItem="2dQ-3B-zlR" firstAttribute="top" secondItem="VQD-zc-myP" secondAttribute="top" constant="10" id="uCH-LB-4Jp"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="t76-I1-IVv"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="VQD-zc-myP" firstAttribute="leading" secondItem="t76-I1-IVv" secondAttribute="leading" constant="20" id="6Y1-EQ-rAv"/>
-                            <constraint firstItem="t76-I1-IVv" firstAttribute="bottom" secondItem="VQD-zc-myP" secondAttribute="bottom" constant="20" id="BMk-XK-sMU"/>
-                            <constraint firstItem="VQD-zc-myP" firstAttribute="top" secondItem="t76-I1-IVv" secondAttribute="top" constant="10" id="YnE-nF-0g6"/>
-                            <constraint firstItem="t76-I1-IVv" firstAttribute="trailing" secondItem="VQD-zc-myP" secondAttribute="trailing" constant="20" id="yfp-VC-fnf"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sole." id="ffT-2m-efg">
+                    <navigationItem key="navigationItem" title="Glance." id="ffT-2m-efg">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person" catalog="system" id="EQ2-ph-v2h">
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="2s8-QR-CZ8" kind="popoverPresentation" popoverAnchorBarButtonItem="EQ2-ph-v2h" id="HXX-bZ-V2d">
+                                <segue destination="2s8-QR-CZ8" kind="popoverPresentation" popoverAnchorBarButtonItem="EQ2-ph-v2h" id="Dzz-ht-DhN">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
