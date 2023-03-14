@@ -44,7 +44,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
+                            <view autoresizesSubviews="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
                                 <rect key="frame" x="20" y="113" width="353" height="685"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -56,7 +56,7 @@
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
+                                    <view autoresizesSubviews="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
                                         <rect key="frame" x="10" y="10" width="333" height="665"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -88,6 +88,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomProfile" destination="FtB-0u-Srh" id="RQt-wO-Jq6"/>
                         <outlet property="contentView" destination="VQD-zc-myP" id="56U-Wz-eVn"/>
                         <outlet property="topProfile" destination="2dQ-3B-zlR" id="FGo-8I-4S9"/>
                     </connections>

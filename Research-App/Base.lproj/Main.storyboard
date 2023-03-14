@@ -153,7 +153,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IdM-He-ZC0">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" id="Ptp-xx-4pA">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -313,7 +313,7 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="XWf-nM-ZsI">
                         <nil key="title"/>
-                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.25" id="HJJ-cM-wYd">
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.25" id="HJJ-cM-wYd">
                             <rect key="frame" x="50" y="20.666666666666668" width="358" height="2.6666666666666679"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -931,19 +931,19 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gs5-bZ-KAM" userLabel="textContainer">
                                                 <rect key="frame" x="0.0" y="0.0" width="388" height="250"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GLANCE." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydC-e7-GE1">
-                                                        <rect key="frame" x="0.0" y="120" width="388" height="65"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glance." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydC-e7-GE1">
+                                                        <rect key="frame" x="0.0" y="135" width="388" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="65" id="m4a-E3-f9z"/>
+                                                            <constraint firstAttribute="height" constant="50" id="m4a-E3-f9z"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="61"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A smarter way to make lasting connections. " lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8m-G8-89b">
-                                                        <rect key="frame" x="0.0" y="185" width="388" height="65"/>
+                                                        <rect key="frame" x="0.0" y="185" width="388" height="60"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="65" id="ssC-ct-Pum"/>
+                                                            <constraint firstAttribute="height" constant="60" id="ssC-ct-Pum"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Optima-BoldItalic" family="Optima" pointSize="24"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -955,7 +955,7 @@
                                                     <constraint firstItem="W8m-G8-89b" firstAttribute="top" secondItem="ydC-e7-GE1" secondAttribute="bottom" id="2LT-dR-mw3"/>
                                                     <constraint firstItem="W8m-G8-89b" firstAttribute="leading" secondItem="Gs5-bZ-KAM" secondAttribute="leading" id="A1z-G0-ezQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="W8m-G8-89b" secondAttribute="trailing" id="Ybq-Jz-CSq"/>
-                                                    <constraint firstAttribute="bottom" secondItem="W8m-G8-89b" secondAttribute="bottom" id="ZOt-ZM-u9k"/>
+                                                    <constraint firstAttribute="bottom" secondItem="W8m-G8-89b" secondAttribute="bottom" constant="5" id="ZOt-ZM-u9k"/>
                                                     <constraint firstItem="ydC-e7-GE1" firstAttribute="leading" secondItem="Gs5-bZ-KAM" secondAttribute="leading" id="eZ3-f1-nH4"/>
                                                     <constraint firstAttribute="trailing" secondItem="ydC-e7-GE1" secondAttribute="trailing" id="iSF-VK-0AW"/>
                                                     <constraint firstAttribute="height" constant="250" id="xsa-Iz-EmZ"/>
@@ -1146,7 +1146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2e-ih-3cG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="-402"/>
+            <point key="canvasLocation" x="1952.8037383177568" y="-402.37580993520521"/>
         </scene>
         <!--Login-->
         <scene sceneID="1Y0-7Y-HJD">
@@ -2446,25 +2446,25 @@
     </scenes>
     <designables>
         <designable name="0fh-hE-VRa">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="28"/>
+            <size key="intrinsicContentSize" width="63.333333333333336" height="48.333333333333336"/>
         </designable>
         <designable name="C8f-Ep-eys">
-            <size key="intrinsicContentSize" width="103" height="28"/>
+            <size key="intrinsicContentSize" width="115" height="48.333333333333336"/>
         </designable>
         <designable name="ELP-m9-k61">
-            <size key="intrinsicContentSize" width="106.66666666666667" height="28"/>
+            <size key="intrinsicContentSize" width="118.66666666666667" height="48.333333333333336"/>
         </designable>
         <designable name="JzH-Nx-vbO">
-            <size key="intrinsicContentSize" width="92" height="28"/>
+            <size key="intrinsicContentSize" width="104" height="48.333333333333336"/>
         </designable>
         <designable name="PrA-hn-yFi">
-            <size key="intrinsicContentSize" width="51.333333333333336" height="28"/>
+            <size key="intrinsicContentSize" width="63.333333333333336" height="48.333333333333336"/>
         </designable>
         <designable name="epf-6v-3Pb">
-            <size key="intrinsicContentSize" width="92" height="28"/>
+            <size key="intrinsicContentSize" width="104" height="48.333333333333336"/>
         </designable>
         <designable name="oQV-9G-qO5">
-            <size key="intrinsicContentSize" width="139.66666666666666" height="28"/>
+            <size key="intrinsicContentSize" width="151.66666666666666" height="48.333333333333336"/>
         </designable>
     </designables>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

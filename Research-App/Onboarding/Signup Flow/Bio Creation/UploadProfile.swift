@@ -25,6 +25,7 @@ class UploadProfile: NSObject {
         let sex: String = GlobalConstants.user.sex
         let preference: String = GlobalConstants.user.preference
         let interests: [String] = GlobalConstants.user.interests
+        let matches: [String] = []
         
         // Upload first name.
         db.collection("users").document(email).setData(["first_name": firstName], merge: true)
@@ -38,8 +39,10 @@ class UploadProfile: NSObject {
         db.collection("users").document(email).setData(["preference": preference], merge: true)
         // Upload interests.
         db.collection("users").document(email).setData(["interests": interests], merge: true)
+        // Matches
+        db.collection("users").document(email).setData(["matches": matches], merge: true)
         
-        // Empty photo list
+        // Empty photo list 
         if (photos.count == 0){ return false}
         
         // Upload photos
