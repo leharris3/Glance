@@ -58,6 +58,7 @@ class FeatureViewController: UIViewController {
         loadNewProfileView(view: topProfile)
         loadNewProfileView(view: bottomProfile)
         
+        // Interaction w/ bottom profile disabled by default.
         bottomProfile.isUserInteractionEnabled = false
         
         topProfile.layer.cornerRadius = 30

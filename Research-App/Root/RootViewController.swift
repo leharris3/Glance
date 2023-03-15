@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseFirestore
 
 class RootViewController: UIViewController, FUIAuthDelegate {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +19,6 @@ class RootViewController: UIViewController, FUIAuthDelegate {
         
         // MARK: Exisiting user.
         if currentUser != nil {
-            self.view.isUserInteractionEnabled = false // Prevent navigation.
             let email: String = currentUser!.email ?? ""
             let db = Firestore.firestore()
             var partialProfileExisits: Bool = true
@@ -36,8 +35,6 @@ class RootViewController: UIViewController, FUIAuthDelegate {
                 if !(partialProfileExisits) {
                     Navigation.changeRootViewControllerToFeature()
                 }
-                
-                self.view.isUserInteractionEnabled = true // Enable navigation.
             }
         }
     }
