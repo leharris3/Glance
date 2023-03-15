@@ -22,6 +22,7 @@
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
 		2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */; };
+		2DBD210F29C1283900E233EF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD210E29C1283900E233EF /* Profile.swift */; };
 		2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */; };
 		2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */; };
 		2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BF29AA7EAA00BB5599 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmEmailViewController.swift; sourceTree = "<group>"; };
 		2DB5C2C429AFB43600F89AA7 /* Research-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Research-App.entitlements"; sourceTree = "<group>"; };
+		2DBD210E29C1283900E233EF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2DC280B829AA7EAA00BB5599 /* Research-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Research-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		2DC280DC29AAB78B00BB5599 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				2DBD210E29C1283900E233EF /* Profile.swift */,
 				2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */,
 			);
 			path = Feature;
@@ -373,6 +376,7 @@
 			files = (
 				2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */,
 				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
+				2DBD210F29C1283900E233EF /* Profile.swift in Sources */,
 				2DCE0C5B29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift in Sources */,
 				2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */,
 				2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */,

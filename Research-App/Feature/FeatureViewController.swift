@@ -15,9 +15,16 @@ class FeatureViewController: UIViewController {
     // All profiles viewed in a session.
     private var seenProfiles: [String] = []
     
-    // Container
+    private var loadedProfiles: [String] = []
+    
+    // Images assoicated w/ a profile.
+    private var topProfilesImages: [UIImage] = []
+    private var bottomProfileImages: [UIImage] = []
+    
+    // Container.
     @IBOutlet weak var contentView: UIView!
     
+    // Profiles.
     @IBOutlet weak var topProfile: UIView!
     @IBOutlet weak var bottomProfile: UIView!
     
@@ -39,22 +46,25 @@ class FeatureViewController: UIViewController {
     var deltaX: CGFloat = 0.0
     var deltaY: CGFloat = 0.0
     
-    var timeConstant: CGFloat = 1.0
-    
     var screenWidth: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set generic profileBounds.
+        profileBounds = topProfile.bounds
+        
         // Load new profiles
-//        topProfile = loadNewProfileView()
-//        bottomProfile = loadNewProfileView()
+        loadNewProfileView(view: topProfile)
+        loadNewProfileView(view: bottomProfile)
+        
+        bottomProfile.isUserInteractionEnabled = false
         
         topProfile.layer.cornerRadius = 30
         bottomProfile.layer.cornerRadius = 30
         
         // Set max height and width.
-        maxHeight = topProfile.frame.origin.y + 40
+        maxHeight = topProfile.frame.origin.y + 30
         minHeight = topProfile.frame.origin.y - 20
         
         maxWidth = topProfile.frame.midX + 100.00
@@ -64,15 +74,17 @@ class FeatureViewController: UIViewController {
         startingX = topProfile.frame.origin.x
         startingY = topProfile.frame.origin.y
         
-        // Set generic profileBounds.
-        profileBounds = topProfile.bounds
-        
         // Total screen width.
         screenWidth = view.bounds.width
     }
     
-    private func loadNewProfileView() -> UIView {
-        return UIView(frame: view.bounds)
+    private func importProfileBatch() {
+        
+    }
+    
+    private func loadNewProfileView(view: UIView) {
+        let colors: [UIColor] = [.systemBlue, .systemRed, .systemPink, .systemRed, .systemMint]
+        view.backgroundColor = colors.randomElement()
     }
     
     func setOrigin(x: CGFloat, y: CGFloat) {
@@ -94,16 +106,14 @@ class FeatureViewController: UIViewController {
     
     // Swap top and bottom profiles, load a new profile.
     func swapProfiles () {
-        topProfile = bottomProfile
-        bottomProfile = loadNewProfileView()
-        self.viewDidLayoutSubviews()
+        topProfile.backgroundColor = bottomProfile.backgroundColor
+        loadNewProfileView(view: bottomProfile)
     }
 }
 
 extension FeatureViewController {
 
     // TODO: double tap recognizer
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard let touch = touches.first else {
@@ -172,37 +182,42 @@ extension FeatureViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let velocityX: CGFloat = deltaX / timeConstant
-        let velocityY: CGFloat = deltaY / timeConstant
+        // Calculate velocity of swipe.
+        let velocityX: CGFloat = deltaX
+        let velocityY: CGFloat = deltaY
         let directionIndependentVelocity: CGFloat = hypot(velocityX, velocityY)
         
         let distanceToMaxEdge = self.topProfile.bounds.maxX
         let distanceToMinEdge = self.maxWidth - self.topProfile.bounds.minX
         
-        print(velocityX)
-        print(velocityY)
-        print(directionIndependentVelocity)
+        // print(directionIndependentVelocity)
 
         // MARK: Dismiss
         if (topProfile.frame.midX < minWidth || topProfile.frame.midX > maxWidth) {
             
             if (directionIndependentVelocity > 2.5) {
-                print("Swipe out")
+                // print("Swipe out")
                 
-                // Swipe out left / rigjt
+                // Swipe out left / right
                 if (velocityX < 0) {
                     // Swipe right
-                    UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
+                    UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x -= distanceToMaxEdge
+                    }, completion: {(finished: Bool) in
+                        self.swapProfiles()
+                        self.topProfile.frame.origin.x = self.startingX
+                        self.topProfile.frame.origin.y = self.startingY
                     })
                 }
                 else {
-                    UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
+                    UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x += distanceToMinEdge
+                    }, completion: {(finished: Bool) in
+                        self.swapProfiles()
+                        self.topProfile.frame.origin.x = self.startingX
+                        self.topProfile.frame.origin.y = self.startingY
                     })
                 }
-                
-                swapProfiles()
             }
             else {
                 returnToCenter()
