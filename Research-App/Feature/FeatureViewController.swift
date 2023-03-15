@@ -28,6 +28,9 @@ class FeatureViewController: UIViewController {
     @IBOutlet weak var topProfile: UIView!
     @IBOutlet weak var bottomProfile: UIView!
     
+    // Bio scroll view.
+    @IBOutlet weak var bioScrollView: UIScrollView!
+    
     // Starting constants.
     var profileBounds: CGRect? = nil
     
@@ -63,6 +66,7 @@ class FeatureViewController: UIViewController {
         
         topProfile.layer.cornerRadius = 30
         bottomProfile.layer.cornerRadius = 30
+        // bioScrollView.layer.cornerRadius = 30
         
         // Set max height and width.
         maxHeight = topProfile.frame.origin.y + 30
@@ -79,6 +83,7 @@ class FeatureViewController: UIViewController {
         screenWidth = view.bounds.width
     }
     
+    // TODO: Profile object creation, batch loading, dynamic profile generation.
     private func importProfileBatch() {
         
     }
@@ -114,7 +119,6 @@ class FeatureViewController: UIViewController {
 
 extension FeatureViewController {
 
-    // TODO: double tap recognizer
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard let touch = touches.first else {
@@ -182,6 +186,18 @@ extension FeatureViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // TODO: Single Tap Gesture Recognizer
+            // Change picture.
+            // If a touch begins and ends on the same coordinate, it is considered a tap.
+        
+        // TODO: Double Tap Gesture Recognizer
+            // Like animation and prompt.
+            // On touch begins,
+        
+        // TODO: Bio popup on swipe up.
+        
+        // TODO: Bio close on close button.
         
         // Calculate velocity of swipe.
         let velocityX: CGFloat = deltaX
