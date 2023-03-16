@@ -140,7 +140,7 @@ class FeatureViewController: UIViewController {
     // Show description.
     @IBAction func showMorePressed(_ sender: Any) {
         print("pressed")
-        profileDescriptionScrollView.isUserInteractionEnabled = false
+        topProfile.isUserInteractionEnabled = false
         profileDescriptionScrollView.removeConstraint(scrollViewHeightInvisible!)
         profileDescriptionScrollView.addConstraint(scrollViewHeightVisable!)
         UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
