@@ -11,6 +11,8 @@ import FirebaseCore
 import FirebaseFirestore
 
 class RootViewController: UIViewController, FUIAuthDelegate {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
