@@ -24,6 +24,8 @@ class FeatureViewController: UIViewController {
     
     private var isDragging: Bool = false
     
+    private var swipingIsEnabled: Bool = true
+    
     // All profiles viewed in a session.
     private var seenProfiles: [String] = []
     
@@ -102,6 +104,10 @@ class FeatureViewController: UIViewController {
         
         // Total screen width.
         screenWidth = view.bounds.width
+        
+        // Set a thin border
+        profileDescriptionScrollView.layer.borderWidth = 1
+        profileDescriptionScrollView.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     // TODO: Profile object creation, batch loading, dynamic profile generation.
@@ -125,7 +131,7 @@ class FeatureViewController: UIViewController {
         let distanceX: CGFloat = CGFloat(startingX) - topProfile.frame.origin.x
         let distanceY: CGFloat = CGFloat(startingY) - topProfile.frame.origin.y
         
-        UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.0, animations: {
             self.topProfile.frame.origin.x = CGFloat(self.startingX)
             self.topProfile.frame.origin.y = CGFloat(self.startingY)
         })
@@ -139,11 +145,11 @@ class FeatureViewController: UIViewController {
     
     // Show description.
     @IBAction func showMorePressed(_ sender: Any) {
-        print("pressed")
+        swipingIsEnabled = false
         topProfile.isUserInteractionEnabled = false
         profileDescriptionScrollView.removeConstraint(scrollViewHeightInvisible!)
         profileDescriptionScrollView.addConstraint(scrollViewHeightVisable!)
-        UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.0, animations: {
             self.view.layoutIfNeeded()
         })
     }
@@ -158,6 +164,8 @@ extension NSLayoutConstraint {
 extension FeatureViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if !(swipingIsEnabled) {return}
         
         guard let touch = touches.first else {
             return
@@ -176,6 +184,8 @@ extension FeatureViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if !(swipingIsEnabled) {return}
         
         // Prev coords.
         let prevX = topProfile.frame.origin.x
@@ -225,6 +235,8 @@ extension FeatureViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        if !(swipingIsEnabled) {return}
+        
         // TODO: Single Tap Gesture Recognizer
             // Change picture.
             // If a touch begins and ends on the same coordinate, it is considered a tap.
@@ -256,7 +268,7 @@ extension FeatureViewController {
                 // Swipe out left / right
                 if (velocityX < 0) {
                     // Swipe right
-                    UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+                    UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x -= distanceToMaxEdge
                     }, completion: {(finished: Bool) in
                         self.swapProfiles()
@@ -265,7 +277,7 @@ extension FeatureViewController {
                     })
                 }
                 else {
-                    UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+                    UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x += distanceToMinEdge
                     }, completion: {(finished: Bool) in
                         self.swapProfiles()

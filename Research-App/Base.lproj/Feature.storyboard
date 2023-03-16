@@ -45,7 +45,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
+                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQD-zc-myP" userLabel="content">
                                 <rect key="frame" x="0.0" y="91" width="428" height="801"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtB-0u-Srh" userLabel="bottomProfile">
@@ -222,7 +222,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="4yV-66-fU1"/>
                                     </scrollView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-kK-oUZ">
-                                        <rect key="frame" x="30" y="751" width="368" height="50"/>
+                                        <rect key="frame" x="0.0" y="751" width="428" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="jd8-i2-xRC"/>
@@ -246,7 +246,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="HDI-kK-oUZ" firstAttribute="trailing" secondItem="VQD-zc-myP" secondAttribute="trailing" constant="-30" id="1Kw-Z7-5up"/>
+                                    <constraint firstItem="HDI-kK-oUZ" firstAttribute="trailing" secondItem="VQD-zc-myP" secondAttribute="trailing" id="1Kw-Z7-5up"/>
                                     <constraint firstItem="2dQ-3B-zlR" firstAttribute="top" secondItem="VQD-zc-myP" secondAttribute="top" constant="10" id="5wZ-PL-kq2"/>
                                     <constraint firstItem="2dQ-3B-zlR" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" constant="30" id="AjS-q4-VYq"/>
                                     <constraint firstItem="RWM-Jv-hoJ" firstAttribute="bottom" secondItem="HDI-kK-oUZ" secondAttribute="top" id="EE1-Ds-bnF"/>
@@ -259,7 +259,7 @@
                                     <constraint firstItem="FtB-0u-Srh" firstAttribute="top" secondItem="VQD-zc-myP" secondAttribute="top" constant="10" id="cz1-wz-2p1"/>
                                     <constraint firstItem="RWM-Jv-hoJ" firstAttribute="leading" secondItem="2dQ-3B-zlR" secondAttribute="leading" id="feX-Q6-RIO"/>
                                     <constraint firstItem="HDI-kK-oUZ" firstAttribute="bottom" secondItem="VQD-zc-myP" secondAttribute="bottom" id="hHh-t3-qsy"/>
-                                    <constraint firstItem="HDI-kK-oUZ" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" constant="30" id="uOp-Vf-UbV"/>
+                                    <constraint firstItem="HDI-kK-oUZ" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" id="uOp-Vf-UbV"/>
                                 </constraints>
                             </view>
                         </subviews>
