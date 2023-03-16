@@ -21,8 +21,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="40"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="1" vertical="1"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -72,7 +74,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
-                                                    <imageReference key="image" image="info.circle.fill" catalog="system" symbolScale="default"/>
+                                                    <imageReference key="image" image="info" catalog="system" symbolScale="default"/>
                                                     <backgroundConfiguration key="background">
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,11 +87,25 @@
                                                     <action selector="showMorePressed:" destination="eB1-7c-QKg" eventType="touchUpInside" id="ani-LA-Wc1"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gou-Uu-n6x" userLabel="hideDescription">
+                                                <rect key="frame" x="154.66666666666666" y="537.33333333333337" width="58.666666666666657" height="43.666666666666629"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="arrow.turn.right.down" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" weight="black"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="hideDescriptionPressed:" destination="eB1-7c-QKg" eventType="touchUpInside" id="q36-qz-vCn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="gou-Uu-n6x" firstAttribute="centerX" secondItem="2dQ-3B-zlR" secondAttribute="centerX" id="EQq-ga-Ws3"/>
                                             <constraint firstAttribute="trailing" secondItem="CuK-sV-w6z" secondAttribute="trailing" constant="15" id="M5c-aX-ZIZ"/>
                                             <constraint firstAttribute="bottom" secondItem="CuK-sV-w6z" secondAttribute="bottom" constant="45" id="nMe-eQ-AaO"/>
+                                            <constraint firstAttribute="bottom" secondItem="gou-Uu-n6x" secondAttribute="bottom" constant="40" id="y6n-cQ-cl4"/>
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="RWM-Jv-hoJ" userLabel="scrollView">
@@ -138,10 +154,10 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zs0-cf-aa7" userLabel="interests">
                                                                 <rect key="frame" x="0.0" y="40" width="368" height="30"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interests:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boR-ZE-rXh">
-                                                                        <rect key="frame" x="5" y="0.0" width="80" height="24"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boR-ZE-rXh">
+                                                                        <rect key="frame" x="5" y="0.0" width="50" height="24"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="80" id="ePD-bu-FfZ"/>
+                                                                            <constraint firstAttribute="width" constant="50" id="ePD-bu-FfZ"/>
                                                                             <constraint firstAttribute="height" constant="24" id="sYo-Cl-6gE"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="20"/>
@@ -149,12 +165,12 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swiming • Biking • Fitness" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-5D-4yi">
-                                                                        <rect key="frame" x="90" y="3.6666666666666288" width="198" height="20.333333333333332"/>
+                                                                        <rect key="frame" x="60" y="3.6666666666666288" width="198" height="20.333333333333332"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20.329999999999998" id="n3Y-tt-oOl"/>
                                                                             <constraint firstAttribute="width" constant="198" id="rXj-Wj-YvC"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -194,10 +210,6 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="ItF-gs-ykd" secondAttribute="trailing" constant="5" id="7wb-l4-yS5"/>
-                                                            <constraint firstItem="ItF-gs-ykd" firstAttribute="leading" secondItem="7FH-aa-tbt" secondAttribute="leading" constant="5" id="sDG-kd-w1M"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -221,14 +233,14 @@
                                         <viewLayoutGuide key="contentLayoutGuide" id="NBq-Ts-1Mo"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="4yV-66-fU1"/>
                                     </scrollView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-kK-oUZ">
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HDI-kK-oUZ" userLabel="bottomToolbar">
                                         <rect key="frame" x="0.0" y="751" width="428" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="jd8-i2-xRC"/>
                                         </constraints>
                                         <items>
-                                            <barButtonItem title="Item" id="prX-I7-Dxo">
+                                            <barButtonItem title="Item" id="prX-I7-Dxo" userLabel="Profile">
                                                 <imageReference key="image" image="person" catalog="system" symbolScale="large"/>
                                                 <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
@@ -236,9 +248,12 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="hq8-ae-bzp"/>
-                                            <barButtonItem id="UTB-KY-8d4">
+                                            <barButtonItem id="UTB-KY-8d4" userLabel="Messages">
                                                 <imageReference key="image" image="message.badge" catalog="system" symbolScale="large"/>
                                                 <color key="tintColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <segue destination="d1u-oN-i10" kind="show" id="WF5-zk-yxk"/>
+                                                </connections>
                                             </barButtonItem>
                                         </items>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -278,6 +293,7 @@
                         <outlet property="bioScrollView" destination="RWM-Jv-hoJ" id="ANv-oR-Rnk"/>
                         <outlet property="bottomProfile" destination="FtB-0u-Srh" id="RQt-wO-Jq6"/>
                         <outlet property="contentView" destination="VQD-zc-myP" id="56U-Wz-eVn"/>
+                        <outlet property="hideDescriptionButton" destination="gou-Uu-n6x" id="JoI-JX-PBs"/>
                         <outlet property="profileDescriptionHeightConstraint" destination="IB0-tl-eei" id="RRd-EM-etp"/>
                         <outlet property="profileDescriptionScrollView" destination="RWM-Jv-hoJ" id="KcR-n6-NP4"/>
                         <outlet property="showMoreButton" destination="CuK-sV-w6z" id="K62-A7-oSD"/>
@@ -466,7 +482,8 @@
     </scenes>
     <resources>
         <image name="Image" width="3000" height="2165"/>
-        <image name="info.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="arrow.turn.right.down" catalog="system" width="120" height="128"/>
+        <image name="info" catalog="system" width="93" height="128"/>
         <image name="message.badge" catalog="system" width="128" height="116"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">

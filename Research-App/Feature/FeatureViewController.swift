@@ -22,8 +22,13 @@ class FeatureViewController: UIViewController {
     // Show more button.
     @IBOutlet weak var showMoreButton: UIButton!
     
+    // Hide description.
+    @IBOutlet weak var hideDescriptionButton: UIButton!
+    
+    // Touch handling.
     private var isDragging: Bool = false
     
+    // Profile swiping disabled on description display.\
     private var swipingIsEnabled: Bool = true
     
     // All profiles viewed in a session.
@@ -108,6 +113,10 @@ class FeatureViewController: UIViewController {
         // Set a thin border
         profileDescriptionScrollView.layer.borderWidth = 1
         profileDescriptionScrollView.layer.borderColor = UIColor.darkGray.cgColor
+        
+        // Hide description disabled by default.
+        hideDescriptionButton.alpha = 0.0
+        hideDescriptionButton.isUserInteractionEnabled = false
     }
     
     // TODO: Profile object creation, batch loading, dynamic profile generation.
@@ -146,13 +155,32 @@ class FeatureViewController: UIViewController {
     // Show description.
     @IBAction func showMorePressed(_ sender: Any) {
         swipingIsEnabled = false
-        topProfile.isUserInteractionEnabled = false
         profileDescriptionScrollView.removeConstraint(scrollViewHeightInvisible!)
         profileDescriptionScrollView.addConstraint(scrollViewHeightVisable!)
-        UIView.animate(withDuration: 0.1, delay: 0.0, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
             self.view.layoutIfNeeded()
+            self.showMoreButton.alpha = 0.0
+            self.showMoreButton.isUserInteractionEnabled = false
+            self.hideDescriptionButton.alpha = 1.0
+            self.hideDescriptionButton.isUserInteractionEnabled = true
         })
     }
+    
+    // Hide description.
+    @IBAction func hideDescriptionPressed(_ sender: Any) {
+        print("pressed")
+        swipingIsEnabled = true
+        profileDescriptionScrollView.removeConstraint(scrollViewHeightVisable!)
+        profileDescriptionScrollView.addConstraint(scrollViewHeightInvisible!)
+        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
+            self.view.layoutIfNeeded()
+            self.showMoreButton.alpha = 1.0
+            self.showMoreButton.isUserInteractionEnabled = true
+            self.hideDescriptionButton.alpha = 0.0
+            self.hideDescriptionButton.isUserInteractionEnabled = false
+        })
+    }
+    
 }
 
 extension NSLayoutConstraint {
