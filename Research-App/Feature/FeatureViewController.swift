@@ -10,6 +10,18 @@ import SwiftUI
 
 class FeatureViewController: UIViewController {
 
+    // Scroll profile description.
+    @IBOutlet weak var profileDescriptionScrollView: UIScrollView!
+    
+    // Height of profile description scroll view.
+    @IBOutlet weak var profileDescriptionHeightConstraint: NSLayoutConstraint!
+    
+    private var scrollViewHeightVisable: NSLayoutConstraint? = nil
+    private var scrollViewHeightInvisible: NSLayoutConstraint? = nil
+    
+    // Show more button.
+    @IBOutlet weak var showMoreButton: UIButton!
+    
     private var isDragging: Bool = false
     
     // All profiles viewed in a session.
@@ -53,6 +65,15 @@ class FeatureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initalize constraints.
+        scrollViewHeightVisable = profileDescriptionHeightConstraint
+        scrollViewHeightInvisible = profileDescriptionHeightConstraint.constraintWithMultiplier(0.0)
+        
+        // Set var to inital value.
+        profileDescriptionScrollView.removeConstraint(profileDescriptionHeightConstraint!)
+        profileDescriptionScrollView.addConstraint(scrollViewHeightInvisible!)
+        view.layoutIfNeeded()
         
         // Set generic profileBounds.
         profileBounds = topProfile.bounds
@@ -114,6 +135,23 @@ class FeatureViewController: UIViewController {
     func swapProfiles () {
         topProfile.backgroundColor = bottomProfile.backgroundColor
         loadNewProfileView(view: bottomProfile)
+    }
+    
+    // Show description.
+    @IBAction func showMorePressed(_ sender: Any) {
+        print("pressed")
+        profileDescriptionScrollView.isUserInteractionEnabled = false
+        profileDescriptionScrollView.removeConstraint(scrollViewHeightInvisible!)
+        profileDescriptionScrollView.addConstraint(scrollViewHeightVisable!)
+        UIView.animate(withDuration: 0.25, delay: 0.0, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+}
+
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
     }
 }
 
@@ -245,3 +283,4 @@ extension FeatureViewController {
         }
     }
 }
+    

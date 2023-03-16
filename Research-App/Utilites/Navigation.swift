@@ -20,7 +20,7 @@ class Navigation: NSObject {
         
         // Animate Feature Transition
         let options: UIView.AnimationOptions = .transitionCrossDissolve
-        let duration: TimeInterval = 0.3
+        let duration: TimeInterval = 0.1
         UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {}, completion: nil)
     }
     
