@@ -52,28 +52,39 @@
                                 <rect key="frame" x="0.0" y="91" width="428" height="801"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtB-0u-Srh" userLabel="bottomProfile">
-                                        <rect key="frame" x="30" y="10" width="368" height="621"/>
+                                        <rect key="frame" x="30" y="10" width="368" height="591"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tmj-uT-maW" userLabel="currentImage">
+                                                <rect key="frame" x="0.0" y="0.0" width="368" height="591"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="tmj-uT-maW" secondAttribute="bottom" id="6m9-FL-Ykv"/>
+                                            <constraint firstAttribute="trailing" secondItem="tmj-uT-maW" secondAttribute="trailing" id="CpM-67-Y9d"/>
+                                            <constraint firstItem="tmj-uT-maW" firstAttribute="top" secondItem="FtB-0u-Srh" secondAttribute="top" id="r71-1E-uLW"/>
+                                            <constraint firstItem="tmj-uT-maW" firstAttribute="leading" secondItem="FtB-0u-Srh" secondAttribute="leading" id="tCf-W4-sE0"/>
+                                        </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
-                                        <rect key="frame" x="30" y="10" width="368" height="621"/>
+                                        <rect key="frame" x="30" y="10" width="368" height="591"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-vo-OiJ" userLabel="currentImage">
                                                 <rect key="frame" x="0.0" y="0.0" width="368" height="751"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUv-4b-cIc" userLabel="leftImageArea">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="621"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="591"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="S40-T6-RJO"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQQ-xA-Ig6" userLabel="rightImageArea">
-                                                <rect key="frame" x="338" y="0.0" width="30" height="621"/>
+                                                <rect key="frame" x="338" y="0.0" width="30" height="591"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="MGE-zk-gDO"/>
@@ -118,7 +129,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gou-Uu-n6x" userLabel="hideDescription">
-                                                <rect key="frame" x="154.66666666666666" y="537.33333333333337" width="58.666666666666657" height="43.666666666666629"/>
+                                                <rect key="frame" x="154.66666666666666" y="507.33333333333343" width="58.666666666666657" height="43.666666666666686"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <imageReference key="image" image="arrow.turn.right.down" catalog="system" symbolScale="large"/>
@@ -200,7 +211,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swiming • Biking • Fitness" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-5D-4yi">
-                                                                        <rect key="frame" x="70" y="3.6666666666666288" width="293" height="20.333333333333332"/>
+                                                                        <rect key="frame" x="75" y="3.6666666666666288" width="288" height="20.333333333333332"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.329999999999998" id="dTn-Lq-CpK"/>
                                                                             <constraint firstAttribute="height" constant="20.329999999999998" id="n3Y-tt-oOl"/>
@@ -214,7 +225,7 @@
                                                                 <constraints>
                                                                     <constraint firstItem="boR-ZE-rXh" firstAttribute="leading" secondItem="Zs0-cf-aa7" secondAttribute="leading" constant="5" id="0iw-9A-87M"/>
                                                                     <constraint firstAttribute="height" constant="30" id="5hl-m1-juf"/>
-                                                                    <constraint firstItem="EJy-5D-4yi" firstAttribute="leading" secondItem="boR-ZE-rXh" secondAttribute="trailing" constant="5" id="Wbk-rU-h8e"/>
+                                                                    <constraint firstItem="EJy-5D-4yi" firstAttribute="leading" secondItem="boR-ZE-rXh" secondAttribute="trailing" constant="10" id="Wbk-rU-h8e"/>
                                                                     <constraint firstItem="boR-ZE-rXh" firstAttribute="bottom" secondItem="EJy-5D-4yi" secondAttribute="bottom" id="XGy-By-Fvg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="EJy-5D-4yi" secondAttribute="trailing" constant="5" id="bwn-gm-fdf"/>
                                                                     <constraint firstItem="boR-ZE-rXh" firstAttribute="top" secondItem="Zs0-cf-aa7" secondAttribute="top" id="wPf-mP-G7k"/>
@@ -325,12 +336,12 @@
                                     <constraint firstItem="2dQ-3B-zlR" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" constant="30" id="AjS-q4-VYq"/>
                                     <constraint firstItem="RWM-Jv-hoJ" firstAttribute="bottom" secondItem="HDI-kK-oUZ" secondAttribute="top" id="EE1-Ds-bnF"/>
                                     <constraint firstItem="2dQ-3B-zlR" firstAttribute="trailing" secondItem="CuK-sV-w6z" secondAttribute="trailing" constant="30" id="Eby-9M-XE2"/>
-                                    <constraint firstItem="RWM-Jv-hoJ" firstAttribute="top" secondItem="2dQ-3B-zlR" secondAttribute="bottom" constant="-30" id="LZJ-rw-u0G"/>
+                                    <constraint firstItem="RWM-Jv-hoJ" firstAttribute="top" secondItem="2dQ-3B-zlR" secondAttribute="bottom" id="LZJ-rw-u0G"/>
                                     <constraint firstItem="2dQ-3B-zlR" firstAttribute="trailing" secondItem="VQD-zc-myP" secondAttribute="trailing" constant="-30" id="NSN-mh-cQa"/>
                                     <constraint firstItem="RWM-Jv-hoJ" firstAttribute="trailing" secondItem="2dQ-3B-zlR" secondAttribute="trailing" id="Qdu-gH-91d"/>
                                     <constraint firstItem="FtB-0u-Srh" firstAttribute="leading" secondItem="VQD-zc-myP" secondAttribute="leading" constant="30" id="UNy-pN-Fhh"/>
                                     <constraint firstAttribute="trailing" secondItem="FtB-0u-Srh" secondAttribute="trailing" constant="30" id="Ukp-rx-2Qh"/>
-                                    <constraint firstItem="RWM-Jv-hoJ" firstAttribute="top" secondItem="FtB-0u-Srh" secondAttribute="bottom" constant="-30" id="UsC-iu-baC"/>
+                                    <constraint firstItem="RWM-Jv-hoJ" firstAttribute="top" secondItem="FtB-0u-Srh" secondAttribute="bottom" id="UsC-iu-baC"/>
                                     <constraint firstItem="FtB-0u-Srh" firstAttribute="top" secondItem="VQD-zc-myP" secondAttribute="top" constant="10" id="cz1-wz-2p1"/>
                                     <constraint firstItem="RWM-Jv-hoJ" firstAttribute="leading" secondItem="2dQ-3B-zlR" secondAttribute="leading" id="feX-Q6-RIO"/>
                                     <constraint firstItem="HDI-kK-oUZ" firstAttribute="bottom" secondItem="VQD-zc-myP" secondAttribute="bottom" id="hHh-t3-qsy"/>

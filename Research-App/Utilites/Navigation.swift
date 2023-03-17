@@ -18,9 +18,11 @@ class Navigation: NSObject {
         // Animate Feature Transition
         let options: UIView.AnimationOptions = .transitionCrossDissolve
         let duration: TimeInterval = 0.2
-        UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
-            UIApplication.shared.windows.first?.rootViewController = navigationController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        UIView.transition(with:  UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
         }, completion: nil)
     }
     
@@ -31,9 +33,11 @@ class Navigation: NSObject {
         // Animate Feature Transition
         let options: UIView.AnimationOptions = .transitionCrossDissolve
         let duration: TimeInterval = 0.2
+        
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
         UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
-            UIApplication.shared.windows.first?.rootViewController = navigationController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
         }, completion: nil)
     }
 }

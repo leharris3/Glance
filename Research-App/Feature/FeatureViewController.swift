@@ -9,7 +9,10 @@ import UIKit
 import SwiftUI
 
 class FeatureViewController: UIViewController {
-
+    
+    // TODO: Batch profile loading.
+        // On inital load
+    
     // Scroll profile description.
     @IBOutlet weak var profileDescriptionScrollView: UIScrollView!
     
@@ -28,7 +31,7 @@ class FeatureViewController: UIViewController {
     // Touch handling.
     private var isDragging: Bool = false
     
-    // Profile swiping disabled on description display.\
+    // Profile swiping disabled on description display.
     private var swipingIsEnabled: Bool = true
     
     // All profiles viewed in a session.
@@ -72,6 +75,16 @@ class FeatureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initializeVariables()
+        loadProfileBatch()
+    }
+    
+    private func loadProfileBatch(){
+        return
+    }
+    
+    private func initializeVariables() {
         
         // Initalize constraints.
         scrollViewHeightVisable = profileDescriptionHeightConstraint
@@ -117,15 +130,11 @@ class FeatureViewController: UIViewController {
         // Hide description disabled by default.
         hideDescriptionButton.alpha = 0.0
         hideDescriptionButton.isUserInteractionEnabled = false
-    }
-    
-    // TODO: Profile object creation, batch loading, dynamic profile generation.
-    private func importProfileBatch() {
-        
+
     }
     
     private func loadNewProfileView(view: UIView) {
-        let colors: [UIColor] = [.systemBlue, .systemRed, .systemPink, .systemRed, .systemMint]
+        let colors: [UIColor] = [.systemBlue, .systemRed, .systemPink, .systemRed, .systemMint, .darkGray, .magenta]
         view.backgroundColor = colors.randomElement()
     }
     
@@ -140,7 +149,7 @@ class FeatureViewController: UIViewController {
         let distanceX: CGFloat = CGFloat(startingX) - topProfile.frame.origin.x
         let distanceY: CGFloat = CGFloat(startingY) - topProfile.frame.origin.y
         
-        UIView.animate(withDuration: 0.1, delay: 0.0, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
             self.topProfile.frame.origin.x = CGFloat(self.startingX)
             self.topProfile.frame.origin.y = CGFloat(self.startingY)
         })

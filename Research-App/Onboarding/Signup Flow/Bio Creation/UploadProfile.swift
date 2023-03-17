@@ -26,21 +26,59 @@ class UploadProfile: NSObject {
         let preference: String = GlobalConstants.user.preference
         let interests: [String] = GlobalConstants.user.interests
         let matches: [String] = []
+        let seenProfiles: [String] = []
         
-        // Upload first name.
-        db.collection("users").document(email).setData(["first_name": firstName], merge: true)
-        // Upload dOB.
-        db.collection("users").document(email).setData(["dob": dob], merge: true)
-        // Upload age.
-        db.collection("users").document(email).setData(["age": age], merge: true)
-        // Upload sex.
-        db.collection("users").document(email).setData(["sex": sex], merge: true)
-        // Upload preference.
-        db.collection("users").document(email).setData(["preference": preference], merge: true)
-        // Upload interests.
-        db.collection("users").document(email).setData(["interests": interests], merge: true)
-        // Matches
-        db.collection("users").document(email).setData(["matches": matches], merge: true)
+        let profileDictionary: [String: Any] = [
+            "email": email,
+            "first_name": firstName,
+            "dob": dob,
+            "age": age,
+            "sex": sex,
+            "preference": preference,
+            "interests": interests,
+            "matches": matches,
+            "seen_profiles": seenProfiles
+        ]
+        
+        // Upload profile.
+        db.collection("users").document("user-profiles").setData([email: profileDictionary], merge: true)
+        
+        var tempArray: [Any] = []
+        
+        let ref = db.collection("users").document("user-lists")
+        ref.getDocument { (document, error) in
+            if (error != nil) { return }
+            if ((document?.exists) != nil) {
+                if (sex == "M"){
+                    // Add male user to user pool.
+                    tempArray = document!.get("male-users") as! [Any]
+                    tempArray.append(email)
+                    db.collection("users").document("user-lists").setData(["male-users": tempArray], merge: true)
+                }
+                else if (sex == "W"){
+                    // Add female user to user pool.
+                    tempArray = document!.get("female-users") as! [Any]
+                    tempArray.append(email)
+                    db.collection("users").document("user-lists").setData(["female-users": tempArray], merge: true)
+                }
+                else {
+                    // Non-binary user added to both pools.
+                    tempArray = document!.get("male-users") as! [Any]
+                    tempArray.append(email)
+                    db.collection("users").document("user-lists").setData(["male-users": tempArray], merge: true)
+                    
+                    tempArray = document!.get("female-users") as! [Any]
+                    tempArray.append(email)
+                    db.collection("users").document("user-lists").setData(["female-users": tempArray], merge: true)
+                }   
+                
+                // Add new profile to all users pool.
+                tempArray = document!.get("all-users") as! [Any]
+                tempArray.append(email)
+                db.collection("users").document("user-lists").setData(["all-users": tempArray], merge: true)
+            }
+            else { return }
+        }
         
         // Empty photo list 
         if (photos.count == 0){ return false}

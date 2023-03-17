@@ -19,6 +19,7 @@ class UserCard: NSObject {
     var age: Int = 99
     var interests: [String] = []
     var profilePhotos: [Data] = []
+    var seenProfiles: [String] = []
     
     // Profile Completion.
     var bio: String? = ""

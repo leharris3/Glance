@@ -17,12 +17,12 @@
 		2D28E88D29AD853100E78556 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28E88C29AD853100E78556 /* SettingsViewController.swift */; };
 		2D2AF29529BE227A008B7509 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2AF29429BE227A008B7509 /* Navigation.swift */; };
 		2D2AF29729BE2CC3008B7509 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2AF29629BE2CC3008B7509 /* Authentication.swift */; };
+		2D4B3F1329C4C64F008DED0B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B3F1229C4C64F008DED0B /* Profile.swift */; };
 		2D58F43629B92AF900704467 /* SignupBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58F43529B92AF900704467 /* SignupBirthdayViewController.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
 		2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */; };
-		2DBD210F29C1283900E233EF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD210E29C1283900E233EF /* Profile.swift */; };
 		2DC280BC29AA7EAA00BB5599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */; };
 		2DC280BE29AA7EAA00BB5599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */; };
 		2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC280BF29AA7EAA00BB5599 /* ViewController.swift */; };
@@ -59,13 +59,13 @@
 		2D28E88C29AD853100E78556 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2D2AF29429BE227A008B7509 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		2D2AF29629BE2CC3008B7509 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		2D4B3F1229C4C64F008DED0B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2D58F43529B92AF900704467 /* SignupBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupBirthdayViewController.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		2DAA13BD29B54878001BC1CB /* SignupConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmEmailViewController.swift; sourceTree = "<group>"; };
 		2DB5C2C429AFB43600F89AA7 /* Research-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Research-App.entitlements"; sourceTree = "<group>"; };
-		2DBD210E29C1283900E233EF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2DC280B829AA7EAA00BB5599 /* Research-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Research-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DC280BB29AA7EAA00BB5599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DC280BD29AA7EAA00BB5599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,8 +229,8 @@
 		2DC280DB29AAB77100BB5599 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				2D28E88829AD829000E78556 /* GlobalConstants.swift */,
 				2DF594E629B7FA4C004B7727 /* UserCard.swift */,
+				2D28E88829AD829000E78556 /* GlobalConstants.swift */,
 				2DC5EC7329ABC4600024B245 /* Signup Flow */,
 				2DC280D929AA9D1700BB5599 /* LoginViewController.swift */,
 			);
@@ -240,8 +240,8 @@
 		2DC280DC29AAB78B00BB5599 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				2DBD210E29C1283900E233EF /* Profile.swift */,
 				2DC280DD29AAB7BD00BB5599 /* FeatureViewController.swift */,
+				2D4B3F1229C4C64F008DED0B /* Profile.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			files = (
 				2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */,
 				2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */,
-				2DBD210F29C1283900E233EF /* Profile.swift in Sources */,
+				2D4B3F1329C4C64F008DED0B /* Profile.swift in Sources */,
 				2DCE0C5B29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift in Sources */,
 				2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */,
 				2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */,
