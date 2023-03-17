@@ -10,11 +10,13 @@ import UIKit
 class UserCard: NSObject {
     
     // Onboarding.
-    var firstName: String? = ""
     var dateOfBirth: Date? = nil
-    var age: Int = 99
     var sex = ""
     var preference = ""
+    
+    // Bio
+    var firstName: String? = ""
+    var age: Int = 99
     var interests: [String] = []
     var profilePhotos: [Data] = []
     
