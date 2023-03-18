@@ -19,25 +19,26 @@ class Navigation: NSObject {
         let options: UIView.AnimationOptions = .transitionCrossDissolve
         let duration: TimeInterval = 0.2
         
-        UIApplication.shared.windows.first?.rootViewController = navigationController
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        
-        UIView.transition(with:  UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
+        UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
+            UIApplication.shared.windows.first?.rootViewController = navigationController
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
         }, completion: nil)
     }
     
     // MARK: Any -> Feature.
     static func changeRootViewControllerToFeature() {
         let navigationController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
+        let feature = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController")
+
         
         // Animate Feature Transition
-        let options: UIView.AnimationOptions = .transitionCrossDissolve
-        let duration: TimeInterval = 0.2
-        
-        UIApplication.shared.windows.first?.rootViewController = navigationController
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        let options: UIView.AnimationOptions = .curveEaseInOut
+            let duration: TimeInterval = 0.2
         
         UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
+            UIApplication.shared.windows.first?.rootViewController = navigationController
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            navigationController.pushViewController(feature, animated: true)
         }, completion: nil)
     }
 }

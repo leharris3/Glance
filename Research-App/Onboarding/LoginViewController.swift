@@ -78,29 +78,27 @@ class LoginViewController: UIViewController {
                 
                 // Create a reference to user-profile.
                 let db = Firestore.firestore()
-                let ref = db.collection("users").document(email)
+                let ref = db.collection("users").document("user-profiles")
                 
                 ref.getDocument { (document, error) in
                     if (error != nil) { return }
                     if let document = document, document.exists {
-                        partialProfileExisits = false
-                    }
-                    // MARK: Login -> Feature [Success].
-                    if (!partialProfileExisits) {
-                        Navigation.changeRootViewControllerToFeature()
+                        if (((document.data()?.contains(where: {$0.key == email}))) != nil) {
+                            Navigation.changeRootViewControllerToFeature()
+                        }
+                        else {
+                            // MARK: Continue onboarding.
+                            GlobalConstants.email = email
+                            Navigation.changeRootViewControllerToWelcome()
+                        }
                     }
                     else {
-                        // MARK: Continue onboarding.
-                        GlobalConstants.email = email
-                        Navigation.changeRootViewControllerToWelcome()
+                        self!.forgotPasswordButton.alpha = 1
+                        self!.forgotPasswordButton.isEnabled = true
+                        UIView.animate(withDuration: 0.3) {
+                            self!.view.layoutIfNeeded()
+                        }
                     }
-                }
-            }
-            else {
-                self!.forgotPasswordButton.alpha = 1
-                self!.forgotPasswordButton.isEnabled = true
-                UIView.animate(withDuration: 0.3) {
-                    self!.view.layoutIfNeeded()
                 }
             }
         }

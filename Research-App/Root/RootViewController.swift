@@ -12,8 +12,6 @@ import FirebaseFirestore
 
 class RootViewController: UIViewController, FUIAuthDelegate {
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,15 +24,10 @@ class RootViewController: UIViewController, FUIAuthDelegate {
             var partialProfileExisits: Bool = true
             
             // Create a reference to user-profile.
-            let ref = db.collection("users").document(email)
+            let ref = db.collection("users").document("user-profiles")
             ref.getDocument { (document, error) in
                 if (error != nil) { return }
-                if let document = document, document.exists {
-                    partialProfileExisits = false
-                }
-                
-                // MARK: Authentication success, exisiting complete profile.
-                if !(partialProfileExisits) {
+                if (((document!.data()?.contains(where: {$0.key == email}))) != nil) {
                     Navigation.changeRootViewControllerToFeature()
                 }
             }

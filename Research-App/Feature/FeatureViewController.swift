@@ -22,6 +22,10 @@ class FeatureViewController: UIViewController {
     private var scrollViewHeightVisable: NSLayoutConstraint? = nil
     private var scrollViewHeightInvisible: NSLayoutConstraint? = nil
     
+    @IBOutlet weak var leftImageArea: UIView!
+    @IBOutlet weak var draggableArea: UIView!
+    @IBOutlet weak var rightImageArea: UIView!
+    
     // Show more button.
     @IBOutlet weak var showMoreButton: UIButton!
     
@@ -107,7 +111,6 @@ class FeatureViewController: UIViewController {
         
         topProfile.layer.cornerRadius = 30
         bottomProfile.layer.cornerRadius = 30
-        // bioScrollView.layer.cornerRadius = 30
         
         // Set max height and width.
         maxHeight = topProfile.frame.origin.y + 30
@@ -158,7 +161,9 @@ class FeatureViewController: UIViewController {
     // Swap top and bottom profiles, load a new profile.
     func swapProfiles () {
         topProfile.backgroundColor = bottomProfile.backgroundColor
-        loadNewProfileView(view: bottomProfile)
+        UIView.animate(withDuration: 0.25, delay: 0.1, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.1, animations: {
+            //
+        })
     }
     
     // Show description.
@@ -189,7 +194,6 @@ class FeatureViewController: UIViewController {
             self.hideDescriptionButton.isUserInteractionEnabled = false
         })
     }
-    
 }
 
 extension NSLayoutConstraint {
@@ -203,12 +207,11 @@ extension FeatureViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if !(swipingIsEnabled) {return}
-        
         guard let touch = touches.first else {
             return
         }
         
-        let location = touch.location(in: topProfile)
+        let location = touch.location(in: draggableArea)
         let absoluteLocation = touch.location(in: view)
         
         // Set relative coords.
@@ -281,10 +284,6 @@ extension FeatureViewController {
         // TODO: Double Tap Gesture Recognizer
             // Like animation and prompt.
             // On touch begins,
-        
-        // TODO: Bio popup on swipe up.
-        
-        // TODO: Bio close on close button.
         
         // Calculate velocity of swipe.
         let velocityX: CGFloat = deltaX
