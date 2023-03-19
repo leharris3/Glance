@@ -7,6 +7,9 @@
 
 import UIKit
 import SwiftUI
+import FirebaseAuthUI
+import FirebaseCore
+import FirebaseFirestore
 
 class FeatureViewController: UIViewController {
     
@@ -19,9 +22,6 @@ class FeatureViewController: UIViewController {
     // Height of profile description scroll view.
     @IBOutlet weak var profileDescriptionHeightConstraint: NSLayoutConstraint!
     
-    private var scrollViewHeightVisable: NSLayoutConstraint? = nil
-    private var scrollViewHeightInvisible: NSLayoutConstraint? = nil
-    
     @IBOutlet weak var leftImageArea: UIView!
     @IBOutlet weak var draggableArea: UIView!
     @IBOutlet weak var rightImageArea: UIView!
@@ -31,21 +31,6 @@ class FeatureViewController: UIViewController {
     
     // Hide description.
     @IBOutlet weak var hideDescriptionButton: UIButton!
-    
-    // Touch handling.
-    private var isDragging: Bool = false
-    
-    // Profile swiping disabled on description display.
-    private var swipingIsEnabled: Bool = true
-    
-    // All profiles viewed in a session.
-    private var seenProfiles: [String] = []
-    
-    private var loadedProfiles: [String] = []
-    
-    // Images assoicated w/ a profile.
-    private var topProfilesImages: [UIImage] = []
-    private var bottomProfileImages: [UIImage] = []
     
     // Container.
     @IBOutlet weak var contentView: UIView!
@@ -57,7 +42,23 @@ class FeatureViewController: UIViewController {
     // Bio scroll view.
     @IBOutlet weak var bioScrollView: UIScrollView!
     
-    // Starting constants.
+    // Bio is / is not visible.
+    private var scrollViewHeightVisable: NSLayoutConstraint? = nil
+    private var scrollViewHeightInvisible: NSLayoutConstraint? = nil
+    
+    // Var to enable/disable dragging animations of top profile view..
+    private var isDragging: Bool = false
+    
+    // Profile swiping disabled on description display.
+    private var swipingIsEnabled: Bool = true
+    
+    // All profiles viewed in a session.
+    private var seenProfiles: [String] = []
+    
+    // Images assoicated w/ a profile.
+    private var topProfilesImages: [UIImage] = []
+    
+    // Profile animation constants.
     var profileBounds: CGRect? = nil
     
     var startingX: CGFloat = 0.0
@@ -80,31 +81,50 @@ class FeatureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initializeVariables()
+        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
+            self.initializeVariables()
+        })
+        
         loadProfileBatch()
     }
     
+    // Load a new batch of profiles from database.
     private func loadProfileBatch(){
-        return
+        
+        let currentUser = Auth.auth().currentUser
+        if (currentUser == nil) {return} // Error.
+        let email = currentUser!.email!
+        var currentUserProfile: (Any)? = nil
+        
+        // Create a reference to user-profile.
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document("user-profiles")
+        
+        // Get current user profile.
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                currentUserProfile = document.data()![email]
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
     
+    // Initalize vars and constants.
     private func initializeVariables() {
         
-        // Initalize constraints.
+        // Initalize bio height constraints.
         scrollViewHeightVisable = profileDescriptionHeightConstraint
         scrollViewHeightInvisible = profileDescriptionHeightConstraint.constraintWithMultiplier(0.0)
         
-        // Set var to inital value.
+        // Set bio to a default height of "invisible".
         profileDescriptionScrollView.removeConstraint(profileDescriptionHeightConstraint!)
         profileDescriptionScrollView.addConstraint(scrollViewHeightInvisible!)
         view.layoutIfNeeded()
         
-        // Set generic profileBounds.
+        // Initalize a var equal to default bounds of the visible profile.
         profileBounds = topProfile.bounds
-        
-        // Load new profiles
-        loadNewProfileView(view: topProfile)
-        loadNewProfileView(view: bottomProfile)
         
         // Interaction w/ bottom profile disabled by default.
         bottomProfile.isUserInteractionEnabled = false
@@ -112,37 +132,46 @@ class FeatureViewController: UIViewController {
         topProfile.layer.cornerRadius = 30
         bottomProfile.layer.cornerRadius = 30
         
-        // Set max height and width.
+        // Set max height and width of visible profile view.
         maxHeight = topProfile.frame.origin.y + 30
         minHeight = topProfile.frame.origin.y - 20
         
         maxWidth = topProfile.frame.midX + 100.00
         minWidth = topProfile.frame.midX - 100.00
         
-        // Set starting coords.
+        // Set starting coords for animating profile view on user touch-drag.
         startingX = topProfile.frame.origin.x
         startingY = topProfile.frame.origin.y
         
-        // Total screen width.
+        // Initalize a var equal to total screen width.
         screenWidth = view.bounds.width
         
-        // Set a thin border
+        // Set a thin border around buser bios/
         profileDescriptionScrollView.layer.borderWidth = 1
         profileDescriptionScrollView.layer.borderColor = UIColor.darkGray.cgColor
         
-        // Hide description disabled by default.
+        // Hide bio button is invisble and disabled by default.
         hideDescriptionButton.alpha = 0.0
         hideDescriptionButton.isUserInteractionEnabled = false
-
+        
+        // Load new profiles from batch of profiles.
+        loadNewProfileView()
     }
     
-    private func loadNewProfileView(view: UIView) {
-        let colors: [UIColor] = [.systemBlue, .systemRed, .systemPink, .systemRed, .systemMint, .darkGray, .magenta]
-        view.backgroundColor = colors.randomElement()
+    // MARK: Loads a new profile from profile batch.
+    private func loadNewProfileView() -> UIView {
+        var profile: UIView = topProfile
+        return profile
     }
     
+    // MARK: Swap top and bottom profiles, load a new profile.
+    func swapProfiles () {
+        return
+    }
+    
+    // Set origin of the visible profile view.
     func setOrigin(x: CGFloat, y: CGFloat) {
-        topProfile.frame
+        topProfile.frame.origin.x = x
         topProfile.frame.origin.y = y
     }
     
@@ -158,15 +187,7 @@ class FeatureViewController: UIViewController {
         })
     }
     
-    // Swap top and bottom profiles, load a new profile.
-    func swapProfiles () {
-        topProfile.backgroundColor = bottomProfile.backgroundColor
-        UIView.animate(withDuration: 0.25, delay: 0.1, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.1, animations: {
-            //
-        })
-    }
-    
-    // Show description.
+    // MARK: Make profile description visible with animation.
     @IBAction func showMorePressed(_ sender: Any) {
         swipingIsEnabled = false
         profileDescriptionScrollView.removeConstraint(scrollViewHeightInvisible!)
@@ -179,8 +200,8 @@ class FeatureViewController: UIViewController {
             self.hideDescriptionButton.isUserInteractionEnabled = true
         })
     }
-    
-    // Hide description.
+
+    // Hide profile description.
     @IBAction func hideDescriptionPressed(_ sender: Any) {
         print("pressed")
         swipingIsEnabled = true
@@ -202,6 +223,7 @@ extension NSLayoutConstraint {
     }
 }
 
+// TODO: Redo Navigatiomn
 extension FeatureViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -211,15 +233,26 @@ extension FeatureViewController {
             return
         }
         
-        let location = touch.location(in: draggableArea)
+        let location = touch.location(in: view)
         let absoluteLocation = touch.location(in: view)
         
         // Set relative coords.
         relativeX = absoluteLocation.x
         relativeY = absoluteLocation.y
         
+        print(location)
+        
         if (topProfile.bounds.contains(location)) {
-            isDragging = true
+            if (leftImageArea.bounds.contains(location)){
+                print("Display previous image.")
+            }
+            else if (rightImageArea.bounds.contains(location)) {
+                print("Display next image.")
+            }
+            else{
+                print("Dragging.")
+                isDragging = true
+            }
         }
     }
     
