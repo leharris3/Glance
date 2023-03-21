@@ -22,6 +22,16 @@ class FeatureViewController: UIViewController {
     // Height of profile description scroll view.
     @IBOutlet weak var profileDescriptionHeightConstraint: NSLayoutConstraint!
     
+    // Current image indicator connection.
+    @IBOutlet weak var profileCurrentImageIndicator: UIStackView!
+    
+    // Connections to current profile bio fields.
+    @IBOutlet weak var profileBioName: UIView!
+    @IBOutlet weak var profileBioAge: UILabel!
+    @IBOutlet weak var profileBioInterestsList: UILabel!
+    @IBOutlet weak var profileBioAboutMe: UILabel!
+    
+    // Navigation views of top profile.
     @IBOutlet weak var leftImageArea: UIView!
     @IBOutlet weak var draggableArea: UIView!
     @IBOutlet weak var rightImageArea: UIView!
@@ -35,8 +45,11 @@ class FeatureViewController: UIViewController {
     // Container.
     @IBOutlet weak var contentView: UIView!
     
-    // Profiles.
+    // Connections to top profile.
     @IBOutlet weak var topProfile: UIView!
+    @IBOutlet weak var topProfileCurrentImage: UIImageView!
+    
+    // Connections to bottom profile.
     @IBOutlet weak var bottomProfile: UIView!
     
     // Bio scroll view.
@@ -52,12 +65,24 @@ class FeatureViewController: UIViewController {
     // Profile swiping disabled on description display.
     private var swipingIsEnabled: Bool = true
     
-    // All profiles viewed in a session.
-    private var seenProfiles: [String] = []
+    // Flag that indicates inital profile loading has not occured, both a top and bottom profile must be loaded.
+    private var initialProfilesLoaded: Bool = false
+    
+    // Current batch of loaded profile dictionaries.
+    private var profileBatch: [Any] = []
+    
+    // Current dictionary assoictaed with loaded profile at top of profile stack.
+    private var topProfileData: [String: Any] = [:]
     
     // Images assoicated w/ a profile.
-    private var topProfilesImages: [UIImage] = []
+    private var topProfileImages: [UIImage] = []
     
+    // Current profile fields.
+    private var currentProfileData: (Any)? = nil
+    private var currentProfileEmail: String = ""
+    private var currentProfilePreference: String = ""
+    private var currentProfileSeenProfiles: [String] = []
+
     // Profile animation constants.
     var profileBounds: CGRect? = nil
     
@@ -81,34 +106,13 @@ class FeatureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIView.animate(withDuration: 0.15, delay: 0.0, animations: {
-            self.initializeVariables()
-        })
+        // Initalize vars, constants, and flags.
+        initializeVariables()
         
-        loadProfileBatch()
-    }
-    
-    // Load a new batch of profiles from database.
-    private func loadProfileBatch(){
+        loadCurrentUser()
         
-        let currentUser = Auth.auth().currentUser
-        if (currentUser == nil) {return} // Error.
-        let email = currentUser!.email!
-        var currentUserProfile: (Any)? = nil
-        
-        // Create a reference to user-profile.
-        let db = Firestore.firestore()
-        let ref = db.collection("users").document("user-profiles")
-        
-        // Get current user profile.
-        ref.getDocument { (document, error) in
-            if let document = document, document.exists {
-                currentUserProfile = document.data()![email]
-                
-            } else {
-                print("Document does not exist")
-            }
-        }
+        // Push a new profile to the top of profile stack and display.
+        pushProfile()
     }
     
     // Initalize vars and constants.
@@ -153,19 +157,86 @@ class FeatureViewController: UIViewController {
         // Hide bio button is invisble and disabled by default.
         hideDescriptionButton.alpha = 0.0
         hideDescriptionButton.isUserInteractionEnabled = false
+    }
+    
+    // Initalize vars assoicated with current user.
+    private func loadCurrentUser() {
         
-        // Load new profiles from batch of profiles.
-        loadNewProfileView()
+        let currentUser = Auth.auth().currentUser
+        if (currentUser == nil) {return} // Error.
+        currentProfileEmail = currentUser!.email!
+        var currentUserProfile: [String: Any]? = nil
+            
+        // Create a reference to user-profile.
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document("user-profiles")
+        
+        // Get current user profile.
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                currentUserProfile = document.data()![self.currentProfileEmail] as! [String : Any]
+                if (currentUser == nil) {return}
+                
+                self.currentProfileData = currentUserProfile
+                self.currentProfilePreference = currentUserProfile!["preference"] as! String
+                print(currentUserProfile)
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
     
-    // MARK: Loads a new profile from profile batch.
-    private func loadNewProfileView() -> UIView {
-        var profile: UIView = topProfile
-        return profile
+    // Load a new batch of profiles from database.
+    private func loadProfileBatch(){
+        
     }
     
-    // MARK: Swap top and bottom profiles, load a new profile.
-    func swapProfiles () {
+    // MARK: Loads a new visible, top profile from profile batch.
+    private func loadNewTopProfileView() {
+        
+        if (profileBatch.count == 0) {
+            loadProfileBatch()
+        }
+        
+        var newProfileData: [String: Any] = profileBatch.popLast() as! [String : Any]
+        loadNewImageSet(email: newProfileData["email"]! as! String)
+        loadProfileBiography(profileData: newProfileData)
+
+        let middleIndex: Int = Int(floor(Double(topProfileImages.count / 2)))
+        topProfileCurrentImage.image = topProfileImages[middleIndex]
+    }
+    
+    // Loads a new bottom profile image.
+    private func loadNewBottomProfileView() {
+        
+        if (profileBatch.count == 0) {
+            loadProfileBatch()
+        }
+        
+        // Profile data popped from top of profile stack.
+        var newProfileData: (Any) = profileBatch.last
+    }
+    
+    // Load the bio associated with a current profile at the top of the profile stack.
+    private func loadProfileBiography(profileData: [String: Any]){
+        return
+    }
+    
+    // MARK: Push bottom profile to top and load a new bottom profile.
+    private func pushProfile () {
+        
+        if (profileBatch.count == 0) {
+            loadProfileBatch()
+        }
+        
+        loadNewTopProfileView()
+        loadNewBottomProfileView()
+    }
+    
+    // Loads a new set of images assoictaed with the email of the current top profile.
+    private func loadNewImageSet(email: String) {
         return
     }
     
@@ -340,7 +411,7 @@ extension FeatureViewController {
                     UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x -= distanceToMaxEdge
                     }, completion: {(finished: Bool) in
-                        self.swapProfiles()
+                        self.pushProfile()
                         self.topProfile.frame.origin.x = self.startingX
                         self.topProfile.frame.origin.y = self.startingY
                     })
@@ -349,7 +420,7 @@ extension FeatureViewController {
                     UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x += distanceToMinEdge
                     }, completion: {(finished: Bool) in
-                        self.swapProfiles()
+                        self.pushProfile()
                         self.topProfile.frame.origin.x = self.startingX
                         self.topProfile.frame.origin.y = self.startingY
                     })

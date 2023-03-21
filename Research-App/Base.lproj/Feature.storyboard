@@ -399,11 +399,17 @@
                         <outlet property="draggableArea" destination="1XC-C8-w0y" id="GAk-Gd-3UE"/>
                         <outlet property="hideDescriptionButton" destination="gou-Uu-n6x" id="JoI-JX-PBs"/>
                         <outlet property="leftImageArea" destination="CUv-4b-cIc" id="a7P-a1-6TE"/>
+                        <outlet property="profileBioAboutMe" destination="j3i-mW-2Nr" id="53l-QB-9qg"/>
+                        <outlet property="profileBioAge" destination="F88-lu-2H9" id="Evo-xL-wyb"/>
+                        <outlet property="profileBioInterestsList" destination="EJy-5D-4yi" id="NDF-DD-CXO"/>
+                        <outlet property="profileBioName" destination="c6T-by-Isd" id="IA9-Nh-4c9"/>
+                        <outlet property="profileCurrentImageIndicator" destination="7em-i7-yvE" id="vLS-GH-wwb"/>
                         <outlet property="profileDescriptionHeightConstraint" destination="IB0-tl-eei" id="RRd-EM-etp"/>
                         <outlet property="profileDescriptionScrollView" destination="RWM-Jv-hoJ" id="KcR-n6-NP4"/>
                         <outlet property="rightImageArea" destination="YQQ-xA-Ig6" id="b7g-kX-W8M"/>
                         <outlet property="showMoreButton" destination="CuK-sV-w6z" id="K62-A7-oSD"/>
                         <outlet property="topProfile" destination="2dQ-3B-zlR" id="FGo-8I-4S9"/>
+                        <outlet property="topProfileCurrentImage" destination="PQi-vo-OiJ" id="McZ-de-rAN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lec-o4-zOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
