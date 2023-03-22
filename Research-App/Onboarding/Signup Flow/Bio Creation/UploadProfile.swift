@@ -51,13 +51,16 @@ class UploadProfile: NSObject {
         
         let ref = db.collection("users").document("user-lists")
         ref.getDocument { (document, error) in
-            if (error != nil) { return }
+            if (error != nil) {
+                print("Error adding user to user pools")
+                return }
             if ((document?.exists) != nil) {
                 if (sex == "M"){
                     // Add male user to user pool.
                     tempArray = document!.get("male-users") as! [Any]
                     tempArray.append(email)
                     db.collection("users").document("user-lists").setData(["male-users": tempArray], merge: true)
+                    print("Male Added to User-Pool.")
                 }
                 else if (sex == "W"){
                     // Add female user to user pool.

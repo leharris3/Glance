@@ -69,7 +69,7 @@ class FeatureViewController: UIViewController {
     private var initialProfilesLoaded: Bool = false
     
     // Current batch of loaded profile dictionaries.
-    private var profileBatch: [Any] = []
+    private var profileBatch: [[String: Any]] = []
     
     // Current dictionary assoictaed with loaded profile at top of profile stack.
     private var topProfileData: [String: Any] = [:]
@@ -114,9 +114,6 @@ class FeatureViewController: UIViewController {
         
         // Initalize vars, constants, and flags.
         initializeVariables()
-        
-        // Initalize the current user.
-        loadCurrentUser()
     }
     
     // Initalize vars and constants.
@@ -171,6 +168,9 @@ class FeatureViewController: UIViewController {
                 self.malePool = doc.data()!["male-users"] as! [String]
                 self.femalePool = doc.data()!["female-users"] as! [String]
                 self.totalPool = doc.data()!["all-users"] as! [String]
+                
+                // Load current user variables.
+                loadCurrentUser()
                 print("Pools loaded")
             }
         }
@@ -219,7 +219,7 @@ class FeatureViewController: UIViewController {
                 }
                 
                 print(self.currentProfileUnseenProfiles)
-                print(currentUserProfile)
+                print(currentUserProfile!["email"])
                 
                 // Push a new profile to the top of the user stack.
                 self.pushProfile()
@@ -233,9 +233,24 @@ class FeatureViewController: UIViewController {
     // Load a new batch of profiles from database.
     private func loadProfileBatch() {
         
-        // 1. Get list of seen profiles
-        // 2. Get list of unseen profiles
-    
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document("user-profiles")
+        
+        for i in 0...4 {
+            if (currentProfileUnseenProfiles.count == 0) {
+                print("No more unseen profiles to load.")
+                return
+            }
+            print(self.currentProfileUnseenProfiles)
+            ref.getDocument { [self] (document, error) in
+                if ((document?.exists) != nil) {
+                    let unseenUserEmail: String = self.currentProfileUnseenProfiles.popLast()!
+                    let profile =  document!.data()![unseenUserEmail] as! [String : Any]
+                    self.profileBatch.append(profile)
+                    currentProfileSeenProfiles.append(unseenUserEmail)
+                }
+            }
+        }
     }
     
     // MARK: Loads a new visible, top profile from profile batch.
@@ -245,11 +260,18 @@ class FeatureViewController: UIViewController {
             loadProfileBatch()
         }
         
-        var newProfileData: [String: Any] = profileBatch.popLast() as! [String : Any]
-        loadNewImageSet(email: newProfileData["email"]! as! String)
+        // Out of profiles.
+        if (profileBatch.count == 0) {
+            return
+        }
+    
+        var newProfileData: [String: Any] = profileBatch.popLast()!
+        var newProfileEmail: String = newProfileData["email"]! as! String
+        
+        loadNewImageSet(email: newProfileEmail)
         loadProfileBiography(profileData: newProfileData)
 
-        let middleIndex: Int = Int(floor(Double(topProfileImages.count / 2)))
+        let middleIndex: Int = Int(floor(Double(topProfileImages.count / 2)))   
         topProfileCurrentImage.image = topProfileImages[middleIndex]
     }
     
@@ -270,7 +292,7 @@ class FeatureViewController: UIViewController {
     }
     
     // MARK: Push bottom profile to top and load a new bottom profile.
-    private func pushProfile () {
+    private func async pushProfile () {
         
         if (profileBatch.count == 0) {
             loadProfileBatch()

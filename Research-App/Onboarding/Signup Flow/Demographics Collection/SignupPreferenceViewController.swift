@@ -30,13 +30,13 @@ class SignupPreferenceViewController: UIViewController {
                 preference = "B"
             }
             else {
-                preference = "M"
+                preference = "W"
             }
         }
         else {
             menButton.tintColor = .white
             if (womenFlag) {
-                preference = "W"
+                preference = "M"
             }
             else
             {
@@ -71,7 +71,7 @@ class SignupPreferenceViewController: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
         if (preference != ""){
             GlobalConstants.user.preference = preference
-            print(preference    )
+            print(preference)
             performSegue(withIdentifier: "showInterests", sender: nil)
         }
     }
