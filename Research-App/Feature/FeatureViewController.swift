@@ -82,6 +82,12 @@ class FeatureViewController: UIViewController {
     private var currentProfileEmail: String = ""
     private var currentProfilePreference: String = ""
     private var currentProfileSeenProfiles: [String] = []
+    private var currentProfileUnseenProfiles: [String] = []
+    
+    // Active user pools.
+    private var malePool: [String] = []
+    private var femalePool: [String] = []
+    private var totalPool: [String] = []
 
     // Profile animation constants.
     var profileBounds: CGRect? = nil
@@ -109,10 +115,8 @@ class FeatureViewController: UIViewController {
         // Initalize vars, constants, and flags.
         initializeVariables()
         
+        // Initalize the current user.
         loadCurrentUser()
-        
-        // Push a new profile to the top of profile stack and display.
-        pushProfile()
     }
     
     // Initalize vars and constants.
@@ -157,6 +161,19 @@ class FeatureViewController: UIViewController {
         // Hide bio button is invisble and disabled by default.
         hideDescriptionButton.alpha = 0.0
         hideDescriptionButton.isUserInteractionEnabled = false
+        
+        // Initialize user pool data.
+        let db = Firestore.firestore()
+        let poolsRef = db.collection("users").document("user-lists")
+        
+        poolsRef.getDocument {(doc, err) in
+            if let doc = doc, doc.exists {
+                self.malePool = doc.data()!["male-users"] as! [String]
+                self.femalePool = doc.data()!["female-users"] as! [String]
+                self.totalPool = doc.data()!["all-users"] as! [String]
+                print("Pools loaded")
+            }
+        }
     }
     
     // Initalize vars assoicated with current user.
@@ -178,9 +195,34 @@ class FeatureViewController: UIViewController {
                 currentUserProfile = document.data()![self.currentProfileEmail] as! [String : Any]
                 if (currentUser == nil) {return}
                 
+                // Set current profile vars from DB.
                 self.currentProfileData = currentUserProfile
                 self.currentProfilePreference = currentUserProfile!["preference"] as! String
+                self.currentProfileSeenProfiles = currentUserProfile!["seen_profiles"] as! [String]
+                
+                // Add new users to unseen_profiles pool.
+                var unseenProfiles: [String]  = currentUserProfile!["unseen_profiles"] as! [String]
+                
+                print("First call to pools.")
+                var allProfiles: [String] = []
+                if (self.currentProfilePreference == "M") {
+                    allProfiles = self.malePool
+                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                }
+                else if (self.currentProfilePreference == "W"){
+                    allProfiles = self.femalePool
+                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                }
+                else {
+                    allProfiles = self.totalPool
+                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                }
+                
+                print(self.currentProfileUnseenProfiles)
                 print(currentUserProfile)
+                
+                // Push a new profile to the top of the user stack.
+                self.pushProfile()
                 
             } else {
                 print("Document does not exist")
@@ -189,8 +231,11 @@ class FeatureViewController: UIViewController {
     }
     
     // Load a new batch of profiles from database.
-    private func loadProfileBatch(){
+    private func loadProfileBatch() {
         
+        // 1. Get list of seen profiles
+        // 2. Get list of unseen profiles
+    
     }
     
     // MARK: Loads a new visible, top profile from profile batch.

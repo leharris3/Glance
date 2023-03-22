@@ -17,8 +17,9 @@ class RootViewController: UIViewController, FUIAuthDelegate {
         
         let currentUser = Auth.auth().currentUser
         
-        // MARK: Exisiting user.
+        // MARK: An exisiting user in logged in.
         if currentUser != nil {
+            print("Called")
             let email: String = currentUser!.email ?? ""
             let db = Firestore.firestore()
             var partialProfileExisits: Bool = true
@@ -27,6 +28,7 @@ class RootViewController: UIViewController, FUIAuthDelegate {
             let ref = db.collection("users").document("user-profiles")
             ref.getDocument { (document, error) in
                 if (error != nil) { return }
+                print(document)
                 if (((document!.data()?.contains(where: {$0.key == email}))) != nil) {
                     Navigation.changeRootViewControllerToFeature()
                 }

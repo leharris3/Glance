@@ -27,6 +27,7 @@ class UploadProfile: NSObject {
         let interests: [String] = GlobalConstants.user.interests
         let matches: [String] = []
         let seenProfiles: [String] = []
+        let unseenProfiles: [String] = []
         let likedProfiles: [String] = []
         
         let profileDictionary: [String: Any] = [
@@ -39,6 +40,7 @@ class UploadProfile: NSObject {
             "interests": interests,
             "matches": matches,
             "seen_profiles": seenProfiles,
+            "unseen_profiles": unseenProfiles,
             "liked_profiles": likedProfiles
         ]
         
