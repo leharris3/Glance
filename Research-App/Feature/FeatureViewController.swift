@@ -179,6 +179,8 @@ class FeatureViewController: UIViewController {
     // Initalize vars assoicated with current user.
     private func loadCurrentUser() {
         
+        print("Loading current user profile from firebase.")
+        
         let currentUser = Auth.auth().currentUser
         if (currentUser == nil) {return} // Error.
         currentProfileEmail = currentUser!.email!
@@ -202,10 +204,8 @@ class FeatureViewController: UIViewController {
                 self.currentProfileSeenProfiles = currentUserProfile!["seen_profiles"] as! [String]
                 
                 // Add new users to unseen_profiles pool.
-                var unseenProfiles: [String]  = currentUserProfile!["unseen_profiles"] as! [String]
-                
-                print("First call to pools.")
                 var allProfiles: [String] = []
+                
                 if (self.currentProfilePreference == "M") {
                     allProfiles = self.malePool
                     self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
@@ -219,8 +219,10 @@ class FeatureViewController: UIViewController {
                     self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
                 }
                 
+                print("Unseen profiles loaded:")
                 print(self.currentProfileUnseenProfiles)
-                print(currentUserProfile!["email"])
+                
+                print("current user email: " + self.currentProfileEmail)
                 
                 // Push a new profile to the top of the user stack.
                 Task.init{
@@ -236,6 +238,8 @@ class FeatureViewController: UIViewController {
     // Load a new batch of profiles from database.
     private func loadProfileBatch() async -> Void {
         
+        print("Loading new batch of profiles.")
+        
         let db = Firestore.firestore()
         let ref = db.collection("users").document("user-profiles")
         
@@ -245,24 +249,29 @@ class FeatureViewController: UIViewController {
                 return
             }
             print(self.currentProfileUnseenProfiles)
+            
+            // Gets profile of user from unseen profile stack.
             await ref.getDocument { [self] (document, error) in
                 if ((document?.exists) != nil) {
-                    print(i)
-                    let unseenUserEmail: String = self.currentProfileUnseenProfiles.popLast()!
+                    if self.currentProfileUnseenProfiles.count == 0 { return }
+                    
+                    let unseenUserEmail: String = (self.currentProfileUnseenProfiles.popLast()! as String?)!
                     let profile =  document!.data()![unseenUserEmail] as! [String : Any]
                     self.profileBatch.append(profile)
                     currentProfileSeenProfiles.append(unseenUserEmail)
                 }
             }
-            print(i)
+            print("loading profile number: " + String(i))
         }
     }
     
     // MARK: Loads a new visible, top profile from profile batch.
     private func loadNewTopProfileView() async {
         
+        print("Loading top profile.")
+        
         if (profileBatch.count == 0) {
-            await  loadProfileBatch()
+            await loadProfileBatch()
         }
         
         // Out of profiles.
@@ -275,9 +284,6 @@ class FeatureViewController: UIViewController {
         
         loadNewImageSet(email: newProfileEmail)
         loadProfileBiography(profileData: newProfileData)
-
-        let middleIndex: Int = Int(floor(Double(topProfileImages.count / 2)))   
-        topProfileCurrentImage.image = topProfileImages[middleIndex]
     }
     
     // Loads a new bottom profile image.
@@ -293,6 +299,11 @@ class FeatureViewController: UIViewController {
     
     // Load the bio associated with a current profile at the top of the profile stack.
     private func loadProfileBiography(profileData: [String: Any]){
+        print("Loading new bio.")
+        
+        print(profileData)
+        self.profileBioAge.text = String(profileData["age"] as! Int)
+        
         return
     }
     
