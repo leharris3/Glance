@@ -168,10 +168,10 @@ class FeatureViewController: UIViewController {
                 self.malePool = doc.data()!["male-users"] as! [String]
                 self.femalePool = doc.data()!["female-users"] as! [String]
                 self.totalPool = doc.data()!["all-users"] as! [String]
+                print("Pools loaded")
                 
                 // Load current user variables.
-                loadCurrentUser()
-                print("Pools loaded")
+                self.loadCurrentUser()
             }
         }
     }
@@ -187,6 +187,7 @@ class FeatureViewController: UIViewController {
         // Create a reference to user-profile.
         let db = Firestore.firestore()
         let ref = db.collection("users").document("user-profiles")
+        
         
         // Get current user profile.
         ref.getDocument { (document, error) in
@@ -222,7 +223,9 @@ class FeatureViewController: UIViewController {
                 print(currentUserProfile!["email"])
                 
                 // Push a new profile to the top of the user stack.
-                self.pushProfile()
+                Task.init{
+                    await self.pushProfile()
+                }
                 
             } else {
                 print("Document does not exist")
@@ -231,7 +234,7 @@ class FeatureViewController: UIViewController {
     }
     
     // Load a new batch of profiles from database.
-    private func loadProfileBatch() {
+    private func loadProfileBatch() async -> Void {
         
         let db = Firestore.firestore()
         let ref = db.collection("users").document("user-profiles")
@@ -242,22 +245,24 @@ class FeatureViewController: UIViewController {
                 return
             }
             print(self.currentProfileUnseenProfiles)
-            ref.getDocument { [self] (document, error) in
+            await ref.getDocument { [self] (document, error) in
                 if ((document?.exists) != nil) {
+                    print(i)
                     let unseenUserEmail: String = self.currentProfileUnseenProfiles.popLast()!
                     let profile =  document!.data()![unseenUserEmail] as! [String : Any]
                     self.profileBatch.append(profile)
                     currentProfileSeenProfiles.append(unseenUserEmail)
                 }
             }
+            print(i)
         }
     }
     
     // MARK: Loads a new visible, top profile from profile batch.
-    private func loadNewTopProfileView() {
+    private func loadNewTopProfileView() async {
         
         if (profileBatch.count == 0) {
-            loadProfileBatch()
+            await  loadProfileBatch()
         }
         
         // Out of profiles.
@@ -276,10 +281,10 @@ class FeatureViewController: UIViewController {
     }
     
     // Loads a new bottom profile image.
-    private func loadNewBottomProfileView() {
+    private func loadNewBottomProfileView() async {
         
         if (profileBatch.count == 0) {
-            loadProfileBatch()
+            await loadProfileBatch()
         }
         
         // Profile data popped from top of profile stack.
@@ -292,14 +297,14 @@ class FeatureViewController: UIViewController {
     }
     
     // MARK: Push bottom profile to top and load a new bottom profile.
-    private func async pushProfile () {
+    private func pushProfile() async {
         
         if (profileBatch.count == 0) {
-            loadProfileBatch()
+            await loadProfileBatch()
         }
         
-        loadNewTopProfileView()
-        loadNewBottomProfileView()
+        await loadNewTopProfileView()
+        await loadNewBottomProfileView()
     }
     
     // Loads a new set of images assoictaed with the email of the current top profile.
@@ -478,7 +483,9 @@ extension FeatureViewController {
                     UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x -= distanceToMaxEdge
                     }, completion: {(finished: Bool) in
-                        self.pushProfile()
+                        Task.init{
+                            await self.pushProfile()
+                        }
                         self.topProfile.frame.origin.x = self.startingX
                         self.topProfile.frame.origin.y = self.startingY
                     })
@@ -487,7 +494,9 @@ extension FeatureViewController {
                     UIView.animate(withDuration: 0.2, delay: 0.0, animations: {
                         self.topProfile.frame.origin.x += distanceToMinEdge
                     }, completion: {(finished: Bool) in
-                        self.pushProfile()
+                        Task.init{
+                            await self.pushProfile()
+                        }
                         self.topProfile.frame.origin.x = self.startingX
                         self.topProfile.frame.origin.y = self.startingY
                     })
