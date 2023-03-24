@@ -10,7 +10,6 @@ import UIKit
 class SignupPreferenceViewController: UIViewController {
 
     @IBOutlet weak var menButton: UIButton!
-    
     @IBOutlet weak var womenButton: UIButton!
     
     private var menFlag = false
@@ -30,13 +29,13 @@ class SignupPreferenceViewController: UIViewController {
                 preference = "B"
             }
             else {
-                preference = "W"
+                preference = "M"
             }
         }
         else {
             menButton.tintColor = .white
             if (womenFlag) {
-                preference = "M"
+                preference = "W"
             }
             else
             {
@@ -53,13 +52,13 @@ class SignupPreferenceViewController: UIViewController {
                 preference = "B"
             }
             else {
-                preference = "M"
+                preference = "W"
             }
         }
         else {
             womenButton.tintColor = .white
             if (menFlag) {
-                preference = "W"
+                preference = "M"
             }
             else {
                 preference = ""
@@ -70,8 +69,12 @@ class SignupPreferenceViewController: UIViewController {
     
     @IBAction func continueButton(_ sender: Any) {
         if (preference != ""){
+            
             GlobalConstants.user.preference = preference
-            print(preference)
+            
+            print("------------------------------------------------------------")
+            print("Sexual preference selected: " + preference)
+            
             performSegue(withIdentifier: "showInterests", sender: nil)
         }
     }

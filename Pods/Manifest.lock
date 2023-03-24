@@ -885,6 +885,7 @@ PODS:
     - SDWebImage/Core (= 5.15.4)
   - SDWebImage/Core (5.15.4)
   - SteviaLayout (4.7.3)
+  - SwiftLint (0.50.3)
   - TextFieldEffects (1.6.0)
   - UIGradient (1.3.2)
   - YPImagePicker (5.2.1):
@@ -899,6 +900,7 @@ DEPENDENCIES:
   - FirebaseUI
   - IBMSMTPPod (~> 5.1)
   - IHKeyboardAvoiding
+  - SwiftLint
   - TextFieldEffects
   - UIGradient
   - YPImagePicker
@@ -956,6 +958,7 @@ SPEC REPOS:
     - PryntTrimmerView
     - SDWebImage
     - SteviaLayout
+    - SwiftLint
     - TextFieldEffects
     - UIGradient
     - YPImagePicker
@@ -1012,10 +1015,11 @@ SPEC CHECKSUMS:
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   UIGradient: 2364e9ebac232686db220713b4d42a68222fffb2
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 12b837ca1758349e3caecf4703896683c76f4346
+PODFILE CHECKSUM: 4877818f84cb5484c794a69d5aea5daf5e1a4d39
 
 COCOAPODS: 1.11.3

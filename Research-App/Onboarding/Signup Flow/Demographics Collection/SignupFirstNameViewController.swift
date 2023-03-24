@@ -41,6 +41,10 @@ class SignupFirstNameViewController: UIViewController {
         }
         
         GlobalConstants.user.firstName = firstNameField.text!
+        
+        print("------------------------------------------------------------")
+        print("First Name Selected: ")
+        
         performSegue(withIdentifier: "showBirthday", sender: nil)
     }
 }

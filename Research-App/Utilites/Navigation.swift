@@ -29,11 +29,11 @@ class Navigation: NSObject {
     static func changeRootViewControllerToFeature() {
         let featureViewController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
         let navigationController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
+        
         navigationController.pushViewController(featureViewController, animated: true)
         
-        // Animate Feature Transition
         let options: UIView.AnimationOptions = .transitionCrossDissolve
-        let duration: TimeInterval = 0.2
+        let duration: TimeInterval = 0.5
         UIView.transition(with: UIApplication.shared.keyWindow!, duration: duration, options: options, animations: {
             UIApplication.shared.windows.first?.rootViewController = navigationController
             UIApplication.shared.windows.first?.makeKeyAndVisible()

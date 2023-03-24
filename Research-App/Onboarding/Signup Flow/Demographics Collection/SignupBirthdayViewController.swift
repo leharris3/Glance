@@ -38,7 +38,6 @@ class SignupBirthdayViewController: UIViewController {
         else {
             let ageInSeconds = currentDate.timeIntervalSinceReferenceDate - canidateDate!.timeIntervalSinceReferenceDate
             let ageInYears = Int(ageInSeconds / (60 * 60 * 24 * 365))
-            print(ageInYears)
             if (ageInYears < 18 || ageInYears > 99){
                 print("Invalid Age")
                 invalidAge.alpha = 1
@@ -48,6 +47,9 @@ class SignupBirthdayViewController: UIViewController {
                 GlobalConstants.user.dateOfBirth = canidateDate
                 GlobalConstants.user.age = ageInYears
                 performSegue(withIdentifier: "showIdentity", sender: nil)
+                
+                print("------------------------------------------------------------")
+                print("Age Selected: " + String(ageInYears))
             }
         }
     }

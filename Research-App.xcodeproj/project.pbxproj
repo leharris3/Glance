@@ -41,9 +41,7 @@
 		2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */; };
 		2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */; };
 		2DD7BD4F29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7BD4E29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg */; };
-		2DD7BD5129C48FBA0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7BD5029C48FBA0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */; };
 		2DD7BD5429C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7BD5229C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg */; };
-		2DD7BD5529C48FCF0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7BD5329C48FCF0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */; };
 		2DF594E729B7FA4C004B7727 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF594E629B7FA4C004B7727 /* UserCard.swift */; };
 		D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3135821C4380931CF2391B76 /* Pods_Research_App.framework */; };
 /* End PBXBuildFile section */
@@ -86,9 +84,7 @@
 		2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWelcomeViewController.swift; sourceTree = "<group>"; };
 		2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMediaViewController.swift; sourceTree = "<group>"; };
 		2DD7BD4E29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg"; path = "../../../../Downloads/polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg"; sourceTree = "<group>"; };
-		2DD7BD5029C48FBA0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg"; path = "../../../../Downloads/azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg"; sourceTree = "<group>"; };
 		2DD7BD5229C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "david-williams-3TEN0V4RmOU-unsplash.jpg"; path = "../../../../Downloads/david-williams-3TEN0V4RmOU-unsplash.jpg"; sourceTree = "<group>"; };
-		2DD7BD5329C48FCF0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg"; path = "../../../../Downloads/azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg"; sourceTree = "<group>"; };
 		2DF594E629B7FA4C004B7727 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		3135821C4380931CF2391B76 /* Pods_Research_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Research_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4DAA03E390856BA25043BA /* Pods-Research-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Research-App.debug.xcconfig"; path = "Target Support Files/Pods-Research-App/Pods-Research-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,9 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				2DD7BD4E29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg */,
-				2DD7BD5329C48FCF0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */,
 				2DD7BD5229C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg */,
-				2DD7BD5029C48FBA0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg */,
 			);
 			path = "Example Images";
 			sourceTree = "<group>";
@@ -340,12 +334,10 @@
 				2DC280C829AA7EAD00BB5599 /* LaunchScreen.storyboard in Resources */,
 				2DD7BD4F29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg in Resources */,
 				2D0F04D329B56A3B00CCC0BE /* Feature.storyboard in Resources */,
-				2DD7BD5129C48FBA0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg in Resources */,
 				2DD7BD5429C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg in Resources */,
 				2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */,
 				2DC280C529AA7EAD00BB5599 /* Assets.xcassets in Resources */,
 				2DC280C329AA7EAA00BB5599 /* Main.storyboard in Resources */,
-				2DD7BD5529C48FCF0093A256 /* azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

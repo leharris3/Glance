@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x0d-1v-h5M">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -9,34 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="nMn-og-gfk">
-            <objects>
-                <navigationController storyboardIdentifier="FeatureNavigationController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="YSd-r1-nlo" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CO8-IX-stX">
-                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="40"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="1"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5zn-TB-yT8">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eoa-Rn-24W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2706" y="-4608"/>
-        </scene>
         <!--Feature-->
         <scene sceneID="xnS-5v-2hE">
             <objects>
@@ -69,7 +41,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-3B-zlR" userLabel="topProfile">
                                         <rect key="frame" x="30" y="10" width="368" height="620"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-vo-OiJ" userLabel="currentImage">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="david-williams-3TEN0V4RmOU-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PQi-vo-OiJ" userLabel="currentImage">
                                                 <rect key="frame" x="0.0" y="0.0" width="368" height="751"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -414,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lec-o4-zOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628.0373831775701" y="-4608.8552915766741"/>
+            <point key="canvasLocation" x="4528.0373831775696" y="-4608.8552915766741"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wgB-tB-VYh">
@@ -591,10 +563,26 @@
             </objects>
             <point key="canvasLocation" x="2826.7175572519081" y="-3075.3521126760565"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="puv-iv-RMH">
+            <objects>
+                <navigationController storyboardIdentifier="FeatureNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x0d-1v-h5M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdx-lB-oPV">
+                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxJ-Tr-Z85" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3753" y="-4609"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.turn.right.down" catalog="system" width="120" height="128"/>
         <image name="azamat-esmurziyev-qhdGyb-jw2M-unsplash.jpg" width="3830" height="4787"/>
+        <image name="david-williams-3TEN0V4RmOU-unsplash.jpg" width="3456" height="5184"/>
         <image name="info" catalog="system" width="93" height="128"/>
         <image name="message.badge" catalog="system" width="128" height="116"/>
         <image name="person" catalog="system" width="128" height="121"/>

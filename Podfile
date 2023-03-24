@@ -16,4 +16,5 @@ target 'Research-App' do
  	pod 'UIGradient'
 	pod 'IHKeyboardAvoiding'
 	pod 'YPImagePicker'
+	pod 'SwiftLint'
 end

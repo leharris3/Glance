@@ -86,7 +86,9 @@ class SignupSexViewController: UIViewController {
     // Indentity -> Preferences
     @IBAction func buttonPressed(_ sender: Any) {
         if(sex != "") {
-            print("Sex Picked: " + GlobalConstants.user.sex)
+            
+            print("------------------------------------------------------------")
+            print("Sex Selected: " + GlobalConstants.user.sex)
             GlobalConstants.user.sex = sex
             performSegue(withIdentifier: "showPreferences", sender: nil)
         }

@@ -78,11 +78,11 @@ class FeatureViewController: UIViewController {
     private var topProfileImages: [UIImage] = []
     
     // Current profile fields.
-    private var currentProfileData: (Any)? = nil
-    private var currentProfileEmail: String = ""
-    private var currentProfilePreference: String = ""
-    private var currentProfileSeenProfiles: [String] = []
-    private var currentProfileUnseenProfiles: [String] = []
+    private var currentUserData: (Any)? = nil
+    private var currentUserEmail: String = ""
+    private var currentUserPreference: String = ""
+    private var seenProfiles: [String] = []
+    private var unseenProfiles: [String] = []
     
     // Active user pools.
     private var malePool: [String] = []
@@ -112,8 +112,7 @@ class FeatureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initalize vars, constants, and flags.
-        initializeVariables()
+        initializeVariables() // Initalize vars, constants, and flags.
     }
     
     // Initalize vars and constants.
@@ -122,12 +121,7 @@ class FeatureViewController: UIViewController {
         // Initalize bio height constraints.
         scrollViewHeightVisable = profileDescriptionHeightConstraint
         scrollViewHeightInvisible = profileDescriptionHeightConstraint.constraintWithMultiplier(0.0)
-        
-        // Set bio to a default height of "invisible".
-        profileDescriptionScrollView.removeConstraint(profileDescriptionHeightConstraint!)
-        profileDescriptionScrollView.addConstraint(scrollViewHeightInvisible!)
-        view.layoutIfNeeded()
-        
+            
         // Initalize a var equal to default bounds of the visible profile.
         profileBounds = topProfile.bounds
         
@@ -151,13 +145,20 @@ class FeatureViewController: UIViewController {
         // Initalize a var equal to total screen width.
         screenWidth = view.bounds.width
         
-        // Set a thin border around buser bios/
-        profileDescriptionScrollView.layer.borderWidth = 1
-        profileDescriptionScrollView.layer.borderColor = UIColor.darkGray.cgColor
+        UIView.animate(withDuration: 0.25, delay: 0.25, animations: { [self] in
+            // Set a thin border around uuser bios
+            self.profileDescriptionScrollView.layer.borderWidth = 1
+            self.profileDescriptionScrollView.layer.borderColor = UIColor.darkGray.cgColor
+                
+            // Hide bio button is invisble and disabled by default.
+            self.hideDescriptionButton.alpha = 0.0
+            self.hideDescriptionButton.isUserInteractionEnabled = false
+            
+            // Set bio to a default height of "invisible".
+            self.profileDescriptionScrollView.removeConstraint(self.profileDescriptionHeightConstraint!)
+            self.profileDescriptionScrollView.addConstraint(scrollViewHeightInvisible!)
+        }, completion: nil)
         
-        // Hide bio button is invisble and disabled by default.
-        hideDescriptionButton.alpha = 0.0
-        hideDescriptionButton.isUserInteractionEnabled = false
         
         // Initialize user pool data.
         let db = Firestore.firestore()
@@ -168,7 +169,12 @@ class FeatureViewController: UIViewController {
                 self.malePool = doc.data()!["male-users"] as! [String]
                 self.femalePool = doc.data()!["female-users"] as! [String]
                 self.totalPool = doc.data()!["all-users"] as! [String]
-                print("Pools loaded")
+                
+                print("------------------------------------------------------------")
+                print("User pools loaded: ")
+                print(self.malePool)
+                print(self.femalePool)
+                print(self.totalPool)
                 
                 // Load current user variables.
                 self.loadCurrentUser()
@@ -179,50 +185,55 @@ class FeatureViewController: UIViewController {
     // Initalize vars assoicated with current user.
     private func loadCurrentUser() {
         
+        print("")
+        print("------------------------------------------------------------")
         print("Loading current user profile from firebase.")
         
         let currentUser = Auth.auth().currentUser
-        if (currentUser == nil) {return} // Error.
-        currentProfileEmail = currentUser!.email!
+        if (currentUser == nil) {
+            print("Error retrieving current user.")
+            return
+        } // Error.
+        
+        currentUserEmail = currentUser!.email!
         var currentUserProfile: [String: Any]? = nil
             
         // Create a reference to user-profile.
         let db = Firestore.firestore()
         let ref = db.collection("users").document("user-profiles")
         
-        
         // Get current user profile.
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
                 
-                currentUserProfile = document.data()![self.currentProfileEmail] as! [String : Any]
+                currentUserProfile = document.data()![self.currentUserEmail] as! [String : Any]
                 if (currentUser == nil) {return}
                 
                 // Set current profile vars from DB.
-                self.currentProfileData = currentUserProfile
-                self.currentProfilePreference = currentUserProfile!["preference"] as! String
-                self.currentProfileSeenProfiles = currentUserProfile!["seen_profiles"] as! [String]
+                self.currentUserData = currentUserProfile
+                self.currentUserPreference = currentUserProfile!["preference"] as! String
+                self.seenProfiles = currentUserProfile!["seen_profiles"] as! [String]
                 
                 // Add new users to unseen_profiles pool.
                 var allProfiles: [String] = []
                 
-                if (self.currentProfilePreference == "M") {
+                if (self.currentUserPreference == "M") {
                     allProfiles = self.malePool
-                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                    self.unseenProfiles = allProfiles.filter { !self.seenProfiles.contains($0) }
                 }
-                else if (self.currentProfilePreference == "W"){
+                else if (self.currentUserPreference == "W"){
                     allProfiles = self.femalePool
-                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                    self.unseenProfiles = allProfiles.filter { !self.seenProfiles.contains($0) }
                 }
                 else {
                     allProfiles = self.totalPool
-                    self.currentProfileUnseenProfiles = allProfiles.filter { !self.currentProfileSeenProfiles.contains($0) }
+                    self.unseenProfiles = allProfiles.filter { !self.seenProfiles.contains($0) }
                 }
                 
                 print("Unseen profiles loaded:")
-                print(self.currentProfileUnseenProfiles)
+                print(self.unseenProfiles)
                 
-                print("current user email: " + self.currentProfileEmail)
+                print("current user email: " + self.currentUserEmail)
                 
                 // Push a new profile to the top of the user stack.
                 Task.init{
@@ -233,41 +244,50 @@ class FeatureViewController: UIViewController {
                 print("Document does not exist")
             }
         }
+        print("------------------------------------------------------------")
+    }
+    
+    // MARK: Push bottom profile to top and load a new bottom profile.
+    private func pushProfile() async {
+        
+        print("------------------------------------------------------------")
+        print("Pushing new profile to top of stack.")
+        
+        if (profileBatch.count == 0) {
+            await loadProfileBatch()
+        }
+        
+        await loadNewTopProfileView()
+        await loadNewBottomProfileView()
+        
+        print("------------------------------------------------------------")
+        print("")
     }
     
     // Load a new batch of profiles from database.
-    private func loadProfileBatch() async -> Void {
+    private func loadProfileBatch() async {
         
+        print("------------------------------------------------------------")
         print("Loading new batch of profiles.")
         
-        let db = Firestore.firestore()
-        let ref = db.collection("users").document("user-profiles")
-        
         for i in 0...4 {
-            if (currentProfileUnseenProfiles.count == 0) {
+            if (unseenProfiles.count == 0) {
                 print("No more unseen profiles to load.")
                 return
             }
-            print(self.currentProfileUnseenProfiles)
-            
-            // Gets profile of user from unseen profile stack.
-            await ref.getDocument { [self] (document, error) in
-                if ((document?.exists) != nil) {
-                    if self.currentProfileUnseenProfiles.count == 0 { return }
-                    
-                    let unseenUserEmail: String = (self.currentProfileUnseenProfiles.popLast()! as String?)!
-                    let profile =  document!.data()![unseenUserEmail] as! [String : Any]
-                    self.profileBatch.append(profile)
-                    currentProfileSeenProfiles.append(unseenUserEmail)
-                }
+            else {
+                await popProfile()
             }
-            print("loading profile number: " + String(i))
         }
+        
+        print("Loading complete, loaded profile batch: ")
+        print(self.profileBatch)
     }
     
     // MARK: Loads a new visible, top profile from profile batch.
     private func loadNewTopProfileView() async {
         
+        print("------------------------------------------------------------")
         print("Loading top profile.")
         
         if (profileBatch.count == 0) {
@@ -284,10 +304,14 @@ class FeatureViewController: UIViewController {
         
         loadNewImageSet(email: newProfileEmail)
         loadProfileBiography(profileData: newProfileData)
+        
     }
     
     // Loads a new bottom profile image.
     private func loadNewBottomProfileView() async {
+        
+        print("------------------------------------------------------------")
+        print("Loading bottom profile...")
         
         if (profileBatch.count == 0) {
             await loadProfileBatch()
@@ -299,28 +323,53 @@ class FeatureViewController: UIViewController {
     
     // Load the bio associated with a current profile at the top of the profile stack.
     private func loadProfileBiography(profileData: [String: Any]){
+        
+        print("------------------------------------------------------------")
         print("Loading new bio.")
         
         print(profileData)
         self.profileBioAge.text = String(profileData["age"] as! Int)
-        
-        return
-    }
-    
-    // MARK: Push bottom profile to top and load a new bottom profile.
-    private func pushProfile() async {
-        
-        if (profileBatch.count == 0) {
-            await loadProfileBatch()
-        }
-        
-        await loadNewTopProfileView()
-        await loadNewBottomProfileView()
     }
     
     // Loads a new set of images assoictaed with the email of the current top profile.
     private func loadNewImageSet(email: String) {
-        return
+        
+        print("------------------------------------------------------------")
+        print("Loading new image set for top profile.")
+        
+    }
+    
+    // Gets profile of user from unseen profile stack.
+    func popProfile() async -> Void {
+        
+        print("------------------------------------------------------------")
+        print("Popping profile.")
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document("user-profiles")
+        var doc: DocumentSnapshot?
+            
+        
+        do {
+            doc = try await ref.getDocument()
+        }
+        catch {
+            print("Error getting user profile")
+            return
+        }
+            
+        if doc!.exists {
+            if self.unseenProfiles.count == 0 {
+                print("No more unseen profiles")
+            }
+            
+            let unseenUserEmail: String = (self.unseenProfiles.popLast()! as String?)!
+            print("Geting unseen user: " + unseenUserEmail)
+            
+            let profile =  doc!.data()![unseenUserEmail] as! [String : Any]
+            self.profileBatch.append(profile)
+            self.seenProfiles.append(unseenUserEmail)
+        }
     }
     
     // Set origin of the visible profile view.
