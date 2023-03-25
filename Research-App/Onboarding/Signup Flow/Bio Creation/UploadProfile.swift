@@ -41,7 +41,8 @@ class UploadProfile: NSObject {
             "matches": matches,
             "seen_profiles": seenProfiles,
             "unseen_profiles": unseenProfiles,
-            "liked_profiles": likedProfiles
+            "liked_profiles": likedProfiles,
+            "about_me": ""
         ]
         
         // Upload profile.

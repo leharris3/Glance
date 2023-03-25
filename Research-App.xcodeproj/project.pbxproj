@@ -162,6 +162,14 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		2D68EF8629CF8EAE00C2BD19 /* User Profile Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "User Profile Images";
+			path = "Research-App/User Profile Images";
+			sourceTree = SOURCE_ROOT;
+		};
 		2DAA13BF29B54C65001BC1CB /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB5C2C429AFB43600F89AA7 /* Research-App.entitlements */,
+				2D68EF8629CF8EAE00C2BD19 /* User Profile Images */,
 				2DD7BD4D29C48F500093A256 /* Example Images */,
 				2D286DED29B684DF004DA4E5 /* Utilites */,
 				2D28E88B29AD851100E78556 /* Root */,

@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseAuthUI
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseStorage
 
 class FeatureViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class FeatureViewController: UIViewController {
     
     // Connections to current profile bio fields.
     @IBOutlet weak var profileBioName: UIView!
+    @IBOutlet weak var profileBioNameLabel: UILabel!
     @IBOutlet weak var profileBioAge: UILabel!
     @IBOutlet weak var profileBioInterestsList: UILabel!
     @IBOutlet weak var profileBioAboutMe: UILabel!
@@ -299,10 +301,12 @@ class FeatureViewController: UIViewController {
             return
         }
     
-        var newProfileData: [String: Any] = profileBatch.popLast()!
-        var newProfileEmail: String = newProfileData["email"]! as! String
+        let newProfileData: [String: Any] = profileBatch.popLast()!
+        let newProfileEmail: String = newProfileData["email"]! as! String
         
-        loadNewImageSet(email: newProfileEmail)
+        print("Loading new profile with email: " + newProfileEmail)
+        
+        await loadNewImageSet(email: newProfileEmail)
         loadProfileBiography(profileData: newProfileData)
         
     }
@@ -328,14 +332,42 @@ class FeatureViewController: UIViewController {
         print("Loading new bio.")
         
         print(profileData)
+        
+        self.profileBioNameLabel.text = String(profileData["first_name"] as! String) + " "
         self.profileBioAge.text = String(profileData["age"] as! Int)
+        self.profileBioAboutMe.text = String(profileData["about_me"] as! String)
     }
     
     // Loads a new set of images assoictaed with the email of the current top profile.
-    private func loadNewImageSet(email: String) {
+    private func loadNewImageSet(email: String) async {
         
         print("------------------------------------------------------------")
         print("Loading new image set for top profile.")
+        
+        let storageRef = Storage.storage().reference()
+        let quotedEmail = #"""# + email + #"""#
+        
+        let reference =  storageRef.child("gs://research-app-8f87d.appspot.com/images").getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+            print("Attempting to get images... ")
+            // gs://research-app-8f87d.appspot.com/images/Optional("clara-f@email.unc.edu")
+            print(quotedEmail)  
+            if (error != nil) {
+                print("Error")
+                return
+            }
+            print(data?.first)
+        })
+        
+        print(reference)
+
+        // UIImageView in your ViewController
+//        let imageView: UIImageView = UIImageView()
+//
+//        // Placeholder image
+//        let placeholderImage = UIImage(named: "placeholder.jpg")
+//
+//        // Load the image using SDWebImage
+//        topProfileCurrentImage.sd_setImage(with: reference, placeholderImage: placeholderImage)
         
     }
     
@@ -350,13 +382,13 @@ class FeatureViewController: UIViewController {
         var doc: DocumentSnapshot?
             
         
-        do {
-            doc = try await ref.getDocument()
-        }
-        catch {
-            print("Error getting user profile")
-            return
-        }
+            do {
+                doc = try await ref.getDocument()
+            }
+            catch {
+                print("Error getting user profile")
+                return
+            }
             
         if doc!.exists {
             if self.unseenProfiles.count == 0 {

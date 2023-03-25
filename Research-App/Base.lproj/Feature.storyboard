@@ -375,6 +375,7 @@
                         <outlet property="profileBioAge" destination="F88-lu-2H9" id="Evo-xL-wyb"/>
                         <outlet property="profileBioInterestsList" destination="EJy-5D-4yi" id="NDF-DD-CXO"/>
                         <outlet property="profileBioName" destination="c6T-by-Isd" id="IA9-Nh-4c9"/>
+                        <outlet property="profileBioNameLabel" destination="c6T-by-Isd" id="3ti-0N-BLG"/>
                         <outlet property="profileCurrentImageIndicator" destination="7em-i7-yvE" id="vLS-GH-wwb"/>
                         <outlet property="profileDescriptionHeightConstraint" destination="IB0-tl-eei" id="RRd-EM-etp"/>
                         <outlet property="profileDescriptionScrollView" destination="RWM-Jv-hoJ" id="KcR-n6-NP4"/>
