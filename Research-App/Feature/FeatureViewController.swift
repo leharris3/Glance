@@ -344,18 +344,21 @@ class FeatureViewController: UIViewController {
         print("------------------------------------------------------------")
         print("Loading new image set for top profile.")
         
-        let storageRef = Storage.storage().reference()
+        let storage = Storage.storage()
         let quotedEmail = #"""# + email + #"""#
+        let gsReference = storage.reference(forURL: #"gs://research-app-8f87d.appspot.com/images/Optional("clara-f@email.unc.edu")/4C86259D-0E13-4AE1-A947-BEAAE2A342AB"#)
         
-        let reference =  storageRef.child("gs://research-app-8f87d.appspot.com/images").getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+        print(gsReference.fullPath)
+            
+        let reference = gsReference.getData(maxSize: 1024 * 1024 * 1024, completion: { (data, error) in
             print("Attempting to get images... ")
-            // gs://research-app-8f87d.appspot.com/images/Optional("clara-f@email.unc.edu")
             print(quotedEmail)  
             if (error != nil) {
+                print(error?.localizedDescription)
                 print("Error")
                 return
             }
-            print(data?.first)
+            print(data)
         })
         
         print(reference)

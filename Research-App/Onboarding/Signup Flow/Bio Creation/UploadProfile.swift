@@ -15,7 +15,10 @@ class UploadProfile: NSObject {
     // Uploads all info in user card.
     static func uploadProfile() -> Bool {
         
+        // Database.
         let db = Firestore.firestore()
+        db.collection("user-profiles").addDocument(data: "example-user")
+        db.collection("user-profiles").document("example-user")
 
         let photos: [Data?] =  GlobalConstants.user.profilePhotos
         let email: String = GlobalConstants.email! // Should never be nil.
@@ -29,6 +32,7 @@ class UploadProfile: NSObject {
         let seenProfiles: [String] = []
         let unseenProfiles: [String] = []
         let likedProfiles: [String] = []
+        let photo_urls: [String] = []
         
         let profileDictionary: [String: Any] = [
             "email": email,
@@ -38,18 +42,63 @@ class UploadProfile: NSObject {
             "sex": sex,
             "preference": preference,
             "interests": interests,
+            "liked_profiles": likedProfiles,
+            "about_me": "",
             "matches": matches,
             "seen_profiles": seenProfiles,
             "unseen_profiles": unseenProfiles,
-            "liked_profiles": likedProfiles,
-            "about_me": ""
+            "photo_urls": photo_urls
         ]
         
+        // Reference to user profile in cloud store.
+        let ref = db.collection("users").document("user-profiles")
+        
         // Upload profile.
-        db.collection("users").document("user-profiles").setData([email: profileDictionary], merge: true)
+        ref.setData([email: profileDictionary], merge: true)
+        
+        // Add user to user pool.
+        UploadProfile.addUserToPool(db: db, sex: sex, email: email)
+        
+        // Empty photo list 
+        if (photos.count == 0){ return false}
+        
+        // Upload photos
+        for photo in GlobalConstants.user.profilePhotos {
+            UploadProfile.uploadPhoto(data: photo, email: email)
+        }
+        
+        return true // MARK: Profile successfully uploaded.
+    }
+    
+    // Upload a photo.
+    static func uploadPhoto(data: Data, email: String){
+        
+        // Create Storage Ref.
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        // Create references to cloud store.
+        let ref = storageRef.child("images/\(String(describing: GlobalConstants.email))/\(UUID().uuidString)")
+        let profileRef = db.collection("users").document("user-profiles").updateData([])
+
+        // Upload the file.
+        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
+          guard let metadata = metadata else {
+            return
+          }
+          // Metadata.
+          let size = metadata.size
+          ref.downloadURL { (url, error) in
+              guard let downloadURL = url else {
+                  return
+            }
+          }
+        }
+    }
+    
+    static func addUserToPool(db: Firestore, sex: String, email: String) {
         
         var tempArray: [Any] = []
-        
         let ref = db.collection("users").document("user-lists")
         ref.getDocument { (document, error) in
             if (error != nil) {
@@ -78,7 +127,7 @@ class UploadProfile: NSObject {
                     tempArray = document!.get("female-users") as! [Any]
                     tempArray.append(email)
                     db.collection("users").document("user-lists").setData(["female-users": tempArray], merge: true)
-                }   
+                }
                 
                 // Add new profile to all users pool.
                 tempArray = document!.get("all-users") as! [Any]
@@ -86,39 +135,6 @@ class UploadProfile: NSObject {
                 db.collection("users").document("user-lists").setData(["all-users": tempArray], merge: true)
             }
             else { return }
-        }
-        
-        // Empty photo list 
-        if (photos.count == 0){ return false}
-        
-        // Upload photos
-        for photo in GlobalConstants.user.profilePhotos {
-            UploadProfile.uploadPhoto(data: photo)
-        }
-        
-        return true // MARK: Profile successfully uploaded.
-    }
-    
-    // Upload a photo.
-    static func uploadPhoto(data: Data){
-        // Create Storage Ref.
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        
-        let ref = storageRef.child("images/\(String(describing: GlobalConstants.email))/\(UUID().uuidString)")
-
-        // Upload the file.
-        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            return
-          }
-          // Metadata.
-          let size = metadata.size
-          ref.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-              return
-            }
-          }
         }
     }
 }
