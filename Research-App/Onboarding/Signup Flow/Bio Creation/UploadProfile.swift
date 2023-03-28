@@ -17,8 +17,8 @@ class UploadProfile: NSObject {
         
         // Database.
         let db = Firestore.firestore()
-        db.collection("user-profiles").addDocument(data: "example-user")
-        db.collection("user-profiles").document("example-user")
+//        db.collection("user-profiles").addDocument(data: "example-user")
+//        db.collection("user-profiles").document("example-user")
 
         let photos: [Data?] =  GlobalConstants.user.profilePhotos
         let email: String = GlobalConstants.email! // Should never be nil.
@@ -73,13 +73,15 @@ class UploadProfile: NSObject {
     // Upload a photo.
     static func uploadPhoto(data: Data, email: String){
         
+        let db = Firestore.firestore()
+        
         // Create Storage Ref.
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
         // Create references to cloud store.
         let ref = storageRef.child("images/\(String(describing: GlobalConstants.email))/\(UUID().uuidString)")
-        let profileRef = db.collection("users").document("user-profiles").updateData([])
+        let profileRef = db.collection("users").document("user-profiles").updateData([:])
 
         // Upload the file.
         let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in

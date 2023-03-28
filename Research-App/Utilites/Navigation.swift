@@ -27,10 +27,13 @@ class Navigation: NSObject {
     
     // MARK: Any -> Feature.
     static func changeRootViewControllerToFeature() {
-        let featureViewController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
+        
+        // let featureViewController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureViewController") as! FeatureViewController
+        
+        let featureViewController = HomescreenViewController.init()
         let navigationController = UIStoryboard(name: "Feature", bundle: nil).instantiateViewController(withIdentifier: "FeatureNavigationController") as! UINavigationController
         
-        navigationController.pushViewController(featureViewController, animated: true)
+        navigationController.pushViewController(featureViewController , animated: true)
         
         let options: UIView.AnimationOptions = .transitionCrossDissolve
         let duration: TimeInterval = 0.5
