@@ -27,6 +27,12 @@
 		2D98FDFC29D31048002B7AEB /* TopProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98FDFB29D31048002B7AEB /* TopProfileView.swift */; };
 		2D98FDFE29D31519002B7AEB /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98FDFD29D31519002B7AEB /* ToolbarView.swift */; };
 		2D98FE0029D31880002B7AEB /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98FDFF29D31880002B7AEB /* DescriptionView.swift */; };
+		2DA1B49D29D77B9A00F9A916 /* ProfileImageView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B49C29D77B9A00F9A916 /* ProfileImageView .swift */; };
+		2DA1B4A029D792B000F9A916 /* ProfileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */; };
+		2DA1B4A229D7947800F9A916 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A129D7947800F9A916 /* User.swift */; };
+		2DA1B4A429D7962100F9A916 /* Pools .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A329D7962100F9A916 /* Pools .swift */; };
+		2DA1B4A629D86B3300F9A916 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A529D86B3300F9A916 /* Database.swift */; };
+		2DA1B4A829DA3C7800F9A916 /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A729DA3C7800F9A916 /* Fields.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
 		2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */; };
 		2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */; };
@@ -75,6 +81,12 @@
 		2D98FDFB29D31048002B7AEB /* TopProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProfileView.swift; sourceTree = "<group>"; };
 		2D98FDFD29D31519002B7AEB /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		2D98FDFF29D31880002B7AEB /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		2DA1B49C29D77B9A00F9A916 /* ProfileImageView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileImageView .swift"; sourceTree = "<group>"; };
+		2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGenerator.swift; sourceTree = "<group>"; };
+		2DA1B4A129D7947800F9A916 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2DA1B4A329D7962100F9A916 /* Pools .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pools .swift"; sourceTree = "<group>"; };
+		2DA1B4A529D86B3300F9A916 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		2DA1B4A729DA3C7800F9A916 /* Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fields.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
 		2DA5D01429AD44E400F49B9D /* SignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailViewController.swift; sourceTree = "<group>"; };
 		2DA5D01629AD44F400F49B9D /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +194,7 @@
 		2D4EEA1E29D236BA0061DC09 /* Homescreen */ = {
 			isa = PBXGroup;
 			children = (
+				2DA1B49E29D7929800F9A916 /* Models */,
 				2D4EEA1F29D238660061DC09 /* HomescreenViewController.swift */,
 				2D4EEA2529D3009B0061DC09 /* Views */,
 				2D98FE0129D319C5002B7AEB /* Description Views */,
@@ -196,6 +209,7 @@
 				2D98FDFB29D31048002B7AEB /* TopProfileView.swift */,
 				2D98FDFF29D31880002B7AEB /* DescriptionView.swift */,
 				2D98FDFD29D31519002B7AEB /* ToolbarView.swift */,
+				2DA1B49C29D77B9A00F9A916 /* ProfileImageView .swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +235,18 @@
 			children = (
 			);
 			path = "Description Views";
+			sourceTree = "<group>";
+		};
+		2DA1B49E29D7929800F9A916 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */,
+				2DA1B4A329D7962100F9A916 /* Pools .swift */,
+				2DA1B4A129D7947800F9A916 /* User.swift */,
+				2DA1B4A529D86B3300F9A916 /* Database.swift */,
+				2DA1B4A729DA3C7800F9A916 /* Fields.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2DAA13BF29B54C65001BC1CB /* Authentication */ = {
@@ -467,20 +493,26 @@
 				2DAA13BE29B54878001BC1CB /* SignupConfirmEmailViewController.swift in Sources */,
 				2DA5D01729AD44F400F49B9D /* SignupPasswordViewController.swift in Sources */,
 				2D58F43629B92AF900704467 /* SignupBirthdayViewController.swift in Sources */,
+				2DA1B4A629D86B3300F9A916 /* Database.swift in Sources */,
 				2D4EEA1D29D234F20061DC09 /* FeatureViewModel.swift in Sources */,
 				2D2AF29729BE2CC3008B7509 /* Authentication.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
+				2DA1B4A429D7962100F9A916 /* Pools .swift in Sources */,
 				2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */,
+				2DA1B49D29D77B9A00F9A916 /* ProfileImageView .swift in Sources */,
 				2DCE0C5929BD1CE40020E1F2 /* UploadProfile.swift in Sources */,
 				2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,
 				2D286DEF29B684F9004DA4E5 /* OnboardingUtilites.swift in Sources */,
+				2DA1B4A029D792B000F9A916 /* ProfileGenerator.swift in Sources */,
 				2DC44C3C29B8247D00DA18AC /* SignupFirstNameViewController.swift in Sources */,
 				2DC280C029AA7EAA00BB5599 /* ViewController.swift in Sources */,
+				2DA1B4A829DA3C7800F9A916 /* Fields.swift in Sources */,
 				2DCE0C5D29BD354D0020E1F2 /* OnboardingNavigationController.swift in Sources */,
 				2D28E88929AD829000E78556 /* GlobalConstants.swift in Sources */,
 				2DA5D01529AD44E400F49B9D /* SignupEmailViewController.swift in Sources */,
+				2DA1B4A229D7947800F9A916 /* User.swift in Sources */,
 				2D142B0A29BA99D20050E656 /* SignupSexViewController.swift in Sources */,
 				2D142B0C29BB699F0050E656 /* SignupPreferenceViewController.swift in Sources */,
 				2D4EEA2229D2FE920061DC09 /* ContainerView.swift in Sources */,

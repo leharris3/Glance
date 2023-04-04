@@ -8,13 +8,14 @@
 import UIKit
 
 class ContainerView: UIView {
-
+    
     init(vc: UIViewController) {
         
         super.init(frame: vc.view.bounds)
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .systemBlue
+        self.backgroundColor = .white
+        self.clipsToBounds = true
         vc.view.addSubview(self)
         
         let margins = vc.view.safeAreaLayoutGuide
@@ -25,11 +26,11 @@ class ContainerView: UIView {
             self.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0.0),
             self.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0.0)
         ]
+        
         NSLayoutConstraint.activate(constraints)
     }
-    
+            
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

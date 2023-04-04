@@ -9,9 +9,13 @@ import UIKit
 
 class HomescreenViewController: UIViewController {
     
-    var user: Any? = nil
-    
     override func viewDidLoad() {
+        
+        // Loading Order
+            // 1. Load profile datasets
+            // 2. Pass profiles to a view constructor
+            // Who controls auto re-loading of profiles?
+        
         super.viewDidLoad()
         initializeHomescreen()
     }
@@ -24,7 +28,10 @@ class HomescreenViewController: UIViewController {
         self.view.addSubview(containerView)
         
         let topProfileView = TopProfileView(vc: self, container: containerView)
-        let descriptionView = DescriptionView(vc: self, container: topProfileView)
         let toolbar = ToolbarView(vc: self, container: containerView)
+        
+        // Set up tap gesture recognizer
+        let tapGesture = UIPanGestureRecognizer(target: topProfileView, action: #selector(topProfileView.handleTap(_:)))
+        topProfileView.addGestureRecognizer(tapGesture)
     }
 }
