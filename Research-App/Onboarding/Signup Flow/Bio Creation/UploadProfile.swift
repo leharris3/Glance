@@ -1,39 +1,30 @@
-//
-//  Upload User Card.swift
-//  Research-App
-//
-//  Created by Levi Harris on 3/11/23.
-//
-
 import Foundation
 import FirebaseStorage
 import FirebaseCore
 import FirebaseFirestore
 
-class UploadProfile: NSObject {
+class UploadProfile {
     
-    // Uploads all info in user card.
+    static let db = Firestore.firestore()
+    static let storage = Storage.storage()
+    static var photo_urls = [String]()
+    
     static func uploadProfile() -> Bool {
+        guard let email = GlobalConstants.email else {return false}
+        let user = GlobalConstants.user
         
-        // Database.
-        let db = Firestore.firestore()
-//        db.collection("user-profiles").addDocument(data: "example-user")
-//        db.collection("user-profiles").document("example-user")
-
-        let photos: [Data?] =  GlobalConstants.user.profilePhotos
-        let email: String = GlobalConstants.email! // Should never be nil.
-        let firstName: String = GlobalConstants.user.firstName!
-        let dob: Date = GlobalConstants.user.dateOfBirth!
-        let age: Int = GlobalConstants.user.age
-        let sex: String = GlobalConstants.user.sex
-        let preference: String = GlobalConstants.user.preference
-        let interests: [String] = GlobalConstants.user.interests
-        let matches: [String] = []
-        let seenProfiles: [String] = []
-        let unseenProfiles: [String] = []
-        let likedProfiles: [String] = []
-        let photo_urls: [String] = []
-        
+        let photos = user.profilePhotos
+        let firstName = user.firstName ?? ""
+        let dob = user.dateOfBirth ?? Date()
+        let age = user.age
+        let sex = user.sex
+        let preference = user.preference
+        let interests = user.interests
+        let matches = [String]()
+        let seenProfiles = [String]()
+        let unseenProfiles = [String]()
+        let likedProfiles = [String]()
+    
         let profileDictionary: [String: Any] = [
             "email": email,
             "first_name": firstName,
@@ -51,92 +42,74 @@ class UploadProfile: NSObject {
         ]
         
         // Reference to user profile in cloud store.
-        let ref = db.collection("users").document("user-profiles")
+        let ref = db.collection("users").document(email)
         
         // Upload profile.
-        ref.setData([email: profileDictionary], merge: true)
+        ref.setData(profileDictionary, merge: true)
         
         // Add user to user pool.
-        UploadProfile.addUserToPool(db: db, sex: sex, email: email)
+        addUserToPool(sex: sex, email: email)
         
-        // Empty photo list 
-        if (photos.count == 0){ return false}
+        // Empty photo list
+        if photos.count == 0 { return false}
         
         // Upload photos
-        for photo in GlobalConstants.user.profilePhotos {
-            UploadProfile.uploadPhoto(data: photo, email: email)
+        for photo in photos {
+            uploadPhoto(data: photo, email: email)
         }
         
-        return true // MARK: Profile successfully uploaded.
+        return true
     }
     
     // Upload a photo.
-    static func uploadPhoto(data: Data, email: String){
-        
-        let db = Firestore.firestore()
-        
-        // Create Storage Ref.
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
+    static func uploadPhoto(data: Data?, email: String) {
+        guard let data = data else { return }
         
         // Create references to cloud store.
-        let ref = storageRef.child("images/\(String(describing: GlobalConstants.email))/\(UUID().uuidString)")
-        let profileRef = db.collection("users").document("user-profiles").updateData([:])
-
+        let storageRef = storage.reference().child("images/\(email)/\(UUID().uuidString)")
+        
         // Upload the file.
-        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            return
-          }
-          // Metadata.
-          let size = metadata.size
-          ref.downloadURL { (url, error) in
-              guard let downloadURL = url else {
-                  return
+        let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else { return }
+            // Metadata.
+            let size = metadata.size
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else { return }
+                photo_urls.append(downloadURL.absoluteString)
+                print(downloadURL.absoluteString)
             }
-          }
         }
     }
     
-    static func addUserToPool(db: Firestore, sex: String, email: String) {
-        
-        var tempArray: [Any] = []
+    static func addUserToPool(sex: String, email: String) {
         let ref = db.collection("users").document("user-lists")
+        
         ref.getDocument { (document, error) in
-            if (error != nil) {
-                print("Error adding user to user pools")
-                return }
-            if ((document?.exists) != nil) {
-                if (sex == "M"){
-                    // Add male user to user pool.
-                    tempArray = document!.get("male-users") as! [Any]
-                    tempArray.append(email)
-                    db.collection("users").document("user-lists").setData(["male-users": tempArray], merge: true)
-                    print("Male Added to User-Pool.")
-                }
-                else if (sex == "W"){
-                    // Add female user to user pool.
-                    tempArray = document!.get("female-users") as! [Any]
-                    tempArray.append(email)
-                    db.collection("users").document("user-lists").setData(["female-users": tempArray], merge: true)
-                }
-                else {
-                    // Non-binary user added to both pools.
-                    tempArray = document!.get("male-users") as! [Any]
-                    tempArray.append(email)
-                    db.collection("users").document("user-lists").setData(["male-users": tempArray], merge: true)
-                    
-                    tempArray = document!.get("female-users") as! [Any]
-                    tempArray.append(email)
-                    db.collection("users").document("user-lists").setData(["female-users": tempArray], merge: true)
+            if let document = document {
+                var maleUsers = document.get("male-users") as? [String] ?? [String]()
+                var femaleUsers = document.get("female-users") as? [String] ?? [String]()
+                var allUsers = document.get("all-users") as? [String] ?? [String]()
+                
+                if sex == "M" {
+                    maleUsers.append(email)
+                } else if sex == "W" {
+                    femaleUsers.append(email)
+                } else {
+                    maleUsers.append(email)
+                    femaleUsers.append(email)
                 }
                 
-                // Add new profile to all users pool.
-                tempArray = document!.get("all-users") as! [Any]
-                tempArray.append(email)
-                db.collection("users").document("user-lists").setData(["all-users": tempArray], merge: true)
+                allUsers.append(email)
+                
+                let data: [String: Any] = [
+                    "male-users": maleUsers,
+                    "female-users": femaleUsers,
+                    "all-users": allUsers
+                ]
+                
+                ref.setData(data, merge: true)
             }
-            else { return }
         }
     }
 }
+    

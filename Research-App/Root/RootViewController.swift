@@ -1,37 +1,42 @@
-//
-//  RootViewController.swift
-//  Research-App
-//
-//  Created by Levi Harris on 2/25/23.
-//
-
 import UIKit
-import FirebaseAuthUI
-import FirebaseCore
+import FirebaseAuth
 import FirebaseFirestore
 
-class RootViewController: UIViewController, FUIAuthDelegate {
+class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentUser = Auth.auth().currentUser
-        
-        // MARK: An exisiting user in logged in.
-        if currentUser != nil {
-            print("Current user email: " + (currentUser?.email ?? ""))
+        if let currentUser = Auth.auth().currentUser {
+            print("--------------------------------------------------------------------------------------")
+            print("Current user email: " + currentUser.email!)
             
-            let email: String = currentUser!.email ?? ""
+            let email = currentUser.email ?? ""
             let db = Firestore.firestore()
-            var partialProfileExisits: Bool = true
-            
-            // Create a reference to user-profile.
             let ref = db.collection("users").document("user-profiles")
+            
             ref.getDocument { (document, error) in
-                if (error != nil) { return }
-                if (((document!.data()?.contains(where: {$0.key == email}))) != false) {
-                    Navigation.changeRootViewControllerToFeature()
+                if let error = error {
+                    print("Error retrieving user profile: \(error.localizedDescription)")
+                    return
                 }
+                
+                if let documentData = document?.data(), documentData[email] != nil {
+                    self.navigateToFeature()
+                }
+            }
+        }
+    }
+    
+    private func navigateToFeature() {
+        DispatchQueue.main.async {
+            let featureViewController = HomescreenViewController()
+            let navigationController = HomescreenNavigationController(rootViewController: featureViewController)
+            
+            if let window = UIApplication.shared.windows.first {
+                UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    window.rootViewController = navigationController
+                }, completion: nil)
             }
         }
     }

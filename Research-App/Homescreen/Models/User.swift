@@ -23,7 +23,7 @@ class User: NSObject {
     
     override init() {
         print("------------------------------------------------------------")
-        print("Initializing user.")
+        print("Initializing user object.")
         let currentUser = Auth.auth().currentUser
         self.database = Database()
         self.unlikedProfiles = []
@@ -51,5 +51,9 @@ class User: NSObject {
     
     public func setSeenProfiles(seenProfiles: [String]) {
         return
+    }
+    
+    public func getEmail() -> String {
+        return self.email
     }
 }

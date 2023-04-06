@@ -9,22 +9,37 @@ import Foundation
 
 class ProfileGenerator: NSObject {
     
+    var database: Database?
+    var profiles: [String: Any]?
     var user: Any
     var unlikedProfiles: [String]
     
     override init() {
+        
+        print("------------------------------------------------------------")
+        print("Initializing profile generator object.")
+        
+        self.database = Database()
+        self.profiles = self.database?.getProfiles()
         self.user = User()
+        // self.unlikedProfiles = self.database?.getUserField(email: self.user., field: "unliked_profiles")
         self.unlikedProfiles = []
-//        self.profiles = ProfileGenerator.load()
     }
     
     static private func loadUnlikedProfiles() -> [String] {
-//        let preference: String =
         return []
     }
     
-    // Public getter method for next profile to display.
-    public func pop() -> [String: Any]? {
-        return nil
+    // Pop current profile off of profile stack.
+    public func pop() {
+        return
+    }
+    
+    public func getCurrentProfile() -> [String: Any] {
+        return [:]
+    }
+    
+    public func getNextProfile() -> [String: Any] {
+        return [:]
     }
 }

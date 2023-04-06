@@ -13,6 +13,9 @@ class ContainerView: UIView {
         
         super.init(frame: vc.view.bounds)
         
+        print("------------------------------------------------------------")
+        print("Initializing container view.")
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .white
         self.clipsToBounds = true

@@ -19,13 +19,16 @@ class Database: NSObject {
     
     override init() {
         
+        print("------------------------------------------------------------")
+        print("Initializing database object.")
+        
         var userProfiles: [String: Any] = [:]
         Database.fetchUserProfiles { result in
             switch result {
             case .success(let fetchedProfiles):
                 userProfiles = fetchedProfiles
                 // Handle the user profiles dictionary
-                print("User profiles fetched successfully:", userProfiles)
+                print("User profiles fetched successfully")
             case .failure(let error):
                 // Handle the error
                 print("Error fetching user profiles:", error.localizedDescription)
@@ -56,5 +59,9 @@ class Database: NSObject {
     
     public func setUserField(email: String, field: String, with: Any?) {
         
+    }
+    
+    public func getProfiles() -> [String: Any] {
+        return self.userProfiles
     }
 }
