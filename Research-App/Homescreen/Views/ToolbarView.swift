@@ -15,19 +15,20 @@ class ToolbarView: UIToolbar {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .white
+        self.barTintColor = .white
         self.clipsToBounds = true
         container.addSubview(self)
         
         let personButton = UIButton()
-        personButton.setImage(UIImage(systemName: "person"), for: .normal)
-        personButton.tintColor = .black
+        personButton.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        personButton.tintColor = UIColor(white: 0.6, alpha: 1.0)
         personButton.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
         personButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(personButton)
         
         let messageButton = UIButton()
-        messageButton.setImage(UIImage(systemName: "message"), for: .normal)
-        messageButton.tintColor = .black
+        messageButton.setImage(UIImage(systemName: "message.fill"), for: .normal)
+        messageButton.tintColor = UIColor(white: 0.6, alpha: 1.0)
         messageButton.addTarget(self, action: #selector(messagesTapped), for: .touchUpInside)
         messageButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(messageButton)
@@ -41,13 +42,13 @@ class ToolbarView: UIToolbar {
             
             personButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
             personButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            personButton.widthAnchor.constraint(equalToConstant: 30.0),
-            personButton.heightAnchor.constraint(equalToConstant: 30.0),
+            personButton.widthAnchor.constraint(equalToConstant: 40.0),
+            personButton.heightAnchor.constraint(equalToConstant: 40.0),
 
             messageButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10.0),
             messageButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            messageButton.widthAnchor.constraint(equalToConstant: 30.0),
-            messageButton.heightAnchor.constraint(equalToConstant: 30.0)
+            messageButton.widthAnchor.constraint(equalToConstant: 40.0),
+            messageButton.heightAnchor.constraint(equalToConstant: 40.0)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -57,10 +58,10 @@ class ToolbarView: UIToolbar {
     }
     
     @objc func profileTapped() {
-        // Handle profile icon tap
+        print("Tapped")
     }
     
     @objc func messagesTapped() {
-        // Handle messages icon tap
+        print("Tapped")
     }
 }

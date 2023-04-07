@@ -29,7 +29,7 @@ class BottomProfileView: UIView {
         // Set up constraints
         container.addSubview(self)
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0),
+            topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -65.0),
             leftAnchor.constraint(equalTo: container.leftAnchor, constant: 10.0),
             rightAnchor.constraint(equalTo: container.rightAnchor, constant: -10.0)

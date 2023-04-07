@@ -14,12 +14,15 @@ class TopProfileView: UIView {
     private var startingPoint: CGPoint?
     private var tapGestureRecognizer: UIPanGestureRecognizer!
     private var profileGenerator: ProfileGenerator!
-    
+    private var infoButton: UIButton!
+    private var profileImage: ProfileImage?
+
     init(vc: UIViewController, container: UIView, profileGenerator: ProfileGenerator) {
         
-        self.profileGenerator = profileGenerator
         self.observers = []
-        
+        self.profileGenerator = profileGenerator
+        self.infoButton = UIButton()
+        self.profileImage = nil
         super.init(frame: vc.view.bounds)
         
         print("------------------------------------------------------------")
@@ -30,23 +33,21 @@ class TopProfileView: UIView {
         
         // Set up constraints
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0),
+            topAnchor.constraint(equalTo: container.topAnchor, constant: 0.0),
             bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -65.0),
             leftAnchor.constraint(equalTo: container.leftAnchor, constant: 10.0),
             rightAnchor.constraint(equalTo: container.rightAnchor, constant: -10.0)
         ])
         
-        // Add tap gesture recognizer
         tapGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         container.addGestureRecognizer(tapGestureRecognizer)
         
-        let profileImage = ProfileImage(profileView: self, profileGenerator: profileGenerator)
+        self.profileImage = ProfileImage(profileView: self, profileGenerator: profileGenerator)
         self.setupView()
-        self.configure(with: self.profileGenerator.getCurrentProfile())
-        self.addObserver(view: profileImage)
+        self.addObserver(view: self.profileImage!)
+        self.profileImage!.configure(with: self.profileGenerator.getCurrentProfile())
     }
     
-    // Set up the view
     private func setupView() {
         backgroundColor = .white
         layer.cornerRadius = 15
@@ -60,7 +61,7 @@ class TopProfileView: UIView {
         // Create and add the info button
         let infoButton = UIButton()
         infoButton.translatesAutoresizingMaskIntoConstraints = false
-        let infoImage = UIImage(systemName: "info", withConfiguration: UIImage.SymbolConfiguration(pointSize: 50, weight: .black))?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let infoImage = UIImage(systemName: "info", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .black))?.withTintColor(.white, renderingMode: .alwaysOriginal)
         infoButton.setImage(infoImage, for: .normal)
         infoButton.alpha = 1.0
         infoButton.isUserInteractionEnabled = true
@@ -74,16 +75,44 @@ class TopProfileView: UIView {
         
         // Add action for info button tap event
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        self.infoButton = infoButton
+    }
+    
+    public override func didChangeValue(forKey key: String) {
+        if (key == "Description is Visible") {
+            self.tapGestureRecognizer.isEnabled = false
+
+        }
+        if (key == "Description is Invisible") {
+            self.tapGestureRecognizer.isEnabled = true
+        }
     }
     
     public func addObserver(view: UIView) {
         self.observers.append(view)
     }
+
+    private func swiped() {
+        
+    }
+
+    private func dismissProfile() {
+        self.profileGenerator?.pop()
+        self.configure(with: profileGenerator.getCurrentProfile())
+        for observer in observers {
+            observer.didChangeValue(forKey: "Profile Dismissed")
+        }
+    }
+    
+    public func configure(with: [String: Any]) {}
     
     @objc func handleTap(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
             startingPoint = center
+            UIView.animate(withDuration: 0.3) {
+                self.infoButton.alpha = 0.0
+            }
         case .changed:
             guard let startingPoint = startingPoint else { return }
             let translation = sender.translation(in: superview)
@@ -121,37 +150,26 @@ class TopProfileView: UIView {
                 }
                 UIView.animate(withDuration: 0.0, delay: 0.5) {
                     self.center = startingPoint
+                } completion: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        self.infoButton.alpha = 1.0
+                    }
                 }
             }
         default:
             break
         }
     }
-    
+
     @objc private func infoButtonTapped() {
         for observer in observers {
             observer.didChangeValue(forKey: "Show Description")
         }
-    }
-
-    private func swiped() {
-        
-    }
-
-    private func dismissProfile() {
-        self.profileGenerator?.pop()
-        self.configure(with: profileGenerator.getCurrentProfile())
-        for observer in observers {
-            observer.didChangeValue(forKey: "Profile Dismissed")
-        }
-    }
-    
-    // TODO: CONFIGURE
-    public func configure(with: [String: Any]) {
-        
+        self.tapGestureRecognizer.isEnabled = false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }
