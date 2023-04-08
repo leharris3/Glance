@@ -11,10 +11,12 @@ import UIKit
 class ProfileImage: UIImageView {
     
     private var profileGenerator: ProfileGenerator
+    private var images: [UIImage]
     
     init(profileView: UIView, profileGenerator: ProfileGenerator) {
-        
+    
         self.profileGenerator = profileGenerator
+        self.images = []
         super.init(frame: profileView.frame)
         
         profileView.addSubview(self)
@@ -44,6 +46,7 @@ class ProfileImage: UIImageView {
         // Add the gradient layer as a sublayer
         self.layer.addSublayer(gradientLayer)
         self.contentMode = .scaleAspectFill
+        let images = self.profileGenerator.getNextProfile()
         self.image = UIImage(named: "Image")
     }
     
@@ -54,7 +57,11 @@ class ProfileImage: UIImageView {
     }
     
     public func configure(with: [String: Any]){
-        
+        let images = (with["photos"] as? [UIImage]) ?? []
+        if (images.count) > 0 {
+            self.images = images
+            self.image = images[0]
+        }
     }
     
     required init?(coder: NSCoder) {

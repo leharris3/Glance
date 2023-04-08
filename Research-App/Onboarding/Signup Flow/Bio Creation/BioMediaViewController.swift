@@ -127,7 +127,8 @@ class BioMediaViewController: UIViewController {
         }
         
         // MARK: Onboarding complete, attempt to upload profile.
-        if (UploadProfile.uploadProfile()) {
+        let profileUploader = ProfileUploader()
+        if (profileUploader.upload()) {
             
             // Media -> Enable Notifications.
             let enableNotifications = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EnableNotificationsViewController") as! EnableNotificationsViewController

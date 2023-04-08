@@ -19,30 +19,25 @@ class User: NSObject {
     var email: String
     var preference: String
     var unlikedProfiles: [String]
-    var database: Database
     
     override init() {
         print("------------------------------------------------------------")
         print("Initializing user object.")
         let currentUser = Auth.auth().currentUser
-        self.database = Database()
         self.unlikedProfiles = []
         self.email = ""
         self.preference = ""
         
-//        if (currentUser == nil) {
-//            print("Error retrieving current user.")
-//            return // Error.
-//        }
-//        do {
-//            self.email = currentUser!.email!
-//            self.preference = self.database.getUserField(email: self.email, field: Fields.preference)
-//            self.unlikedProfiles = self.database.getUserField(email: self.email, field: Fields.unlikedProfiles)
-//        }
-//        catch {
-//            print("Error getting logged-in user fields.")
-//            return
-//        }
+        if (currentUser == nil) {
+            print("Error retrieving current user.")
+            return // Error.
+        }
+        
+        let db = Database.getDatabase()
+        
+        self.email = currentUser!.email ?? ""
+        self.preference = db.getUserField(email: self.email, field: Fields.preference) as? String ?? ""
+        self.unlikedProfiles = db.getUserField(email: self.email, field: Fields.unlikedProfiles) as? [String] ?? []
     }
     
     public func getPreference() -> String {

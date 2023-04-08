@@ -9,21 +9,42 @@ import Foundation
 
 class ProfileGenerator: NSObject {
     
-    var database: Database?
-    var profiles: [String: Any]?
-    var user: Any
-    var unlikedProfiles: [String]
+    var user: User
+    var unseenProfiles: [String]
+    var seenProfiles: [String]
     
     override init() {
         
         print("------------------------------------------------------------")
         print("Initializing profile generator object.")
         
-        self.database = Database()
-        self.profiles = self.database?.getProfiles()
         self.user = User()
-        // self.unlikedProfiles = self.database?.getUserField(email: self.user., field: "unliked_profiles")
-        self.unlikedProfiles = []
+        self.seenProfiles = []
+        self.unseenProfiles = []
+        super.init()
+        
+        self.loadPreferedProfilesAndUpdate()
+        
+        }
+    
+    private func loadPreferedProfilesAndUpdate() {
+        
+        let db = Database.getDatabase()
+        
+        if (user.preference == "M") {
+            self.unseenProfiles = (db.getUserPool(pool: "Males"))
+        }
+        else if (user.preference == "W") {
+            self.unseenProfiles = (db.getUserPool(pool: "Females"))
+        }
+        else if (user.preference == "B"){
+            self.unseenProfiles = (db.getUserPool(pool: "All"))
+        }
+        else {
+            print("Error loading prefered user pool, bad string.")
+            self.unseenProfiles = []
+        }
+        // print(self.unseenProfiles)
     }
     
     static private func loadUnlikedProfiles() -> [String] {

@@ -29,7 +29,6 @@
 		2D98FE0029D31880002B7AEB /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98FDFF29D31880002B7AEB /* DescriptionView.swift */; };
 		2DA1B4A029D792B000F9A916 /* ProfileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */; };
 		2DA1B4A229D7947800F9A916 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A129D7947800F9A916 /* User.swift */; };
-		2DA1B4A429D7962100F9A916 /* Pools .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A329D7962100F9A916 /* Pools .swift */; };
 		2DA1B4A629D86B3300F9A916 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A529D86B3300F9A916 /* Database.swift */; };
 		2DA1B4A829DA3C7800F9A916 /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA1B4A729DA3C7800F9A916 /* Fields.swift */; };
 		2DA5D01329AD44C100F49B9D /* SignupConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */; };
@@ -51,7 +50,7 @@
 		2DC5D45029DEFC8F00DAD09E /* HomescreenNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D44F29DEFC8F00DAD09E /* HomescreenNavigationController.swift */; };
 		2DC5D45329DF16C600DAD09E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D45229DF16C600DAD09E /* ProfileImage.swift */; };
 		2DC5EC7529ABC5EF0024B245 /* SignupPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */; };
-		2DCE0C5929BD1CE40020E1F2 /* UploadProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */; };
+		2DCE0C5929BD1CE40020E1F2 /* ProfileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5829BD1CE40020E1F2 /* ProfileUploader.swift */; };
 		2DCE0C5B29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */; };
 		2DCE0C5D29BD354D0020E1F2 /* OnboardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5C29BD354D0020E1F2 /* OnboardingNavigationController.swift */; };
 		2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */; };
@@ -85,7 +84,6 @@
 		2D98FDFF29D31880002B7AEB /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGenerator.swift; sourceTree = "<group>"; };
 		2DA1B4A129D7947800F9A916 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		2DA1B4A329D7962100F9A916 /* Pools .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pools .swift"; sourceTree = "<group>"; };
 		2DA1B4A529D86B3300F9A916 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2DA1B4A729DA3C7800F9A916 /* Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fields.swift; sourceTree = "<group>"; };
 		2DA5D01229AD44C100F49B9D /* SignupConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfirmCodeViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +108,7 @@
 		2DC5D44F29DEFC8F00DAD09E /* HomescreenNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenNavigationController.swift; sourceTree = "<group>"; };
 		2DC5D45229DF16C600DAD09E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		2DC5EC7429ABC5EF0024B245 /* SignupPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneNumberViewController.swift; sourceTree = "<group>"; };
-		2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfile.swift; sourceTree = "<group>"; };
+		2DCE0C5829BD1CE40020E1F2 /* ProfileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUploader.swift; sourceTree = "<group>"; };
 		2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		2DCE0C5C29BD354D0020E1F2 /* OnboardingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigationController.swift; sourceTree = "<group>"; };
 		2DCE0C5E29BD35D20020E1F2 /* SignupWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +147,7 @@
 				2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */,
 				2DD2ECF529BCBF50007FFF1C /* BioMediaViewController.swift */,
 				2DCE0C5A29BD2F7D0020E1F2 /* EnableNotificationsViewController.swift */,
-				2DCE0C5829BD1CE40020E1F2 /* UploadProfile.swift */,
+				2DCE0C5829BD1CE40020E1F2 /* ProfileUploader.swift */,
 			);
 			path = "Bio Creation";
 			sourceTree = "<group>";
@@ -247,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				2DA1B49F29D792B000F9A916 /* ProfileGenerator.swift */,
-				2DA1B4A329D7962100F9A916 /* Pools .swift */,
 				2DA1B4A129D7947800F9A916 /* User.swift */,
 				2DA1B4A529D86B3300F9A916 /* Database.swift */,
 				2DA1B4A729DA3C7800F9A916 /* Fields.swift */,
@@ -513,9 +510,8 @@
 				2D2AF29729BE2CC3008B7509 /* Authentication.swift in Sources */,
 				2DC280DA29AA9D1700BB5599 /* LoginViewController.swift in Sources */,
 				2D0F04D729B56E0500CCC0BE /* RootNavigationController.swift in Sources */,
-				2DA1B4A429D7962100F9A916 /* Pools .swift in Sources */,
 				2DCE0C5F29BD35D20020E1F2 /* SignupWelcomeViewController.swift in Sources */,
-				2DCE0C5929BD1CE40020E1F2 /* UploadProfile.swift in Sources */,
+				2DCE0C5929BD1CE40020E1F2 /* ProfileUploader.swift in Sources */,
 				2DC5D45029DEFC8F00DAD09E /* HomescreenNavigationController.swift in Sources */,
 				2DD2ECF629BCBF50007FFF1C /* BioMediaViewController.swift in Sources */,
 				2DC280DE29AAB7BD00BB5599 /* FeatureViewController.swift in Sources */,

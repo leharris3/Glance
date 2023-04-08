@@ -10,5 +10,5 @@ import Foundation
 class Fields: NSObject {
     
     public static var preference = "preference"
-    public static var unlikedProfiles = "unliked_profiles"
+    public static var unlikedProfiles = "unseen_profiles"
 }

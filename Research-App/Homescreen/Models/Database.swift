@@ -14,54 +14,99 @@ import FirebaseAuth
 
 class Database: NSObject {
     
+    private static var db: Database?
     private static var database = Firestore.firestore()
     private var userProfiles: [String: Any]
-    
-    override init() {
-        
+    private var userLists: [String: Any]
+    private var observers: [HomescreenViewController] = []
+
+    private override init() {
         print("------------------------------------------------------------")
         print("Initializing database object.")
-        
-        var userProfiles: [String: Any] = [:]
-        Database.fetchUserProfiles { result in
-            switch result {
-            case .success(let fetchedProfiles):
-                userProfiles = fetchedProfiles
-                // Handle the user profiles dictionary
-                print("User profiles fetched successfully")
-            case .failure(let error):
-                // Handle the error
-                print("Error fetching user profiles:", error.localizedDescription)
-            }
-        }
-        self.userProfiles = userProfiles
+        self.userProfiles = [:]
+        self.userLists = [:]
+        super.init()
+        self.fetchUserProfiles()
     }
     
-    private static func fetchUserProfiles(completion: @escaping (Result<[String: Any], Error>) -> Void) {
+    public static func getDatabase() -> Database {
+        if (Database.db == nil) {Database.db = Database()}
+        return Database.db!
+    }
+    
+    public func addObserver(viewController: HomescreenViewController) {
+        self.observers.append(viewController)
+    }
+    
+    private func notifyObservers() {
+        for observer in observers {
+            observer.didDataFinishLoading()
+        }
+    }
+    
+    private func fetchUserProfiles() {
         let ref = Database.database.collection("users").document("user-profiles")
         ref.getDocument { (document, error) in
             if let error = error {
-                completion(.failure(error))
             } else if let document = document, document.exists {
                 let userProfiles = document.data()!
-                completion(.success(userProfiles))
+                // print(userProfiles)
+                self.userProfiles = userProfiles
+                print("User profiles loaded")
+                self.fetchUserLists()
             } else {
                 let error = NSError(domain: "fetchUserProfiles", code: 0, userInfo: [NSLocalizedDescriptionKey: "User profiles document does not exist"])
-                completion(.failure(error))
             }
         }
     }
 
+    private func fetchUserLists() {
+        let ref = Database.database.collection("users").document("user-lists")
+        ref.getDocument { (document, error) in
+            if let error = error {
+            } else if let document = document, document.exists {
+                let userLists = document.data()!
+                // print("User lists loaded")
+                print(userLists)
+                self.userLists = userLists
+                self.notifyObservers()
+            } else {
+                let error = NSError(domain: "fetchUserProfiles", code: 0, userInfo: [NSLocalizedDescriptionKey: "User profiles document does not exist"])
+            }
+        }
+    }
     
     public func getUserField(email: String, field: String) -> Any? {
+        print(self.userProfiles)
+        if (self.userProfiles[email] != nil) {
+            let profile = self.userProfiles[email]
+            print(profile)
+            if ((profile as! [String: Any])[field] != nil) {
+                return (profile as! [String: Any])[field]
+            }
+        }
         return nil
     }
     
-    public func setUserField(email: String, field: String, with: Any?) {
+    public func getUserPool(pool: String) -> [String] {
+        
+        if (pool == "Males") {
+            return (self.userLists["male-users"] as! [String]) ?? []
+        }
+        else if (pool == "Females") {
+            return (self.userLists["female-users"] as! [String]) ?? []
+        }
+        else if (pool == "All") {
+            return (self.userLists["all-users"] as! [String]) ?? []
+        }
+        else { return [] }
+    }
+    
+    public func setUserProfile(email: String, profile: [String: Any]) {
         
     }
     
-    public func getProfiles() -> [String: Any] {
+    private func getProfiles() -> [String: Any] {
         return self.userProfiles
     }
 }

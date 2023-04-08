@@ -20,9 +20,9 @@ class RootViewController: UIViewController {
                     print("Error retrieving user profile: \(error.localizedDescription)")
                     return
                 }
-                
                 if let documentData = document?.data(), documentData[email] != nil {
-                    self.navigateToFeature()
+                    print("User Exisits")
+                    // self.navigateToFeature()
                 }
             }
         }
@@ -32,7 +32,6 @@ class RootViewController: UIViewController {
         DispatchQueue.main.async {
             let featureViewController = HomescreenViewController()
             let navigationController = HomescreenNavigationController(rootViewController: featureViewController)
-            
             if let window = UIApplication.shared.windows.first {
                 UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
                     window.rootViewController = navigationController

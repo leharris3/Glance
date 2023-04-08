@@ -11,13 +11,18 @@ class HomescreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initializeHomescreen()
+        
+        let database = Database.getDatabase()
+        database.addObserver(viewController: self)
     }
     
-    private func initializeHomescreen() {
+    public func didDataFinishLoading() {
+        self.loadViews()
+    }
+    
+    private func loadViews() {
         
         view.backgroundColor = .white
-        
         navigationItem.title = "Muse"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont(name: "Optima-Bold", size: 35)!,
@@ -29,15 +34,11 @@ class HomescreenViewController: UIViewController {
         
         // Create a profile generator.
         let profileGenerator = ProfileGenerator()
-        
         let bottomProfileView = BottomProfileView(vc: self, container: containerView, profileGenerator: profileGenerator)
         let topProfileView = TopProfileView(vc: self, container: containerView, profileGenerator: profileGenerator)
-        
         let descriptionView = DescriptionView(vc: self, container: containerView, profileGenerator: profileGenerator)
         let toolbar = ToolbarView(vc: self, container: containerView)
-        
-        // Set up tap gesture recognizer
-        
+    
         topProfileView.addObserver(view: bottomProfileView)
         topProfileView.addObserver(view: descriptionView)
         descriptionView.addObserver(view: topProfileView)

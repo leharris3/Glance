@@ -3,14 +3,22 @@ import FirebaseStorage
 import FirebaseCore
 import FirebaseFirestore
 
-class UploadProfile {
+class ProfileUploader: NSObject {
     
-    static let db = Firestore.firestore()
-    static let storage = Storage.storage()
-    static var photo_urls = [String]()
+    private var db: Firestore
+    private var storage: Storage
+    private var profile: [String: Any]
+    private var photos: [UIImage]
     
-    static func uploadProfile() -> Bool {
-        guard let email = GlobalConstants.email else {return false}
+    override init() {
+        
+        self.db = Firestore.firestore()
+        self.storage = Storage.storage()
+        self.profile = [:]
+        self.photos = []
+        super.init()
+        
+        let email = GlobalConstants.email ?? ""
         let user = GlobalConstants.user
         
         let photos = user.profilePhotos
@@ -24,8 +32,8 @@ class UploadProfile {
         let seenProfiles = [String]()
         let unseenProfiles = [String]()
         let likedProfiles = [String]()
-    
-        let profileDictionary: [String: Any] = [
+        
+        self.profile = [
             "email": email,
             "first_name": firstName,
             "dob": dob,
@@ -38,50 +46,48 @@ class UploadProfile {
             "matches": matches,
             "seen_profiles": seenProfiles,
             "unseen_profiles": unseenProfiles,
-            "photo_urls": photo_urls
+            "photos": photos
         ]
         
-        // Reference to user profile in cloud store.
-        let ref = db.collection("users").document(email)
+    }
+    
+    public func upload() -> Bool {
+        let sex = (self.profile["sex"] as! String) ?? ""
+        let email: String = (self.profile["email"] ?? "") as! String
         
-        // Upload profile.
-        ref.setData(profileDictionary, merge: true)
+        let ref = db.collection("users").document("user-profiles")
+        let data = [email: self.profile]
+        ref.setData(data, merge: true)
         
-        // Add user to user pool.
-        addUserToPool(sex: sex, email: email)
-        
-        // Empty photo list
-        if photos.count == 0 { return false}
-        
-        // Upload photos
-        for photo in photos {
-            uploadPhoto(data: photo, email: email)
-        }
-        
+        self.addUserToPool(sex: sex as! String, email: email as! String)
         return true
     }
     
     // Upload a photo.
-    static func uploadPhoto(data: Data?, email: String) {
-        guard let data = data else { return }
-        
-        // Create references to cloud store.
-        let storageRef = storage.reference().child("images/\(email)/\(UUID().uuidString)")
-        
-        // Upload the file.
-        let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else { return }
-            // Metadata.
-            let size = metadata.size
-            storageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else { return }
-                photo_urls.append(downloadURL.absoluteString)
-                print(downloadURL.absoluteString)
-            }
-        }
-    }
+//    static func uploadPhoto(data: Data?, email: String) {
+//        guard let data = data else { return }
+//
+//        // Create references to cloud store.
+//        let storageRef = storage.reference().child("images/\(email)/\(UUID().uuidString)")
+//        let ref = db.collection("users").document(email)
+//
+//        // Upload the file.
+//        let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
+//            guard let metadata = metadata else { return }
+//            // Metadata.
+//            let size = metadata.size
+//            storageRef.downloadURL { (url, error) in
+//                guard let downloadURL = url else { return }
+//                photo_urls.append(downloadURL.absoluteString)
+//                // print(downloadURL.absoluteString)
+//            }
+//        }
+//        if (last_photo) {
+//        }
+//    }
     
-    static func addUserToPool(sex: String, email: String) {
+    
+    private func addUserToPool(sex: String, email: String) {
         let ref = db.collection("users").document("user-lists")
         
         ref.getDocument { (document, error) in
