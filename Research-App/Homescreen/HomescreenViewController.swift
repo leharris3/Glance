@@ -33,10 +33,9 @@ class HomescreenViewController: UIViewController {
         self.view.addSubview(containerView)
         
         // Create a profile generator.
-        let profileGenerator = ProfileGenerator()
-        let bottomProfileView = BottomProfileView(vc: self, container: containerView, profileGenerator: profileGenerator)
-        let topProfileView = TopProfileView(vc: self, container: containerView, profileGenerator: profileGenerator)
-        let descriptionView = DescriptionView(vc: self, container: containerView, profileGenerator: profileGenerator)
+        let bottomProfileView = BottomProfileView(vc: self, container: containerView)
+        let topProfileView = TopProfileView(vc: self, container: containerView)
+        let descriptionView = DescriptionView(vc: self, container: containerView)
         let toolbar = ToolbarView(vc: self, container: containerView)
     
         topProfileView.addObserver(view: bottomProfileView)

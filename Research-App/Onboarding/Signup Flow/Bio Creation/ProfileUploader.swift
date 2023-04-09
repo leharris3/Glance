@@ -52,39 +52,15 @@ class ProfileUploader: NSObject {
     }
     
     public func upload() -> Bool {
-        let sex = (self.profile["sex"] as! String) ?? ""
-        let email: String = (self.profile["email"] ?? "") as! String
+        let sex = (profile["sex"] as! String) ?? ""
+        let email: String = (profile["email"] ?? "") as! String
         
-        let ref = db.collection("users").document("user-profiles")
-        let data = [email: self.profile]
-        ref.setData(data, merge: true)
+        let ref = db.collection("profiles").document(email) // use email as the document ID
+        ref.setData(profile) // set data with custom document ID
         
         self.addUserToPool(sex: sex as! String, email: email as! String)
         return true
     }
-    
-    // Upload a photo.
-//    static func uploadPhoto(data: Data?, email: String) {
-//        guard let data = data else { return }
-//
-//        // Create references to cloud store.
-//        let storageRef = storage.reference().child("images/\(email)/\(UUID().uuidString)")
-//        let ref = db.collection("users").document(email)
-//
-//        // Upload the file.
-//        let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
-//            guard let metadata = metadata else { return }
-//            // Metadata.
-//            let size = metadata.size
-//            storageRef.downloadURL { (url, error) in
-//                guard let downloadURL = url else { return }
-//                photo_urls.append(downloadURL.absoluteString)
-//                // print(downloadURL.absoluteString)
-//            }
-//        }
-//        if (last_photo) {
-//        }
-//    }
     
     
     private func addUserToPool(sex: String, email: String) {

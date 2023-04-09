@@ -13,16 +13,15 @@ class RootViewController: UIViewController {
             
             let email = currentUser.email ?? ""
             let db = Firestore.firestore()
-            let ref = db.collection("users").document("user-profiles")
             
+            let ref = db.collection("profiles").document(email)
             ref.getDocument { (document, error) in
                 if let error = error {
                     print("Error retrieving user profile: \(error.localizedDescription)")
                     return
                 }
-                if let documentData = document?.data(), documentData[email] != nil {
-                    print("User Exisits")
-                    // self.navigateToFeature()
+                if let document = document?.exists {
+                    self.navigateToFeature()
                 }
             }
         }

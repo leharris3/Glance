@@ -23,6 +23,7 @@ class BioMediaViewController: UIViewController {
     
     // Photo button -> image Data map.
     var photosToUpload: [Data?] = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    let MAX_IMAGE_SIZE: Int = 166666
     
     // Custom config.
     var config: YPImagePickerConfiguration = {
@@ -48,6 +49,45 @@ class BioMediaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func compressImage(image: UIImage, toSizeInBytes sizeInBytes: Int) -> UIImage? {
+        let targetSize = CGSize(width: 1024, height: 1024)
+        var compressionQuality: CGFloat = 1.0
+        let maxCompressionQuality: CGFloat = 0.1
+        
+        // Check if image is already smaller than target size
+        if let imageData = image.jpegData(compressionQuality: 1.0),
+           imageData.count < sizeInBytes {
+            return UIImage(data: imageData)
+        }
+        
+        // Binary search to find the optimal compression quality
+        var compressedImageData: Data?
+        var left: CGFloat = maxCompressionQuality
+        var right: CGFloat = 1.0
+        
+        while left <= right {
+            let mid = (left + right) / 2.0
+            let renderer = UIGraphicsImageRenderer(size: targetSize)
+            let scaledImage = renderer.image { _ in
+                image.draw(in: CGRect(origin: .zero, size: targetSize))
+            }
+            compressedImageData = scaledImage.jpegData(compressionQuality: mid)
+            if let data = compressedImageData, data.count <= sizeInBytes {
+                break
+            } else if let data = compressedImageData, data.count > sizeInBytes {
+                print(data.count)
+                right = mid - 0.01
+            } else {
+                left = mid + 0.01
+            }
+        }
+        
+        if let data = compressedImageData {
+            return UIImage(data: data)
+        }
+        return nil
     }
     
     // Display image select.
@@ -122,7 +162,11 @@ class BioMediaViewController: UIViewController {
         // Upload photos.
         for photo in photosToUpload {
             if (photo != nil) {
-                GlobalConstants.user.profilePhotos.append(photo!)
+                if let image = UIImage(data: photo!) {
+                    if let compressedPhoto = self.compressImage(image: image, toSizeInBytes: MAX_IMAGE_SIZE) {
+                        GlobalConstants.user.profilePhotos.append(compressedPhoto.jpegData(compressionQuality: 1.0)!)
+                    }
+                }
             }
         }
         

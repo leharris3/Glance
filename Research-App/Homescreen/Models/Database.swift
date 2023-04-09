@@ -15,16 +15,17 @@ import FirebaseAuth
 class Database: NSObject {
     
     private static var db: Database?
+    private var profilesSnapshot: [QueryDocumentSnapshot]
     private static var database = Firestore.firestore()
-    private var userProfiles: [String: Any]
     private var userLists: [String: Any]
     private var observers: [HomescreenViewController] = []
 
     private override init() {
         print("------------------------------------------------------------")
         print("Initializing database object.")
-        self.userProfiles = [:]
+        
         self.userLists = [:]
+        self.profilesSnapshot = []
         super.init()
         self.fetchUserProfiles()
     }
@@ -45,18 +46,14 @@ class Database: NSObject {
     }
     
     private func fetchUserProfiles() {
-        let ref = Database.database.collection("users").document("user-profiles")
-        ref.getDocument { (document, error) in
+        let ref = Database.database.collection("profiles")
+        ref.getDocuments { (querySnapshot, error) in
             if let error = error {
-            } else if let document = document, document.exists {
-                let userProfiles = document.data()!
-                // print(userProfiles)
-                self.userProfiles = userProfiles
-                print("User profiles loaded")
-                self.fetchUserLists()
-            } else {
-                let error = NSError(domain: "fetchUserProfiles", code: 0, userInfo: [NSLocalizedDescriptionKey: "User profiles document does not exist"])
+                print("Error fetching documents: \(error.localizedDescription)")
+            } else if let profiles = querySnapshot?.documents {
+                self.profilesSnapshot = profiles
             }
+            self.fetchUserLists()
         }
     }
 
@@ -77,15 +74,13 @@ class Database: NSObject {
     }
     
     public func getUserField(email: String, field: String) -> Any? {
-        print(self.userProfiles)
-        if (self.userProfiles[email] != nil) {
-            let profile = self.userProfiles[email]
-            print(profile)
-            if ((profile as! [String: Any])[field] != nil) {
-                return (profile as! [String: Any])[field]
-            }
+        
+        if let profile: QueryDocumentSnapshot = self.profilesSnapshot.first(where: { $0.documentID == email }) {
+            let profileDict = profile.data()
+            return profileDict[field]
+        } else {
+            return nil
         }
-        return nil
     }
     
     public func getUserPool(pool: String) -> [String] {
@@ -104,9 +99,5 @@ class Database: NSObject {
     
     public func setUserProfile(email: String, profile: [String: Any]) {
         
-    }
-    
-    private func getProfiles() -> [String: Any] {
-        return self.userProfiles
     }
 }

@@ -27,13 +27,13 @@ class DescriptionView: UIView {
     private var bioLabel: UILabel!
     private var closeButton: UIButton!
     
-    init(vc: UIViewController, container: UIView, profileGenerator: ProfileGenerator) {
+    init(vc: UIViewController, container: UIView) {
         
         self.observers = []
         self.nameAgeLabel = UILabel()
         self.interestsLabel = UILabel()
         self.bioLabel = UILabel()
-        self.profileGenerator = profileGenerator
+        self.profileGenerator = ProfileGenerator.getProfileGenerator()
         
         super.init(frame: vc.view.bounds)
         
@@ -141,6 +141,7 @@ class DescriptionView: UIView {
         self.nameAgeLabel = nameAgeLabel
         self.interestsLabel = interestsLabel
         self.bioLabel = bioLabel
+        self.configure(with: (profileGenerator?.getCurrentProfile()) ?? "")
     }
     
     @objc private func closeButtonTapped() {
@@ -161,15 +162,39 @@ class DescriptionView: UIView {
     override func didChangeValue(forKey key: String) {
         
         if (key == "Profile Dismissed"){
-            self.configure(with: self.profileGenerator!.getNextProfile())
+            if let email = self.profileGenerator!.getNextProfile() {
+                self.configure(with: email)
+            }
         }
         else if (key == "Show Description") {
             self.show()
         }
     }
     
-    public func configure(with: [String: Any]) {
-        
+    public func configure(with: String) {
+        let db = Database.getDatabase()
+        if let email = profileGenerator?.getCurrentProfile() {
+            let name = (db.getUserField(email: email, field: "first_name") as! String) ?? ""
+            let age = String(db.getUserField(email: email, field: "age") as! Int) ?? ""
+            nameAgeLabel.text = name + " " + age
+            
+            var i = 0
+            var interests = "Interests: "
+            var interestsArr = (db.getUserField(email: email, field: "interests")) as! [String]
+            while(i < interestsArr.count) {
+                if (i == interestsArr.count - 1){
+                    interests += interestsArr[i]
+                }
+                else {
+                    interests = interests + interestsArr[i] +  ", "
+                }
+                i += 1
+            }
+            interestsLabel.text = interests
+            
+            var bio = (db.getUserField(email: email, field: "bio") as? String) ?? ""
+            bioLabel.text = bio
+        }
     }
     
     private func show() {

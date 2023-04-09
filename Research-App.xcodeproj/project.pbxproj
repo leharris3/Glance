@@ -61,6 +61,16 @@
 		D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3135821C4380931CF2391B76 /* Pods_Research_App.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2DF65DDF29E1892E00ED10AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DC280B029AA7EAA00BB5599 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DC280B729AA7EAA00BB5599;
+			remoteInfo = "Research-App";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2D01FF9D29BBA5F800C0850E /* BioInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioInterestsViewController.swift; sourceTree = "<group>"; };
 		2D0F04D429B56A3B00CCC0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feature.storyboard; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 		2DD7BD4E29C48FAE0093A256 /* polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg"; path = "../../../../Downloads/polina-kuzovkova-DkJYdlA7JdA-unsplash.jpg"; sourceTree = "<group>"; };
 		2DD7BD5229C48FCF0093A256 /* david-williams-3TEN0V4RmOU-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "david-williams-3TEN0V4RmOU-unsplash.jpg"; path = "../../../../Downloads/david-williams-3TEN0V4RmOU-unsplash.jpg"; sourceTree = "<group>"; };
 		2DF594E629B7FA4C004B7727 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		2DF65DDB29E1892E00ED10AE /* Research-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Research-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3135821C4380931CF2391B76 /* Pods_Research_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Research_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4DAA03E390856BA25043BA /* Pods-Research-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Research-App.debug.xcconfig"; path = "Target Support Files/Pods-Research-App/Pods-Research-App.debug.xcconfig"; sourceTree = "<group>"; };
 		BE5BCA9B6EDE5AD0C4F2F296 /* Pods-Research-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Research-App.release.xcconfig"; path = "Target Support Files/Pods-Research-App/Pods-Research-App.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +138,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D758B07211019EB9959A90EE /* Pods_Research_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DF65DD829E1892E00ED10AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				2DC280B829AA7EAA00BB5599 /* Research-App.app */,
+				2DF65DDB29E1892E00ED10AE /* Research-AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +414,24 @@
 			productReference = 2DC280B829AA7EAA00BB5599 /* Research-App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2DF65DDA29E1892E00ED10AE /* Research-AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DF65DE129E1892E00ED10AE /* Build configuration list for PBXNativeTarget "Research-AppTests" */;
+			buildPhases = (
+				2DF65DD729E1892E00ED10AE /* Sources */,
+				2DF65DD829E1892E00ED10AE /* Frameworks */,
+				2DF65DD929E1892E00ED10AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DF65DE029E1892E00ED10AE /* PBXTargetDependency */,
+			);
+			name = "Research-AppTests";
+			productName = "Research-AppTests";
+			productReference = 2DF65DDB29E1892E00ED10AE /* Research-AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -407,6 +444,10 @@
 				TargetAttributes = {
 					2DC280B729AA7EAA00BB5599 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					2DF65DDA29E1892E00ED10AE = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 2DC280B729AA7EAA00BB5599;
 					};
 				};
 			};
@@ -424,6 +465,7 @@
 			projectRoot = "";
 			targets = (
 				2DC280B729AA7EAA00BB5599 /* Research-App */,
+				2DF65DDA29E1892E00ED10AE /* Research-AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -440,6 +482,13 @@
 				2DC280D829AA9B0000BB5599 /* GoogleService-Info.plist in Resources */,
 				2DC280C529AA7EAD00BB5599 /* Assets.xcassets in Resources */,
 				2DC280C329AA7EAA00BB5599 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DF65DD929E1892E00ED10AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +588,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2DF65DD729E1892E00ED10AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DF65DE029E1892E00ED10AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DC280B729AA7EAA00BB5599 /* Research-App */;
+			targetProxy = 2DF65DDF29E1892E00ED10AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2D0F04D529B56A3B00CCC0BE /* Feature.storyboard */ = {
@@ -755,6 +819,48 @@
 			};
 			name = Release;
 		};
+		2DF65DE229E1892E00ED10AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LeviHarris.Research-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Research-App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Research-App";
+			};
+			name = Debug;
+		};
+		2DF65DE329E1892E00ED10AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LeviHarris.Research-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Research-App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Research-App";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -772,6 +878,15 @@
 			buildConfigurations = (
 				2DC280CD29AA7EAD00BB5599 /* Debug */,
 				2DC280CE29AA7EAD00BB5599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DF65DE129E1892E00ED10AE /* Build configuration list for PBXNativeTarget "Research-AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DF65DE229E1892E00ED10AE /* Debug */,
+				2DF65DE329E1892E00ED10AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

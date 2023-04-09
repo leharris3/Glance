@@ -15,7 +15,7 @@ class BottomProfileView: UIView {
     private var tapGestureRecognizer: UITapGestureRecognizer!
     private var profileGenerator: ProfileGenerator!
     
-    init(vc: UIViewController, container: UIView, profileGenerator: ProfileGenerator) {
+    init(vc: UIViewController, container: UIView) {
         
         print("------------------------------------------------------------")
         print("Initializing bottom profile view.")
@@ -23,13 +23,15 @@ class BottomProfileView: UIView {
         super.init(frame: vc.view.bounds)
         
         self.setupView()
-        self.profileGenerator = profileGenerator
-        self.configure(with: self.profileGenerator!.getNextProfile())
+        self.profileGenerator = ProfileGenerator.getProfileGenerator()
+        if let nextProfile = self.profileGenerator?.getNextProfile() {
+            self.configure(with: nextProfile)
+        }
         
         // Set up constraints
         container.addSubview(self)
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
+            topAnchor.constraint(equalTo: container.topAnchor, constant: 5),
             bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -65.0),
             leftAnchor.constraint(equalTo: container.leftAnchor, constant: 10.0),
             rightAnchor.constraint(equalTo: container.rightAnchor, constant: -10.0)
@@ -44,10 +46,6 @@ class BottomProfileView: UIView {
         layer.cornerRadius = 15
         layer.borderWidth = 2.0
         layer.borderColor = UIColor.black.cgColor
-        layer.shadowColor = UIColor.systemRed.cgColor
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize(width: 4, height: 4)
-        layer.shadowRadius = 0
         clipsToBounds = false
         translatesAutoresizingMaskIntoConstraints = false
         alpha = 0.8
@@ -55,13 +53,15 @@ class BottomProfileView: UIView {
     }
     
     
-    public func configure(with: [String: Any]) {
+    public func configure(with: String) {
         
     }
     
     public override func didChangeValue(forKey key: String) {
         if (key == "Profile Dismissed"){
-            self.configure(with: self.profileGenerator!.getNextProfile())
+            if let email = self.profileGenerator?.getNextProfile() {
+                self.configure(with: email)
+            }
             self.fadeIn()
         }
     }
@@ -69,11 +69,8 @@ class BottomProfileView: UIView {
     private func fadeIn() {
         transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         self.alpha = 0.0
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform.identity
-            self.layer.shadowColor = UIColor.systemRed.cgColor
-            self.layer.shadowOffset = CGSize(width: 4, height: 4)
             self.alpha = 1.0
         }, completion: nil)
     }

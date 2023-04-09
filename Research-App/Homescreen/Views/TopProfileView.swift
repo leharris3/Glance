@@ -17,10 +17,10 @@ class TopProfileView: UIView {
     private var infoButton: UIButton!
     private var profileImage: ProfileImage?
 
-    init(vc: UIViewController, container: UIView, profileGenerator: ProfileGenerator) {
+    init(vc: UIViewController, container: UIView) {
         
         self.observers = []
-        self.profileGenerator = profileGenerator
+        self.profileGenerator = ProfileGenerator.getProfileGenerator()
         self.infoButton = UIButton()
         self.profileImage = nil
         super.init(frame: vc.view.bounds)
@@ -33,7 +33,7 @@ class TopProfileView: UIView {
         
         // Set up constraints
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: container.topAnchor, constant: 0.0),
+            topAnchor.constraint(equalTo: container.topAnchor, constant: 5.0),
             bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -65.0),
             leftAnchor.constraint(equalTo: container.leftAnchor, constant: 10.0),
             rightAnchor.constraint(equalTo: container.rightAnchor, constant: -10.0)
@@ -42,21 +42,24 @@ class TopProfileView: UIView {
         tapGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         container.addGestureRecognizer(tapGestureRecognizer)
         
-        self.profileImage = ProfileImage(profileView: self, profileGenerator: profileGenerator)
+        self.profileImage = ProfileImage(profileView: self)
         self.setupView()
         self.addObserver(view: self.profileImage!)
         self.profileImage!.configure(with: self.profileGenerator.getCurrentProfile())
     }
     
     private func setupView() {
+        
         backgroundColor = .white
         layer.cornerRadius = 15
-        layer.borderWidth = 2.0
-        layer.borderColor = UIColor.black.cgColor
-        clipsToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 3
+        
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
-        clipsToBounds = true
+        clipsToBounds = false
         
         // Create and add the info button
         let infoButton = UIButton()
@@ -98,13 +101,15 @@ class TopProfileView: UIView {
 
     private func dismissProfile() {
         self.profileGenerator?.pop()
-        self.configure(with: profileGenerator.getCurrentProfile())
+        if let email = profileGenerator.getCurrentProfile() {
+            self.configure(with: email)
+        }
         for observer in observers {
             observer.didChangeValue(forKey: "Profile Dismissed")
         }
     }
     
-    public func configure(with: [String: Any]) {}
+    public func configure(with: String) {}
     
     @objc func handleTap(_ sender: UIPanGestureRecognizer) {
         switch sender.state {

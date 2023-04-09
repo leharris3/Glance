@@ -11,11 +11,13 @@ import UIKit
 class ProfileImage: UIImageView {
     
     private var profileGenerator: ProfileGenerator
-    private var images: [UIImage]
+    private var database: Database
+    private var images: [Data]
     
-    init(profileView: UIView, profileGenerator: ProfileGenerator) {
+    init(profileView: UIView) {
     
-        self.profileGenerator = profileGenerator
+        self.profileGenerator = ProfileGenerator.getProfileGenerator()
+        self.database = Database.getDatabase()
         self.images = []
         super.init(frame: profileView.frame)
         
@@ -26,6 +28,8 @@ class ProfileImage: UIImageView {
     private func setupView(with: UIView){
         
         // Set up constraints
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
         self.translatesAutoresizingMaskIntoConstraints = false
         let profileView = with
         NSLayoutConstraint.activate([
@@ -52,15 +56,17 @@ class ProfileImage: UIImageView {
     
     public override func didChangeValue(forKey key: String) {
         if (key == "Profile Dismissed"){
-            self.configure(with: self.profileGenerator.getNextProfile())
+            if let email = self.profileGenerator.getNextProfile() {
+                self.configure(with: email)
+            }
         }
     }
     
-    public func configure(with: [String: Any]){
-        let images = (with["photos"] as? [UIImage]) ?? []
-        if (images.count) > 0 {
-            self.images = images
-            self.image = images[0]
+    public func configure(with: String?){
+        let email: String = with ?? ""
+        if let imagesArray = database.getUserField(email: email, field: "photos") as? [Data] {
+            self.images = imagesArray
+            self.image = UIImage(data: images[0])
         }
     }
     

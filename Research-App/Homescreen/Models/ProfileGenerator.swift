@@ -7,25 +7,34 @@
 
 import Foundation
 
+// TODO: Current loads all users as unloaded users.
+
 class ProfileGenerator: NSObject {
     
-    var user: User
-    var unseenProfiles: [String]
-    var seenProfiles: [String]
+    private var user: User
+    private var unseenProfiles: [String]
+    private var seenProfiles: [String]
+    private static var profileGenerator: ProfileGenerator? = nil
     
-    override init() {
+    private override init() {
         
         print("------------------------------------------------------------")
         print("Initializing profile generator object.")
         
+        
         self.user = User()
-        self.seenProfiles = []
         self.unseenProfiles = []
+        self.seenProfiles = []
+        
         super.init()
         
         self.loadPreferedProfilesAndUpdate()
-        
-        }
+    }
+    
+    public static func getProfileGenerator() -> ProfileGenerator {
+        if (ProfileGenerator.profileGenerator == nil) { ProfileGenerator.profileGenerator = ProfileGenerator() }
+        return ProfileGenerator.profileGenerator!
+    }
     
     private func loadPreferedProfilesAndUpdate() {
         
@@ -44,23 +53,27 @@ class ProfileGenerator: NSObject {
             print("Error loading prefered user pool, bad string.")
             self.unseenProfiles = []
         }
-        // print(self.unseenProfiles)
-    }
-    
-    static private func loadUnlikedProfiles() -> [String] {
-        return []
+        print("unseen profiles: ", self.unseenProfiles)
     }
     
     // Pop current profile off of profile stack.
     public func pop() {
-        return
+        if (unseenProfiles.count > 0) {
+            unseenProfiles.remove(at: 0)
+        }
     }
     
-    public func getCurrentProfile() -> [String: Any] {
-        return [:]
+    public func getCurrentProfile() -> String? {
+        if (unseenProfiles.count > 0) {
+            return unseenProfiles[0]
+        }
+        return nil
     }
     
-    public func getNextProfile() -> [String: Any] {
-        return [:]
+    public func getNextProfile() -> String? {
+        if (unseenProfiles.count > 1) {
+            return unseenProfiles[1] as! String
+        }
+        return nil
     }
 }
