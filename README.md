@@ -2,7 +2,6 @@
 - I gave up on this app back in June. Turns out app dev is hard. Full-stack app dev is harder. Solo full-stack mobile app dev on a dating app is a bit of a crusade. I learned a ton from this project and feel proud of the little bit I did accomplish. However, if I ever do decide to build a social media app with the intent to deploy it – I'm sure as hell going to have some help. Of course, feel free to use any of this code if you dare, I'm fairly certain it's all unusable.
 
 # Muse: A Free Alternative to Freemium Dating
---- 
 ### Coming: May / June of 2023
 
 - **Progress Update - 4/3/23**: User authentication and account creation are fully implemented. UI is rudimentary, yet relatively modern and useable. Currently undergoing intense rewrites for core feature of app (swipe page). Largest challenge is getting (not even sorting) relevant profiles and user-data in real time. Excited to implement more core features and do large-scale refactors in the coming months.
